@@ -1,2 +1,4 @@
-A = 7
-PRINT A
+A = 77
+IF A<8   PRINT "A==7"
+
+PRINT A + 3

@@ -36,6 +36,23 @@ public class kVisitor extends kbasBaseVisitor<Value>
     }
 
     @Override
+    public Value visitIfstmt(kbasParser.IfstmtContext ctx)
+    {
+        Value condition = visit(ctx.expression());
+        if (condition.isTrue())
+        {
+            Value val = visit(ctx.statement());
+            return val;//visit(ctx.statement());// .block());
+        }
+        if (condition.isFalse())
+        {
+            return null;
+        }
+        return null;
+        //return super.visitIfstmt(ctx);
+    }
+
+    @Override
     public Value visitVar(kbasParser.VarContext ctx)
     {
         String id = ctx.getText();

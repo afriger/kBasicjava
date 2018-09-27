@@ -66,24 +66,15 @@ statement
    | includestmt
    ;
 
-vardecl: var (LPAREN exprlist RPAREN)*
-   ;
-
-printstmt1: (PRINT | QUESTION) printlist?
-   ;
-
-
-printlist: expression ((COMMA | SEMICOLON) expression?)*
-   ;
-
+vardecl: var (LPAREN exprlist RPAREN)*   ;
+printstmt1: (PRINT | QUESTION) printlist?   ;
+printlist: expression ((COMMA | SEMICOLON) expression?)*   ;
 getstmt    : GET exprlist;
 letstmt   : LET? variableassignment;
-
 variableassignment   : vardecl EQ exprlist   ;
+ifstmt: IF expression THEN? (statement | linenumber);
 
 
-ifstmt: IF expression THEN? (statement | linenumber)
-   ;
 
 // for stmt 1 puts the for-next on one line
 forstmt1: FOR vardecl EQ expression TO expression (STEP expression)? (statement NEXT vardecl?)?
@@ -377,20 +368,12 @@ GOSUB: 'GOSUB' | 'gosub'
 ;
 
 
-IF: 'IF' | 'if'
-;
+IF: 'IF' | 'if';
+NEXT: 'NEXT' | 'next';
+THEN: 'THEN' | 'then';
 
 
-NEXT: 'NEXT' | 'next'
-;
-
-
-THEN: 'THEN' | 'then'
-;
-
-
-REM: 'REM' | 'rem'
-;
+REM: 'REM' | 'rem';
 
 
 CHR: 'CHR$'
