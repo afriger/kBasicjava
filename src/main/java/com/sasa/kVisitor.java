@@ -24,6 +24,15 @@ public class kVisitor extends kbasBaseVisitor<Value>
     public Value visitProg(kbasParser.ProgContext ctx)
     {
         init();
+        int size = ctx.line().size();
+        for (int k = 0; k < size; ++k)
+        {
+            kbasParser.LineContext line = ctx.line(k);
+            String txt = line.getText();
+            continue;
+        }
+
+
         try
         {
             return super.visitProg(ctx);
@@ -49,7 +58,6 @@ public class kVisitor extends kbasBaseVisitor<Value>
             return null;
         }
         return null;
-        //return super.visitIfstmt(ctx);
     }
 
     @Override
@@ -61,8 +69,17 @@ public class kVisitor extends kbasBaseVisitor<Value>
     }
 
     @Override
+    public Value visitLine(kbasParser.LineContext ctx)
+    {
+        int line = ctx.getStart().getLine();
+        System.out.println("#Line: " + line);
+        return super.visitLine(ctx);
+    }
+
+    @Override
     public Value visitLetstmt(kbasParser.LetstmtContext ctx)
     {
+        int line = ctx.getStart().getLine();
         String varname = ctx.variableassignment().vardecl().var().getText();
         Value value = visit(ctx.variableassignment().exprlist());//   //.expression());
         memory.assign(varname, value);

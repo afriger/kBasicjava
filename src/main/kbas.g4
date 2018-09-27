@@ -1,10 +1,10 @@
 grammar kbas;
 
-prog: line + EOF;
+prog: line + EOF {lineN=0;};
 
    // a line starts with an INT
 line
-  : ((linenumber | STATUS)? ((amprstmt (COMMA amprstmt?)*) | (COMMENT | REM)))
+  : ((linenumber | STATUS)? ((amprstmt (COMMA amprstmt?)*) | (COMMENT | REM))){lineN++;}
   ;
 amperoper: AMPERSAND;
 linenumber: NUMBER  ;

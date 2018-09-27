@@ -1,7 +1,6 @@
 package com.sasa;
 
 
-
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -48,6 +47,8 @@ public class Interpreter
         try
         {
             ParseTree tree = parser.prog();
+//            int size = ((kbasParser.ProgContext) tree).line().size();
+//            kbasParser.LineContext goo = ((kbasParser.ProgContext) tree).line(0);
             memory = new Memory();
             kVisitor eval = new kVisitor(memory, stdin, stdoutPrint, stderrPrint);
             eval.visit(tree);
@@ -63,7 +64,7 @@ public class Interpreter
                 InputMismatchException inputEx = (InputMismatchException) e.getCause();
                 String msg = Utils.formatErrorMessage(
                         inputEx.getOffendingToken().getLine(),
-                        inputEx.getOffendingToken().getCharPositionInLine(),"Syntax error");
+                        inputEx.getOffendingToken().getCharPositionInLine(), "Syntax error");
                 stderrPrint.println(msg);
             }
         }
