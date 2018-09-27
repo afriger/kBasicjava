@@ -21,7 +21,7 @@ public class App
             //    System.exit(-1);
             //}
 
-            final String path = "C:/dev/__JavaProjects/kbas/src/main/test/";
+            final String path = "C:/dev/__JavaProjects/kBasicjava/src/main/test/";
             String file = "1.bas";
             in = new FileInputStream(path + file);//args[0]);
             interpreter = new Interpreter(System.in, System.out, System.err);

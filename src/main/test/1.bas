@@ -1,2 +1,2 @@
-
-PRINT  (7+ 2)/3
+A = 7
+PRINT A

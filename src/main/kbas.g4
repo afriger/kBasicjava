@@ -76,9 +76,8 @@ printstmt1: (PRINT | QUESTION) printlist?
 printlist: expression ((COMMA | SEMICOLON) expression?)*
    ;
 
-getstmt    : GET exprlist   ;
-
-letstmt   : LET? variableassignment   ;
+getstmt    : GET exprlist;
+letstmt   : LET? variableassignment;
 
 variableassignment   : vardecl EQ exprlist   ;
 
@@ -272,18 +271,11 @@ expression //sasa expression
    | (LPAREN expression RPAREN)                         #ParenExpr
    ;
 
-// lists
-var: varname varsuffix?
-   ;
-
-varname: LETTERS (LETTERS | NUMBER)*
-   ;
-
-varsuffix: (DOLLAR | PERCENT)
-   ;
-
-varlist: vardecl (COMMA vardecl)*
-   ;
+// lists var
+var: varname varsuffix?;
+varname: LETTERS (LETTERS | NUMBER)* ;
+varsuffix: (DOLLAR | PERCENT) ;
+varlist: vardecl (COMMA vardecl)*    ;
 
 exprlist: expression (COMMA expression)*
    ;
@@ -473,8 +465,7 @@ END: 'END' | 'end'
    ;
 
 
-LET: 'LET' | 'let'
-   ;
+LET: 'LET' | 'let';
 
 FOR: 'FOR' | 'for'
    ;

@@ -36,6 +36,23 @@ public class kVisitor extends kbasBaseVisitor<Value>
     }
 
     @Override
+    public Value visitVar(kbasParser.VarContext ctx)
+    {
+        String id = ctx.getText();
+        Value val = memory.get(id);// get var value
+        return val;
+    }
+
+    @Override
+    public Value visitLetstmt(kbasParser.LetstmtContext ctx)
+    {
+        String varname = ctx.variableassignment().vardecl().var().getText();
+        Value value = visit(ctx.variableassignment().exprlist());//   //.expression());
+        memory.assign(varname, value);
+        return value;
+    }
+
+    @Override
     public Value visitPrintlist(kbasParser.PrintlistContext ctx)
     {
         ParseTree child = ctx.expression(0);
