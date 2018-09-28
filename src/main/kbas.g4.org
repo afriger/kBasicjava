@@ -1,10 +1,10 @@
 grammar kbas;
 
-prog: line + EOF ;
+prog: line + EOF {lineN=0;};
 
    // a line starts with an INT
 line
-  : ((linenumber | STATUS)? ((amprstmt (COMMA amprstmt?)*) | (COMMENT | REM)))
+  : ((linenumber | STATUS)? ((amprstmt (COMMA amprstmt?)*) | (COMMENT | REM))){lineN++;}
   ;
 amperoper: AMPERSAND;
 linenumber: NUMBER  ;
@@ -41,6 +41,8 @@ statement
    | printstmt1
    | pokestmt
    | plotstmt
+   | ongotostmt
+   | ongosubstmt
    | ifstmt
    | forstmt1
    | forstmt2
@@ -49,9 +51,6 @@ statement
    | dimstmt
    | gotostmt
    | gosubstmt
-   | gpsstmt
-   | psstmt
-   | returnsubstmt
    | callstmt
    | readstmt
    | hplotstmt
@@ -85,7 +84,8 @@ forstmt1: FOR vardecl EQ expression TO expression (STEP expression)? (statement 
 forstmt2: FOR vardecl EQ expression TO expression (STEP expression)?
    ;
 
-nextstmt: NEXT (vardecl (',' vardecl)*)? ;
+nextstmt: NEXT (vardecl (',' vardecl)*)?
+   ;
 
 inputstmt: INPUT (stringer (COMMA | SEMICOLON))? varlist
    ;
@@ -95,13 +95,18 @@ readstmt: READ varlist
 
 dimstmt: DIM varlist
    ;
-gotostmt: GOTO linenumber ;
-gosubstmt: GOSUB expression;
-gpsstmt: GPS expression;
-returnsubstmt: RPS vardecl;
-psstmt: PS (vardecl (',' vardecl)*)? ;
-pokestmt: POKE expression COMMA expression   ;
-callstmt: CALL exprlist;
+
+gotostmt: GOTO linenumber
+   ;
+
+gosubstmt: GOSUB expression
+   ;
+
+pokestmt: POKE expression COMMA expression
+   ;
+
+callstmt: CALL exprlist
+   ;
 
 hplotstmt: HPLOT (expression COMMA expression)? (TO expression COMMA expression)*
    ;
@@ -110,6 +115,12 @@ vplotstmt: VPLOT (expression COMMA expression)? (TO expression COMMA expression)
    ;
 
 plotstmt: PLOT expression COMMA expression
+   ;
+
+ongotostmt: ON expression GOTO linenumber (COMMA linenumber)*
+   ;
+
+ongosubstmt: ON expression GOSUB linenumber (COMMA linenumber)*
    ;
 
 vtabstmnt: VTAB expression
@@ -353,10 +364,8 @@ PRINT   : 'PRINT' | 'print';
 GOTO   : 'GOTO' | 'goto';
 
 
-GOSUB: 'GOSUB' | 'gosub';
-GPS : 'GPS' | 'gps';
-PS: 'PS' | 'ps';
-RPS: 'RPS' | 'rps';
+GOSUB: 'GOSUB' | 'gosub'
+;
 
 
 IF: 'IF' | 'if';

@@ -1,4 +1,4 @@
-// Generated from C:/dev/__JavaProjects/kbas/src/main\kbas.g4 by ANTLR 4.7
+// Generated from C:/dev/__JavaProjects/blinnafig/src/main\kbas.g4 by ANTLR 4.7
 package com.sasa;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -10,7 +10,8 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class kbasBaseListener implements kbasListener {
+public class kbasBaseListener implements kbasListener
+{
 	/**
 	 * {@inheritDoc}
 	 *
@@ -268,6 +269,42 @@ public class kbasBaseListener implements kbasListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterGpsstmt(kbasParser.GpsstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGpsstmt(kbasParser.GpsstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterReturnsubstmt(kbasParser.ReturnsubstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitReturnsubstmt(kbasParser.ReturnsubstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPsstmt(kbasParser.PsstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPsstmt(kbasParser.PsstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPokestmt(kbasParser.PokestmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -323,30 +360,6 @@ public class kbasBaseListener implements kbasListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitPlotstmt(kbasParser.PlotstmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterOngotostmt(kbasParser.OngotostmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitOngotostmt(kbasParser.OngotostmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterOngosubstmt(kbasParser.OngosubstmtContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitOngosubstmt(kbasParser.OngosubstmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

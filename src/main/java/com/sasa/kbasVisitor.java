@@ -1,4 +1,4 @@
-// Generated from C:/dev/__JavaProjects/kbas/src/main\kbas.g4 by ANTLR 4.7
+// Generated from C:/dev/__JavaProjects/blinnafig/src/main\kbas.g4 by ANTLR 4.7
 package com.sasa;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -137,6 +137,24 @@ public interface kbasVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitGosubstmt(kbasParser.GosubstmtContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link kbasParser#gpsstmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGpsstmt(kbasParser.GpsstmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link kbasParser#returnsubstmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitReturnsubstmt(kbasParser.ReturnsubstmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link kbasParser#psstmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPsstmt(kbasParser.PsstmtContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link kbasParser#pokestmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -166,18 +184,6 @@ public interface kbasVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPlotstmt(kbasParser.PlotstmtContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link kbasParser#ongotostmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOngotostmt(kbasParser.OngotostmtContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link kbasParser#ongosubstmt}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitOngosubstmt(kbasParser.OngosubstmtContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link kbasParser#vtabstmnt}.
 	 * @param ctx the parse tree

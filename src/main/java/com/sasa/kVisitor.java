@@ -1,6 +1,7 @@
 package com.sasa;
 
 import org.antlr.v4.runtime.RuleContext;
+import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -19,11 +20,42 @@ public class kVisitor extends kbasBaseVisitor<Value>
 
     private PrintStream printStream;
     private BufferedReader inputStream;
+    private kbasParser.ProgContext pctx;
+
+    @Override
+    public Value visitReturnstmt(kbasParser.ReturnstmtContext ctx)
+    {
+        return super.visitReturnstmt(ctx);
+    }
+
+    @Override
+    public Value visitPsstmt(kbasParser.PsstmtContext ctx)
+    {
+        return super.visitPsstmt(ctx);
+    }
+
+    @Override
+    public Value visitGpsstmt(kbasParser.GpsstmtContext ctx)
+    {
+
+        int count = ctx.expression().getChildCount();
+        String cc = ctx.expression().getText();
+        int size = pctx.line().size();
+        for (int k = 0; k < size; ++k)
+        {
+            kbasParser.LineContext line = pctx.line(k);
+            String str= line.amprstmt(0).getText();
+            continue;
+        }
+        return super.visitGpsstmt(ctx);
+    }
 
     @Override
     public Value visitProg(kbasParser.ProgContext ctx)
     {
+        pctx = ctx;
         init();
+/*
         int size = ctx.line().size();
         for (int k = 0; k < size; ++k)
         {
@@ -31,6 +63,7 @@ public class kVisitor extends kbasBaseVisitor<Value>
             String txt = line.getText();
             continue;
         }
+*/
 
 
         try

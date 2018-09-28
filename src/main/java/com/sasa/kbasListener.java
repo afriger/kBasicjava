@@ -1,4 +1,4 @@
-// Generated from C:/dev/__JavaProjects/kbas/src/main\kbas.g4 by ANTLR 4.7
+// Generated from C:/dev/__JavaProjects/blinnafig/src/main\kbas.g4 by ANTLR 4.7
 package com.sasa;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -218,6 +218,36 @@ public interface kbasListener extends ParseTreeListener {
 	 */
 	void exitGosubstmt(kbasParser.GosubstmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link kbasParser#gpsstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterGpsstmt(kbasParser.GpsstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link kbasParser#gpsstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitGpsstmt(kbasParser.GpsstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link kbasParser#returnsubstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturnsubstmt(kbasParser.ReturnsubstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link kbasParser#returnsubstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturnsubstmt(kbasParser.ReturnsubstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link kbasParser#psstmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterPsstmt(kbasParser.PsstmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link kbasParser#psstmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitPsstmt(kbasParser.PsstmtContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link kbasParser#pokestmt}.
 	 * @param ctx the parse tree
 	 */
@@ -267,26 +297,6 @@ public interface kbasListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPlotstmt(kbasParser.PlotstmtContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link kbasParser#ongotostmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterOngotostmt(kbasParser.OngotostmtContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link kbasParser#ongotostmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitOngotostmt(kbasParser.OngotostmtContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link kbasParser#ongosubstmt}.
-	 * @param ctx the parse tree
-	 */
-	void enterOngosubstmt(kbasParser.OngosubstmtContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link kbasParser#ongosubstmt}.
-	 * @param ctx the parse tree
-	 */
-	void exitOngosubstmt(kbasParser.OngosubstmtContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link kbasParser#vtabstmnt}.
 	 * @param ctx the parse tree

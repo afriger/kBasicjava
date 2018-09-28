@@ -1,4 +1,4 @@
-// Generated from C:/dev/__JavaProjects/kbas/src/main\kbas.g4 by ANTLR 4.7
+// Generated from C:/dev/__JavaProjects/blinnafig/src/main\kbas.g4 by ANTLR 4.7
 package com.sasa;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -10,7 +10,8 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
  * @param <T> The return type of the visit operation. Use {@link Void} for
  * operations with no return type.
  */
-public class kbasBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements kbasVisitor<T> {
+public class kbasBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements kbasVisitor<T>
+{
 	/**
 	 * {@inheritDoc}
 	 *
@@ -164,6 +165,27 @@ public class kbasBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements k
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitGpsstmt(kbasParser.GpsstmtContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitReturnsubstmt(kbasParser.ReturnsubstmtContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitPsstmt(kbasParser.PsstmtContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitPokestmt(kbasParser.PokestmtContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -193,20 +215,6 @@ public class kbasBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements k
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitPlotstmt(kbasParser.PlotstmtContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitOngotostmt(kbasParser.OngotostmtContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitOngosubstmt(kbasParser.OngosubstmtContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

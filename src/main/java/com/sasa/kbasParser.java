@@ -1,13 +1,17 @@
-// Generated from C:/dev/__JavaProjects/kbas/src/main\kbas.g4 by ANTLR 4.7
+// Generated from C:/dev/__JavaProjects/blinnafig/src/main\kbas.g4 by ANTLR 4.7
 package com.sasa;
-import org.antlr.v4.runtime.atn.*;
-import org.antlr.v4.runtime.dfa.DFA;
+
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.*;
-import org.antlr.v4.runtime.tree.*;
+import org.antlr.v4.runtime.atn.ATN;
+import org.antlr.v4.runtime.atn.ATNDeserializer;
+import org.antlr.v4.runtime.atn.ParserATNSimulator;
+import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+import org.antlr.v4.runtime.tree.TerminalNode;
+
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class kbasParser extends Parser {
@@ -17,93 +21,95 @@ public class kbasParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		DOLLAR=1, PERCENT=2, RETURN=3, PRINT=4, GOTO=5, GOSUB=6, IF=7, NEXT=8, 
-		THEN=9, REM=10, CHR=11, MID=12, LEFT=13, RIGHT=14, STR=15, LPAREN=16, 
-		RPAREN=17, PLUS=18, MINUS=19, TIMES=20, DIV=21, CLEAR=22, NEQ=23, GTE=24, 
-		LTE=25, GT=26, LT=27, EQ=28, COMMA=29, LIST=30, RUN=31, END=32, LET=33, 
-		FOR=34, TO=35, STEP=36, INPUT=37, SEMICOLON=38, DIM=39, SQR=40, COLON=41, 
-		TEXT=42, HGR=43, HGR2=44, LEN=45, CALL=46, ASC=47, HPLOT=48, VPLOT=49, 
-		PRNUMBER=50, INNUMBER=51, VTAB=52, HTAB=53, HOME=54, ON=55, PDL=56, PLOT=57, 
-		PEEK=58, POKE=59, INTF=60, STOP=61, HIMEM=62, LOMEM=63, FLASH=64, INVERSE=65, 
-		NORMAL=66, ONERR=67, SPC=68, FRE=69, POS=70, USR=71, TRACE=72, NOTRACE=73, 
-		AND=74, OR=75, DATA=76, WAIT=77, READ=78, XDRAW=79, DRAW=80, AT=81, DEF=82, 
-		FN=83, VAL=84, TAB=85, SPEED=86, ROT=87, SCALE=88, COLOR=89, HCOLOR=90, 
-		HLIN=91, VLIN=92, SCRN=93, POP=94, SHLOAD=95, SIN=96, COS=97, TAN=98, 
-		ATN=99, RND=100, SGN=101, EXP=102, LOG=103, ABS=104, STORE=105, RECALL=106, 
-		GET=107, EXPONENT=108, AMPERSAND=109, GR=110, NOT=111, RESTORE=112, SAVE=113, 
-		LOAD=114, QUESTION=115, INCLUDE=116, CLS=117, STATUS=118, COMMENT=119, 
-		STRINGLITERAL=120, LETTERS=121, NUMBER=122, FLOAT=123, WS=124;
+		DOLLAR=1, PERCENT=2, RETURN=3, PRINT=4, GOTO=5, GOSUB=6, GPS=7, PS=8, 
+		RPS=9, IF=10, NEXT=11, THEN=12, REM=13, CHR=14, MID=15, LEFT=16, RIGHT=17, 
+		STR=18, LPAREN=19, RPAREN=20, PLUS=21, MINUS=22, TIMES=23, DIV=24, CLEAR=25, 
+		NEQ=26, GTE=27, LTE=28, GT=29, LT=30, EQ=31, COMMA=32, LIST=33, RUN=34, 
+		END=35, LET=36, FOR=37, TO=38, STEP=39, INPUT=40, SEMICOLON=41, DIM=42, 
+		SQR=43, COLON=44, TEXT=45, HGR=46, HGR2=47, LEN=48, CALL=49, ASC=50, HPLOT=51, 
+		VPLOT=52, PRNUMBER=53, INNUMBER=54, VTAB=55, HTAB=56, HOME=57, ON=58, 
+		PDL=59, PLOT=60, PEEK=61, POKE=62, INTF=63, STOP=64, HIMEM=65, LOMEM=66, 
+		FLASH=67, INVERSE=68, NORMAL=69, ONERR=70, SPC=71, FRE=72, POS=73, USR=74, 
+		TRACE=75, NOTRACE=76, AND=77, OR=78, DATA=79, WAIT=80, READ=81, XDRAW=82, 
+		DRAW=83, AT=84, DEF=85, FN=86, VAL=87, TAB=88, SPEED=89, ROT=90, SCALE=91, 
+		COLOR=92, HCOLOR=93, HLIN=94, VLIN=95, SCRN=96, POP=97, SHLOAD=98, SIN=99, 
+		COS=100, TAN=101, ATN=102, RND=103, SGN=104, EXP=105, LOG=106, ABS=107, 
+		STORE=108, RECALL=109, GET=110, EXPONENT=111, AMPERSAND=112, GR=113, NOT=114, 
+		RESTORE=115, SAVE=116, LOAD=117, QUESTION=118, INCLUDE=119, CLS=120, STATUS=121, 
+		COMMENT=122, STRINGLITERAL=123, LETTERS=124, NUMBER=125, FLOAT=126, WS=127;
 	public static final int
 		RULE_prog = 0, RULE_line = 1, RULE_amperoper = 2, RULE_linenumber = 3, 
 		RULE_amprstmt = 4, RULE_statement = 5, RULE_vardecl = 6, RULE_printstmt1 = 7, 
 		RULE_printlist = 8, RULE_getstmt = 9, RULE_letstmt = 10, RULE_variableassignment = 11, 
 		RULE_ifstmt = 12, RULE_forstmt1 = 13, RULE_forstmt2 = 14, RULE_nextstmt = 15, 
 		RULE_inputstmt = 16, RULE_readstmt = 17, RULE_dimstmt = 18, RULE_gotostmt = 19, 
-		RULE_gosubstmt = 20, RULE_pokestmt = 21, RULE_callstmt = 22, RULE_hplotstmt = 23, 
-		RULE_vplotstmt = 24, RULE_plotstmt = 25, RULE_ongotostmt = 26, RULE_ongosubstmt = 27, 
-		RULE_vtabstmnt = 28, RULE_htabstmnt = 29, RULE_himemstmt = 30, RULE_lomemstmt = 31, 
-		RULE_datastmt = 32, RULE_datum = 33, RULE_waitstmt = 34, RULE_xdrawstmt = 35, 
-		RULE_drawstmt = 36, RULE_defstmt = 37, RULE_tabstmt = 38, RULE_speedstmt = 39, 
-		RULE_rotstmt = 40, RULE_scalestmt = 41, RULE_colorstmt = 42, RULE_hcolorstmt = 43, 
-		RULE_hlinstmt = 44, RULE_vlinstmt = 45, RULE_onerrstmt = 46, RULE_prstmt = 47, 
-		RULE_instmt = 48, RULE_storestmt = 49, RULE_recallstmt = 50, RULE_liststmt = 51, 
-		RULE_popstmt = 52, RULE_amptstmt = 53, RULE_includestmt = 54, RULE_endstmt = 55, 
-		RULE_returnstmt = 56, RULE_restorestmt = 57, RULE_number = 58, RULE_stringer = 59, 
-		RULE_func = 60, RULE_expression = 61, RULE_var = 62, RULE_varname = 63, 
-		RULE_varsuffix = 64, RULE_varlist = 65, RULE_exprlist = 66, RULE_sqrfunc = 67, 
-		RULE_chrfunc = 68, RULE_lenfunc = 69, RULE_ascfunc = 70, RULE_midfunc = 71, 
-		RULE_pdlfunc = 72, RULE_peekfunc = 73, RULE_intfunc = 74, RULE_spcfunc = 75, 
-		RULE_frefunc = 76, RULE_posfunc = 77, RULE_usrfunc = 78, RULE_leftfunc = 79, 
-		RULE_rightfunc = 80, RULE_strfunc = 81, RULE_fnfunc = 82, RULE_valfunc = 83, 
-		RULE_scrnfunc = 84, RULE_sinfunc = 85, RULE_cosfunc = 86, RULE_tanfunc = 87, 
-		RULE_atnfunc = 88, RULE_rndfunc = 89, RULE_sgnfunc = 90, RULE_expfunc = 91, 
-		RULE_logfunc = 92, RULE_absfunc = 93, RULE_tabfunc = 94;
+		RULE_gosubstmt = 20, RULE_gpsstmt = 21, RULE_returnsubstmt = 22, RULE_psstmt = 23, 
+		RULE_pokestmt = 24, RULE_callstmt = 25, RULE_hplotstmt = 26, RULE_vplotstmt = 27, 
+		RULE_plotstmt = 28, RULE_vtabstmnt = 29, RULE_htabstmnt = 30, RULE_himemstmt = 31, 
+		RULE_lomemstmt = 32, RULE_datastmt = 33, RULE_datum = 34, RULE_waitstmt = 35, 
+		RULE_xdrawstmt = 36, RULE_drawstmt = 37, RULE_defstmt = 38, RULE_tabstmt = 39, 
+		RULE_speedstmt = 40, RULE_rotstmt = 41, RULE_scalestmt = 42, RULE_colorstmt = 43, 
+		RULE_hcolorstmt = 44, RULE_hlinstmt = 45, RULE_vlinstmt = 46, RULE_onerrstmt = 47, 
+		RULE_prstmt = 48, RULE_instmt = 49, RULE_storestmt = 50, RULE_recallstmt = 51, 
+		RULE_liststmt = 52, RULE_popstmt = 53, RULE_amptstmt = 54, RULE_includestmt = 55, 
+		RULE_endstmt = 56, RULE_returnstmt = 57, RULE_restorestmt = 58, RULE_number = 59, 
+		RULE_stringer = 60, RULE_func = 61, RULE_expression = 62, RULE_var = 63, 
+		RULE_varname = 64, RULE_varsuffix = 65, RULE_varlist = 66, RULE_exprlist = 67, 
+		RULE_sqrfunc = 68, RULE_chrfunc = 69, RULE_lenfunc = 70, RULE_ascfunc = 71, 
+		RULE_midfunc = 72, RULE_pdlfunc = 73, RULE_peekfunc = 74, RULE_intfunc = 75, 
+		RULE_spcfunc = 76, RULE_frefunc = 77, RULE_posfunc = 78, RULE_usrfunc = 79, 
+		RULE_leftfunc = 80, RULE_rightfunc = 81, RULE_strfunc = 82, RULE_fnfunc = 83, 
+		RULE_valfunc = 84, RULE_scrnfunc = 85, RULE_sinfunc = 86, RULE_cosfunc = 87, 
+		RULE_tanfunc = 88, RULE_atnfunc = 89, RULE_rndfunc = 90, RULE_sgnfunc = 91, 
+		RULE_expfunc = 92, RULE_logfunc = 93, RULE_absfunc = 94, RULE_tabfunc = 95;
 	public static final String[] ruleNames = {
 		"prog", "line", "amperoper", "linenumber", "amprstmt", "statement", "vardecl", 
 		"printstmt1", "printlist", "getstmt", "letstmt", "variableassignment", 
 		"ifstmt", "forstmt1", "forstmt2", "nextstmt", "inputstmt", "readstmt", 
-		"dimstmt", "gotostmt", "gosubstmt", "pokestmt", "callstmt", "hplotstmt", 
-		"vplotstmt", "plotstmt", "ongotostmt", "ongosubstmt", "vtabstmnt", "htabstmnt", 
-		"himemstmt", "lomemstmt", "datastmt", "datum", "waitstmt", "xdrawstmt", 
-		"drawstmt", "defstmt", "tabstmt", "speedstmt", "rotstmt", "scalestmt", 
-		"colorstmt", "hcolorstmt", "hlinstmt", "vlinstmt", "onerrstmt", "prstmt", 
-		"instmt", "storestmt", "recallstmt", "liststmt", "popstmt", "amptstmt", 
-		"includestmt", "endstmt", "returnstmt", "restorestmt", "number", "stringer", 
-		"func", "expression", "var", "varname", "varsuffix", "varlist", "exprlist", 
-		"sqrfunc", "chrfunc", "lenfunc", "ascfunc", "midfunc", "pdlfunc", "peekfunc", 
-		"intfunc", "spcfunc", "frefunc", "posfunc", "usrfunc", "leftfunc", "rightfunc", 
-		"strfunc", "fnfunc", "valfunc", "scrnfunc", "sinfunc", "cosfunc", "tanfunc", 
-		"atnfunc", "rndfunc", "sgnfunc", "expfunc", "logfunc", "absfunc", "tabfunc"
+		"dimstmt", "gotostmt", "gosubstmt", "gpsstmt", "returnsubstmt", "psstmt", 
+		"pokestmt", "callstmt", "hplotstmt", "vplotstmt", "plotstmt", "vtabstmnt", 
+		"htabstmnt", "himemstmt", "lomemstmt", "datastmt", "datum", "waitstmt", 
+		"xdrawstmt", "drawstmt", "defstmt", "tabstmt", "speedstmt", "rotstmt", 
+		"scalestmt", "colorstmt", "hcolorstmt", "hlinstmt", "vlinstmt", "onerrstmt", 
+		"prstmt", "instmt", "storestmt", "recallstmt", "liststmt", "popstmt", 
+		"amptstmt", "includestmt", "endstmt", "returnstmt", "restorestmt", "number", 
+		"stringer", "func", "expression", "var", "varname", "varsuffix", "varlist", 
+		"exprlist", "sqrfunc", "chrfunc", "lenfunc", "ascfunc", "midfunc", "pdlfunc", 
+		"peekfunc", "intfunc", "spcfunc", "frefunc", "posfunc", "usrfunc", "leftfunc", 
+		"rightfunc", "strfunc", "fnfunc", "valfunc", "scrnfunc", "sinfunc", "cosfunc", 
+		"tanfunc", "atnfunc", "rndfunc", "sgnfunc", "expfunc", "logfunc", "absfunc", 
+		"tabfunc"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'$'", "'%'", null, null, null, null, null, null, null, null, "'CHR$'", 
-		"'MID$'", "'LEFT$'", "'RIGHT$'", "'STR$'", "'('", "')'", "'+'", "'-'", 
-		"'*'", "'/'", null, "'<>'", "'>='", "'<='", "'>'", "'<'", "'='", "','", 
-		null, null, null, null, null, null, null, null, "';'", null, null, "':'", 
-		null, null, null, null, null, null, null, null, "'PR#'", "'IN#'", null, 
+		null, "'$'", "'%'", null, null, null, null, null, null, null, null, null, 
+		null, null, "'CHR$'", "'MID$'", "'LEFT$'", "'RIGHT$'", "'STR$'", "'('", 
+		"')'", "'+'", "'-'", "'*'", "'/'", null, "'<>'", "'>='", "'<='", "'>'", 
+		"'<'", "'='", "','", null, null, null, null, null, null, null, null, "';'", 
+		null, null, "':'", null, null, null, null, null, null, null, null, "'PR#'", 
+		"'IN#'", null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, "'^'", "'&'", null, null, null, 
-		null, null, "'?'", null, null, "'S'"
+		null, null, null, null, null, null, null, null, null, "'^'", "'&'", null, 
+		null, null, null, null, "'?'", null, null, "'S'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "DOLLAR", "PERCENT", "RETURN", "PRINT", "GOTO", "GOSUB", "IF", "NEXT", 
-		"THEN", "REM", "CHR", "MID", "LEFT", "RIGHT", "STR", "LPAREN", "RPAREN", 
-		"PLUS", "MINUS", "TIMES", "DIV", "CLEAR", "NEQ", "GTE", "LTE", "GT", "LT", 
-		"EQ", "COMMA", "LIST", "RUN", "END", "LET", "FOR", "TO", "STEP", "INPUT", 
-		"SEMICOLON", "DIM", "SQR", "COLON", "TEXT", "HGR", "HGR2", "LEN", "CALL", 
-		"ASC", "HPLOT", "VPLOT", "PRNUMBER", "INNUMBER", "VTAB", "HTAB", "HOME", 
-		"ON", "PDL", "PLOT", "PEEK", "POKE", "INTF", "STOP", "HIMEM", "LOMEM", 
-		"FLASH", "INVERSE", "NORMAL", "ONERR", "SPC", "FRE", "POS", "USR", "TRACE", 
-		"NOTRACE", "AND", "OR", "DATA", "WAIT", "READ", "XDRAW", "DRAW", "AT", 
-		"DEF", "FN", "VAL", "TAB", "SPEED", "ROT", "SCALE", "COLOR", "HCOLOR", 
-		"HLIN", "VLIN", "SCRN", "POP", "SHLOAD", "SIN", "COS", "TAN", "ATN", "RND", 
-		"SGN", "EXP", "LOG", "ABS", "STORE", "RECALL", "GET", "EXPONENT", "AMPERSAND", 
-		"GR", "NOT", "RESTORE", "SAVE", "LOAD", "QUESTION", "INCLUDE", "CLS", 
-		"STATUS", "COMMENT", "STRINGLITERAL", "LETTERS", "NUMBER", "FLOAT", "WS"
+		null, "DOLLAR", "PERCENT", "RETURN", "PRINT", "GOTO", "GOSUB", "GPS", 
+		"PS", "RPS", "IF", "NEXT", "THEN", "REM", "CHR", "MID", "LEFT", "RIGHT", 
+		"STR", "LPAREN", "RPAREN", "PLUS", "MINUS", "TIMES", "DIV", "CLEAR", "NEQ", 
+		"GTE", "LTE", "GT", "LT", "EQ", "COMMA", "LIST", "RUN", "END", "LET", 
+		"FOR", "TO", "STEP", "INPUT", "SEMICOLON", "DIM", "SQR", "COLON", "TEXT", 
+		"HGR", "HGR2", "LEN", "CALL", "ASC", "HPLOT", "VPLOT", "PRNUMBER", "INNUMBER", 
+		"VTAB", "HTAB", "HOME", "ON", "PDL", "PLOT", "PEEK", "POKE", "INTF", "STOP", 
+		"HIMEM", "LOMEM", "FLASH", "INVERSE", "NORMAL", "ONERR", "SPC", "FRE", 
+		"POS", "USR", "TRACE", "NOTRACE", "AND", "OR", "DATA", "WAIT", "READ", 
+		"XDRAW", "DRAW", "AT", "DEF", "FN", "VAL", "TAB", "SPEED", "ROT", "SCALE", 
+		"COLOR", "HCOLOR", "HLIN", "VLIN", "SCRN", "POP", "SHLOAD", "SIN", "COS", 
+		"TAN", "ATN", "RND", "SGN", "EXP", "LOG", "ABS", "STORE", "RECALL", "GET", 
+		"EXPONENT", "AMPERSAND", "GR", "NOT", "RESTORE", "SAVE", "LOAD", "QUESTION", 
+		"INCLUDE", "CLS", "STATUS", "COMMENT", "STRINGLITERAL", "LETTERS", "NUMBER", 
+		"FLOAT", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -168,15 +174,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_prog; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterProg(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterProg(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitProg(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitProg(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitProg(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitProg(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -188,21 +194,21 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(191); 
+			setState(193); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(190);
+				setState(192);
 				line();
 				}
 				}
-				setState(193); 
+				setState(195); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << RETURN) | (1L << PRINT) | (1L << GOTO) | (1L << GOSUB) | (1L << IF) | (1L << NEXT) | (1L << REM) | (1L << CLEAR) | (1L << LIST) | (1L << RUN) | (1L << END) | (1L << LET) | (1L << FOR) | (1L << INPUT) | (1L << DIM) | (1L << TEXT) | (1L << HGR) | (1L << HGR2) | (1L << CALL) | (1L << HPLOT) | (1L << VPLOT) | (1L << PRNUMBER) | (1L << INNUMBER) | (1L << VTAB) | (1L << HTAB) | (1L << HOME) | (1L << ON) | (1L << PLOT) | (1L << POKE) | (1L << STOP) | (1L << HIMEM) | (1L << LOMEM))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (FLASH - 64)) | (1L << (INVERSE - 64)) | (1L << (NORMAL - 64)) | (1L << (ONERR - 64)) | (1L << (TRACE - 64)) | (1L << (NOTRACE - 64)) | (1L << (DATA - 64)) | (1L << (WAIT - 64)) | (1L << (READ - 64)) | (1L << (XDRAW - 64)) | (1L << (DRAW - 64)) | (1L << (DEF - 64)) | (1L << (TAB - 64)) | (1L << (SPEED - 64)) | (1L << (ROT - 64)) | (1L << (SCALE - 64)) | (1L << (COLOR - 64)) | (1L << (HCOLOR - 64)) | (1L << (HLIN - 64)) | (1L << (VLIN - 64)) | (1L << (POP - 64)) | (1L << (SHLOAD - 64)) | (1L << (STORE - 64)) | (1L << (RECALL - 64)) | (1L << (GET - 64)) | (1L << (AMPERSAND - 64)) | (1L << (GR - 64)) | (1L << (RESTORE - 64)) | (1L << (SAVE - 64)) | (1L << (LOAD - 64)) | (1L << (QUESTION - 64)) | (1L << (INCLUDE - 64)) | (1L << (CLS - 64)) | (1L << (STATUS - 64)) | (1L << (COMMENT - 64)) | (1L << (LETTERS - 64)) | (1L << (NUMBER - 64)))) != 0) );
-			setState(195);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << RETURN) | (1L << PRINT) | (1L << GOTO) | (1L << GOSUB) | (1L << GPS) | (1L << PS) | (1L << RPS) | (1L << IF) | (1L << NEXT) | (1L << REM) | (1L << CLEAR) | (1L << LIST) | (1L << RUN) | (1L << END) | (1L << LET) | (1L << FOR) | (1L << INPUT) | (1L << DIM) | (1L << TEXT) | (1L << HGR) | (1L << HGR2) | (1L << CALL) | (1L << HPLOT) | (1L << VPLOT) | (1L << PRNUMBER) | (1L << INNUMBER) | (1L << VTAB) | (1L << HTAB) | (1L << HOME) | (1L << PLOT) | (1L << POKE))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (STOP - 64)) | (1L << (HIMEM - 64)) | (1L << (LOMEM - 64)) | (1L << (FLASH - 64)) | (1L << (INVERSE - 64)) | (1L << (NORMAL - 64)) | (1L << (ONERR - 64)) | (1L << (TRACE - 64)) | (1L << (NOTRACE - 64)) | (1L << (DATA - 64)) | (1L << (WAIT - 64)) | (1L << (READ - 64)) | (1L << (XDRAW - 64)) | (1L << (DRAW - 64)) | (1L << (DEF - 64)) | (1L << (TAB - 64)) | (1L << (SPEED - 64)) | (1L << (ROT - 64)) | (1L << (SCALE - 64)) | (1L << (COLOR - 64)) | (1L << (HCOLOR - 64)) | (1L << (HLIN - 64)) | (1L << (VLIN - 64)) | (1L << (POP - 64)) | (1L << (SHLOAD - 64)) | (1L << (STORE - 64)) | (1L << (RECALL - 64)) | (1L << (GET - 64)) | (1L << (AMPERSAND - 64)) | (1L << (GR - 64)) | (1L << (RESTORE - 64)) | (1L << (SAVE - 64)) | (1L << (LOAD - 64)) | (1L << (QUESTION - 64)) | (1L << (INCLUDE - 64)) | (1L << (CLS - 64)) | (1L << (STATUS - 64)) | (1L << (COMMENT - 64)) | (1L << (LETTERS - 64)) | (1L << (NUMBER - 64)))) != 0) );
+			setState(197);
 			match(EOF);
 			}
 		}
@@ -240,15 +246,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_line; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterLine(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterLine(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitLine(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitLine(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitLine(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitLine(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -261,18 +267,18 @@ public class kbasParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			{
-			setState(199);
+			setState(201);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NUMBER:
 				{
-				setState(197);
+				setState(199);
 				linenumber();
 				}
 				break;
 			case STATUS:
 				{
-				setState(198);
+				setState(200);
 				match(STATUS);
 				}
 				break;
@@ -280,6 +286,9 @@ public class kbasParser extends Parser {
 			case PRINT:
 			case GOTO:
 			case GOSUB:
+			case GPS:
+			case PS:
+			case RPS:
 			case IF:
 			case NEXT:
 			case REM:
@@ -302,7 +311,6 @@ public class kbasParser extends Parser {
 			case VTAB:
 			case HTAB:
 			case HOME:
-			case ON:
 			case PLOT:
 			case POKE:
 			case STOP:
@@ -347,35 +355,35 @@ public class kbasParser extends Parser {
 			default:
 				break;
 			}
-			setState(212);
+			setState(214);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				{
 				{
-				setState(201);
+				setState(203);
 				amprstmt();
-				setState(208);
+				setState(210);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					setState(202);
-					match(COMMA);
 					setState(204);
+					match(COMMA);
+					setState(206);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 					case 1:
 						{
-						setState(203);
+						setState(205);
 						amprstmt();
 						}
 						break;
 					}
 					}
 					}
-					setState(210);
+					setState(212);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
@@ -384,7 +392,7 @@ public class kbasParser extends Parser {
 				break;
 			case 2:
 				{
-				setState(211);
+				setState(213);
 				_la = _input.LA(1);
 				if ( !(_la==REM || _la==COMMENT) ) {
 				_errHandler.recoverInline(this);
@@ -419,15 +427,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_amperoper; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterAmperoper(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterAmperoper(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitAmperoper(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitAmperoper(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitAmperoper(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitAmperoper(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -438,7 +446,7 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(214);
+			setState(216);
 			match(AMPERSAND);
 			}
 		}
@@ -461,15 +469,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_linenumber; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterLinenumber(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterLinenumber(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitLinenumber(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitLinenumber(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitLinenumber(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitLinenumber(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -480,7 +488,7 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(216);
+			setState(218);
 			match(NUMBER);
 			}
 		}
@@ -510,15 +518,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_amprstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterAmprstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterAmprstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitAmprstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitAmprstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitAmprstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitAmprstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -528,13 +536,16 @@ public class kbasParser extends Parser {
 		enterRule(_localctx, 8, RULE_amprstmt);
 		int _la;
 		try {
-			setState(223);
+			setState(225);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case RETURN:
 			case PRINT:
 			case GOTO:
 			case GOSUB:
+			case GPS:
+			case PS:
+			case RPS:
 			case IF:
 			case NEXT:
 			case CLEAR:
@@ -556,7 +567,6 @@ public class kbasParser extends Parser {
 			case VTAB:
 			case HTAB:
 			case HOME:
-			case ON:
 			case PLOT:
 			case POKE:
 			case STOP:
@@ -599,17 +609,17 @@ public class kbasParser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				{
-				setState(219);
+				setState(221);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 				case 1:
 					{
-					setState(218);
+					setState(220);
 					amperoper();
 					}
 					break;
 				}
-				setState(221);
+				setState(223);
 				statement();
 				}
 				}
@@ -618,7 +628,7 @@ public class kbasParser extends Parser {
 			case COMMENT:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(222);
+				setState(224);
 				_la = _input.LA(1);
 				if ( !(_la==REM || _la==COMMENT) ) {
 				_errHandler.recoverInline(this);
@@ -738,12 +748,6 @@ public class kbasParser extends Parser {
 		public PlotstmtContext plotstmt() {
 			return getRuleContext(PlotstmtContext.class,0);
 		}
-		public OngotostmtContext ongotostmt() {
-			return getRuleContext(OngotostmtContext.class,0);
-		}
-		public OngosubstmtContext ongosubstmt() {
-			return getRuleContext(OngosubstmtContext.class,0);
-		}
 		public IfstmtContext ifstmt() {
 			return getRuleContext(IfstmtContext.class,0);
 		}
@@ -767,6 +771,15 @@ public class kbasParser extends Parser {
 		}
 		public GosubstmtContext gosubstmt() {
 			return getRuleContext(GosubstmtContext.class,0);
+		}
+		public GpsstmtContext gpsstmt() {
+			return getRuleContext(GpsstmtContext.class,0);
+		}
+		public PsstmtContext psstmt() {
+			return getRuleContext(PsstmtContext.class,0);
+		}
+		public ReturnsubstmtContext returnsubstmt() {
+			return getRuleContext(ReturnsubstmtContext.class,0);
 		}
 		public CallstmtContext callstmt() {
 			return getRuleContext(CallstmtContext.class,0);
@@ -813,15 +826,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_statement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterStatement(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitStatement(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitStatement(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -831,15 +844,15 @@ public class kbasParser extends Parser {
 		enterRule(_localctx, 10, RULE_statement);
 		int _la;
 		try {
-			setState(274);
+			setState(277);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(225);
+				setState(227);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CLEAR) | (1L << RUN) | (1L << TEXT) | (1L << HGR) | (1L << HGR2) | (1L << HOME) | (1L << STOP))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (FLASH - 64)) | (1L << (INVERSE - 64)) | (1L << (NORMAL - 64)) | (1L << (TRACE - 64)) | (1L << (NOTRACE - 64)) | (1L << (SHLOAD - 64)) | (1L << (GR - 64)) | (1L << (SAVE - 64)) | (1L << (LOAD - 64)) | (1L << (CLS - 64)))) != 0)) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CLEAR) | (1L << RUN) | (1L << TEXT) | (1L << HGR) | (1L << HGR2) | (1L << HOME))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (STOP - 64)) | (1L << (FLASH - 64)) | (1L << (INVERSE - 64)) | (1L << (NORMAL - 64)) | (1L << (TRACE - 64)) | (1L << (NOTRACE - 64)) | (1L << (SHLOAD - 64)) | (1L << (GR - 64)) | (1L << (SAVE - 64)) | (1L << (LOAD - 64)) | (1L << (CLS - 64)))) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -852,336 +865,343 @@ public class kbasParser extends Parser {
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(226);
+				setState(228);
 				endstmt();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(227);
+				setState(229);
 				returnstmt();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(228);
+				setState(230);
 				restorestmt();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(229);
+				setState(231);
 				amptstmt();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(230);
+				setState(232);
 				popstmt();
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(231);
+				setState(233);
 				liststmt();
 				}
 				break;
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(232);
+				setState(234);
 				storestmt();
 				}
 				break;
 			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(233);
+				setState(235);
 				getstmt();
 				}
 				break;
 			case 10:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(234);
+				setState(236);
 				recallstmt();
 				}
 				break;
 			case 11:
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(235);
+				setState(237);
 				nextstmt();
 				}
 				break;
 			case 12:
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(236);
+				setState(238);
 				instmt();
 				}
 				break;
 			case 13:
 				enterOuterAlt(_localctx, 13);
 				{
-				setState(237);
+				setState(239);
 				prstmt();
 				}
 				break;
 			case 14:
 				enterOuterAlt(_localctx, 14);
 				{
-				setState(238);
+				setState(240);
 				onerrstmt();
 				}
 				break;
 			case 15:
 				enterOuterAlt(_localctx, 15);
 				{
-				setState(239);
+				setState(241);
 				hlinstmt();
 				}
 				break;
 			case 16:
 				enterOuterAlt(_localctx, 16);
 				{
-				setState(240);
+				setState(242);
 				vlinstmt();
 				}
 				break;
 			case 17:
 				enterOuterAlt(_localctx, 17);
 				{
-				setState(241);
+				setState(243);
 				colorstmt();
 				}
 				break;
 			case 18:
 				enterOuterAlt(_localctx, 18);
 				{
-				setState(242);
+				setState(244);
 				speedstmt();
 				}
 				break;
 			case 19:
 				enterOuterAlt(_localctx, 19);
 				{
-				setState(243);
+				setState(245);
 				scalestmt();
 				}
 				break;
 			case 20:
 				enterOuterAlt(_localctx, 20);
 				{
-				setState(244);
+				setState(246);
 				rotstmt();
 				}
 				break;
 			case 21:
 				enterOuterAlt(_localctx, 21);
 				{
-				setState(245);
+				setState(247);
 				hcolorstmt();
 				}
 				break;
 			case 22:
 				enterOuterAlt(_localctx, 22);
 				{
-				setState(246);
+				setState(248);
 				himemstmt();
 				}
 				break;
 			case 23:
 				enterOuterAlt(_localctx, 23);
 				{
-				setState(247);
+				setState(249);
 				lomemstmt();
 				}
 				break;
 			case 24:
 				enterOuterAlt(_localctx, 24);
 				{
-				setState(248);
+				setState(250);
 				printstmt1();
 				}
 				break;
 			case 25:
 				enterOuterAlt(_localctx, 25);
 				{
-				setState(249);
+				setState(251);
 				pokestmt();
 				}
 				break;
 			case 26:
 				enterOuterAlt(_localctx, 26);
 				{
-				setState(250);
+				setState(252);
 				plotstmt();
 				}
 				break;
 			case 27:
 				enterOuterAlt(_localctx, 27);
 				{
-				setState(251);
-				ongotostmt();
+				setState(253);
+				ifstmt();
 				}
 				break;
 			case 28:
 				enterOuterAlt(_localctx, 28);
 				{
-				setState(252);
-				ongosubstmt();
+				setState(254);
+				forstmt1();
 				}
 				break;
 			case 29:
 				enterOuterAlt(_localctx, 29);
 				{
-				setState(253);
-				ifstmt();
+				setState(255);
+				forstmt2();
 				}
 				break;
 			case 30:
 				enterOuterAlt(_localctx, 30);
 				{
-				setState(254);
-				forstmt1();
+				setState(256);
+				inputstmt();
 				}
 				break;
 			case 31:
 				enterOuterAlt(_localctx, 31);
 				{
-				setState(255);
-				forstmt2();
+				setState(257);
+				tabstmt();
 				}
 				break;
 			case 32:
 				enterOuterAlt(_localctx, 32);
 				{
-				setState(256);
-				inputstmt();
+				setState(258);
+				dimstmt();
 				}
 				break;
 			case 33:
 				enterOuterAlt(_localctx, 33);
 				{
-				setState(257);
-				tabstmt();
+				setState(259);
+				gotostmt();
 				}
 				break;
 			case 34:
 				enterOuterAlt(_localctx, 34);
 				{
-				setState(258);
-				dimstmt();
+				setState(260);
+				gosubstmt();
 				}
 				break;
 			case 35:
 				enterOuterAlt(_localctx, 35);
 				{
-				setState(259);
-				gotostmt();
+				setState(261);
+				gpsstmt();
 				}
 				break;
 			case 36:
 				enterOuterAlt(_localctx, 36);
 				{
-				setState(260);
-				gosubstmt();
+				setState(262);
+				psstmt();
 				}
 				break;
 			case 37:
 				enterOuterAlt(_localctx, 37);
 				{
-				setState(261);
-				callstmt();
+				setState(263);
+				returnsubstmt();
 				}
 				break;
 			case 38:
 				enterOuterAlt(_localctx, 38);
 				{
-				setState(262);
-				readstmt();
+				setState(264);
+				callstmt();
 				}
 				break;
 			case 39:
 				enterOuterAlt(_localctx, 39);
 				{
-				setState(263);
-				hplotstmt();
+				setState(265);
+				readstmt();
 				}
 				break;
 			case 40:
 				enterOuterAlt(_localctx, 40);
 				{
-				setState(264);
-				vplotstmt();
+				setState(266);
+				hplotstmt();
 				}
 				break;
 			case 41:
 				enterOuterAlt(_localctx, 41);
 				{
-				setState(265);
-				vtabstmnt();
+				setState(267);
+				vplotstmt();
 				}
 				break;
 			case 42:
 				enterOuterAlt(_localctx, 42);
 				{
-				setState(266);
-				htabstmnt();
+				setState(268);
+				vtabstmnt();
 				}
 				break;
 			case 43:
 				enterOuterAlt(_localctx, 43);
 				{
-				setState(267);
-				waitstmt();
+				setState(269);
+				htabstmnt();
 				}
 				break;
 			case 44:
 				enterOuterAlt(_localctx, 44);
 				{
-				setState(268);
-				datastmt();
+				setState(270);
+				waitstmt();
 				}
 				break;
 			case 45:
 				enterOuterAlt(_localctx, 45);
 				{
-				setState(269);
-				xdrawstmt();
+				setState(271);
+				datastmt();
 				}
 				break;
 			case 46:
 				enterOuterAlt(_localctx, 46);
 				{
-				setState(270);
-				drawstmt();
+				setState(272);
+				xdrawstmt();
 				}
 				break;
 			case 47:
 				enterOuterAlt(_localctx, 47);
 				{
-				setState(271);
-				defstmt();
+				setState(273);
+				drawstmt();
 				}
 				break;
 			case 48:
 				enterOuterAlt(_localctx, 48);
 				{
-				setState(272);
-				letstmt();
+				setState(274);
+				defstmt();
 				}
 				break;
 			case 49:
 				enterOuterAlt(_localctx, 49);
 				{
-				setState(273);
+				setState(275);
+				letstmt();
+				}
+				break;
+			case 50:
+				enterOuterAlt(_localctx, 50);
+				{
+				setState(276);
 				includestmt();
 				}
 				break;
@@ -1222,15 +1242,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_vardecl; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterVardecl(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterVardecl(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitVardecl(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitVardecl(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitVardecl(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitVardecl(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1242,25 +1262,25 @@ public class kbasParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(276);
+			setState(279);
 			var();
-			setState(283);
+			setState(286);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(277);
+					setState(280);
 					match(LPAREN);
-					setState(278);
+					setState(281);
 					exprlist();
-					setState(279);
+					setState(282);
 					match(RPAREN);
 					}
 					} 
 				}
-				setState(285);
+				setState(288);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			}
@@ -1289,15 +1309,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_printstmt1; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterPrintstmt1(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPrintstmt1(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitPrintstmt1(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPrintstmt1(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitPrintstmt1(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPrintstmt1(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1309,7 +1329,7 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(286);
+			setState(289);
 			_la = _input.LA(1);
 			if ( !(_la==PRINT || _la==QUESTION) ) {
 			_errHandler.recoverInline(this);
@@ -1319,12 +1339,12 @@ public class kbasParser extends Parser {
 				_errHandler.reportMatch(this);
 				consume();
 			}
-			setState(288);
+			setState(291);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
 				{
-				setState(287);
+				setState(290);
 				printlist();
 				}
 				break;
@@ -1363,15 +1383,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_printlist; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterPrintlist(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPrintlist(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitPrintlist(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPrintlist(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitPrintlist(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPrintlist(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1384,16 +1404,16 @@ public class kbasParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(290);
+			setState(293);
 			expression(0);
-			setState(297);
+			setState(300);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(291);
+					setState(294);
 					_la = _input.LA(1);
 					if ( !(_la==COMMA || _la==SEMICOLON) ) {
 					_errHandler.recoverInline(this);
@@ -1403,12 +1423,12 @@ public class kbasParser extends Parser {
 						_errHandler.reportMatch(this);
 						consume();
 					}
-					setState(293);
+					setState(296);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 					case 1:
 						{
-						setState(292);
+						setState(295);
 						expression(0);
 						}
 						break;
@@ -1416,7 +1436,7 @@ public class kbasParser extends Parser {
 					}
 					} 
 				}
-				setState(299);
+				setState(302);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
 			}
@@ -1444,15 +1464,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_getstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterGetstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterGetstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitGetstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitGetstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitGetstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitGetstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1463,9 +1483,9 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(300);
+			setState(303);
 			match(GET);
-			setState(301);
+			setState(304);
 			exprlist();
 			}
 		}
@@ -1491,15 +1511,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_letstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterLetstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterLetstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitLetstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitLetstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitLetstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitLetstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1511,17 +1531,17 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(304);
+			setState(307);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==LET) {
 				{
-				setState(303);
+				setState(306);
 				match(LET);
 				}
 			}
 
-			setState(306);
+			setState(309);
 			variableassignment();
 			}
 		}
@@ -1550,15 +1570,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_variableassignment; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterVariableassignment(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterVariableassignment(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitVariableassignment(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitVariableassignment(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitVariableassignment(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitVariableassignment(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1569,11 +1589,11 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(308);
+			setState(311);
 			vardecl();
-			setState(309);
+			setState(312);
 			match(EQ);
-			setState(310);
+			setState(313);
 			exprlist();
 			}
 		}
@@ -1606,15 +1626,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_ifstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterIfstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterIfstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitIfstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitIfstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitIfstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitIfstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1626,27 +1646,30 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(312);
-			match(IF);
-			setState(313);
-			expression(0);
 			setState(315);
+			match(IF);
+			setState(316);
+			expression(0);
+			setState(318);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==THEN) {
 				{
-				setState(314);
+				setState(317);
 				match(THEN);
 				}
 			}
 
-			setState(319);
+			setState(322);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case RETURN:
 			case PRINT:
 			case GOTO:
 			case GOSUB:
+			case GPS:
+			case PS:
+			case RPS:
 			case IF:
 			case NEXT:
 			case CLEAR:
@@ -1668,7 +1691,6 @@ public class kbasParser extends Parser {
 			case VTAB:
 			case HTAB:
 			case HOME:
-			case ON:
 			case PLOT:
 			case POKE:
 			case STOP:
@@ -1709,13 +1731,13 @@ public class kbasParser extends Parser {
 			case CLS:
 			case LETTERS:
 				{
-				setState(317);
+				setState(320);
 				statement();
 				}
 				break;
 			case NUMBER:
 				{
-				setState(318);
+				setState(321);
 				linenumber();
 				}
 				break;
@@ -1762,15 +1784,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_forstmt1; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterForstmt1(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterForstmt1(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitForstmt1(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitForstmt1(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitForstmt1(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitForstmt1(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1782,45 +1804,45 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(321);
-			match(FOR);
-			setState(322);
-			vardecl();
-			setState(323);
-			match(EQ);
 			setState(324);
-			expression(0);
+			match(FOR);
 			setState(325);
-			match(TO);
+			vardecl();
 			setState(326);
+			match(EQ);
+			setState(327);
 			expression(0);
+			setState(328);
+			match(TO);
 			setState(329);
+			expression(0);
+			setState(332);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==STEP) {
 				{
-				setState(327);
+				setState(330);
 				match(STEP);
-				setState(328);
+				setState(331);
 				expression(0);
 				}
 			}
 
-			setState(336);
+			setState(339);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
 			case 1:
 				{
-				setState(331);
-				statement();
-				setState(332);
-				match(NEXT);
 				setState(334);
+				statement();
+				setState(335);
+				match(NEXT);
+				setState(337);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 				case 1:
 					{
-					setState(333);
+					setState(336);
 					vardecl();
 					}
 					break;
@@ -1861,15 +1883,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_forstmt2; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterForstmt2(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterForstmt2(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitForstmt2(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitForstmt2(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitForstmt2(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitForstmt2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1881,26 +1903,26 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(338);
-			match(FOR);
-			setState(339);
-			vardecl();
-			setState(340);
-			match(EQ);
 			setState(341);
-			expression(0);
+			match(FOR);
 			setState(342);
-			match(TO);
+			vardecl();
 			setState(343);
+			match(EQ);
+			setState(344);
 			expression(0);
+			setState(345);
+			match(TO);
 			setState(346);
+			expression(0);
+			setState(349);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==STEP) {
 				{
-				setState(344);
+				setState(347);
 				match(STEP);
-				setState(345);
+				setState(348);
 				expression(0);
 				}
 			}
@@ -1932,15 +1954,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_nextstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterNextstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterNextstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitNextstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitNextstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitNextstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitNextstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1952,30 +1974,30 @@ public class kbasParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(348);
+			setState(351);
 			match(NEXT);
-			setState(357);
+			setState(360);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,20,_ctx) ) {
 			case 1:
 				{
-				setState(349);
+				setState(352);
 				vardecl();
-				setState(354);
+				setState(357);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
-						setState(350);
+						setState(353);
 						match(COMMA);
-						setState(351);
+						setState(354);
 						vardecl();
 						}
 						} 
 					}
-					setState(356);
+					setState(359);
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
 				}
@@ -2011,15 +2033,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_inputstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterInputstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterInputstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitInputstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitInputstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitInputstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitInputstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2031,16 +2053,16 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(359);
+			setState(362);
 			match(INPUT);
-			setState(363);
+			setState(366);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==STRINGLITERAL) {
 				{
-				setState(360);
+				setState(363);
 				stringer();
-				setState(361);
+				setState(364);
 				_la = _input.LA(1);
 				if ( !(_la==COMMA || _la==SEMICOLON) ) {
 				_errHandler.recoverInline(this);
@@ -2053,7 +2075,7 @@ public class kbasParser extends Parser {
 				}
 			}
 
-			setState(365);
+			setState(368);
 			varlist();
 			}
 		}
@@ -2079,15 +2101,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_readstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterReadstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterReadstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitReadstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitReadstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitReadstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitReadstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2098,9 +2120,9 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(367);
+			setState(370);
 			match(READ);
-			setState(368);
+			setState(371);
 			varlist();
 			}
 		}
@@ -2126,15 +2148,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_dimstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterDimstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterDimstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitDimstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitDimstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitDimstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitDimstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2145,9 +2167,9 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(370);
+			setState(373);
 			match(DIM);
-			setState(371);
+			setState(374);
 			varlist();
 			}
 		}
@@ -2173,15 +2195,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_gotostmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterGotostmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterGotostmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitGotostmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitGotostmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitGotostmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitGotostmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2192,9 +2214,9 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(373);
+			setState(376);
 			match(GOTO);
-			setState(374);
+			setState(377);
 			linenumber();
 			}
 		}
@@ -2220,15 +2242,15 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_gosubstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterGosubstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterGosubstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitGosubstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitGosubstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitGosubstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitGosubstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2239,10 +2261,181 @@ public class kbasParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(376);
+			setState(379);
 			match(GOSUB);
-			setState(377);
+			setState(380);
 			expression(0);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class GpsstmtContext extends ParserRuleContext {
+		public TerminalNode GPS() { return getToken(kbasParser.GPS, 0); }
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public GpsstmtContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_gpsstmt; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterGpsstmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitGpsstmt(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitGpsstmt(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final GpsstmtContext gpsstmt() throws RecognitionException {
+		GpsstmtContext _localctx = new GpsstmtContext(_ctx, getState());
+		enterRule(_localctx, 42, RULE_gpsstmt);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(382);
+			match(GPS);
+			setState(383);
+			expression(0);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ReturnsubstmtContext extends ParserRuleContext {
+		public TerminalNode RPS() { return getToken(kbasParser.RPS, 0); }
+		public VardeclContext vardecl() {
+			return getRuleContext(VardeclContext.class,0);
+		}
+		public ReturnsubstmtContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_returnsubstmt; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterReturnsubstmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitReturnsubstmt(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitReturnsubstmt(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final ReturnsubstmtContext returnsubstmt() throws RecognitionException {
+		ReturnsubstmtContext _localctx = new ReturnsubstmtContext(_ctx, getState());
+		enterRule(_localctx, 44, RULE_returnsubstmt);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(385);
+			match(RPS);
+			setState(386);
+			vardecl();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class PsstmtContext extends ParserRuleContext {
+		public TerminalNode PS() { return getToken(kbasParser.PS, 0); }
+		public List<VardeclContext> vardecl() {
+			return getRuleContexts(VardeclContext.class);
+		}
+		public VardeclContext vardecl(int i) {
+			return getRuleContext(VardeclContext.class,i);
+		}
+		public PsstmtContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_psstmt; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPsstmt(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPsstmt(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPsstmt(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final PsstmtContext psstmt() throws RecognitionException {
+		PsstmtContext _localctx = new PsstmtContext(_ctx, getState());
+		enterRule(_localctx, 46, RULE_psstmt);
+		try {
+			int _alt;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(388);
+			match(PS);
+			setState(397);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,23,_ctx) ) {
+			case 1:
+				{
+				setState(389);
+				vardecl();
+				setState(394);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,22,_ctx);
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+					if ( _alt==1 ) {
+						{
+						{
+						setState(390);
+						match(COMMA);
+						setState(391);
+						vardecl();
+						}
+						} 
+					}
+					setState(396);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,22,_ctx);
+				}
+				}
+				break;
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -2271,32 +2464,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_pokestmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterPokestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPokestmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitPokestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPokestmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitPokestmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPokestmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PokestmtContext pokestmt() throws RecognitionException {
 		PokestmtContext _localctx = new PokestmtContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_pokestmt);
+		enterRule(_localctx, 48, RULE_pokestmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(379);
+			setState(399);
 			match(POKE);
-			setState(380);
+			setState(400);
 			expression(0);
-			setState(381);
+			setState(401);
 			match(COMMA);
-			setState(382);
+			setState(402);
 			expression(0);
 			}
 		}
@@ -2322,28 +2515,28 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_callstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterCallstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterCallstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitCallstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitCallstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitCallstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitCallstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final CallstmtContext callstmt() throws RecognitionException {
 		CallstmtContext _localctx = new CallstmtContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_callstmt);
+		enterRule(_localctx, 50, RULE_callstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(384);
+			setState(404);
 			match(CALL);
-			setState(385);
+			setState(405);
 			exprlist();
 			}
 		}
@@ -2380,59 +2573,59 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_hplotstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterHplotstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterHplotstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitHplotstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitHplotstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitHplotstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitHplotstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final HplotstmtContext hplotstmt() throws RecognitionException {
 		HplotstmtContext _localctx = new HplotstmtContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_hplotstmt);
+		enterRule(_localctx, 52, RULE_hplotstmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(387);
+			setState(407);
 			match(HPLOT);
-			setState(392);
+			setState(412);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,22,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
 			case 1:
 				{
-				setState(388);
+				setState(408);
 				expression(0);
-				setState(389);
+				setState(409);
 				match(COMMA);
-				setState(390);
+				setState(410);
 				expression(0);
 				}
 				break;
 			}
-			setState(401);
+			setState(421);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==TO) {
 				{
 				{
-				setState(394);
+				setState(414);
 				match(TO);
-				setState(395);
+				setState(415);
 				expression(0);
-				setState(396);
+				setState(416);
 				match(COMMA);
-				setState(397);
+				setState(417);
 				expression(0);
 				}
 				}
-				setState(403);
+				setState(423);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2471,59 +2664,59 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_vplotstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterVplotstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterVplotstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitVplotstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitVplotstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitVplotstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitVplotstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VplotstmtContext vplotstmt() throws RecognitionException {
 		VplotstmtContext _localctx = new VplotstmtContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_vplotstmt);
+		enterRule(_localctx, 54, RULE_vplotstmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(404);
+			setState(424);
 			match(VPLOT);
-			setState(409);
+			setState(429);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,24,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,26,_ctx) ) {
 			case 1:
 				{
-				setState(405);
+				setState(425);
 				expression(0);
-				setState(406);
+				setState(426);
 				match(COMMA);
-				setState(407);
+				setState(427);
 				expression(0);
 				}
 				break;
 			}
-			setState(418);
+			setState(438);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==TO) {
 				{
 				{
-				setState(411);
+				setState(431);
 				match(TO);
-				setState(412);
+				setState(432);
 				expression(0);
-				setState(413);
+				setState(433);
 				match(COMMA);
-				setState(414);
+				setState(434);
 				expression(0);
 				}
 				}
-				setState(420);
+				setState(440);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2555,195 +2748,33 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_plotstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterPlotstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPlotstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitPlotstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPlotstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitPlotstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPlotstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PlotstmtContext plotstmt() throws RecognitionException {
 		PlotstmtContext _localctx = new PlotstmtContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_plotstmt);
+		enterRule(_localctx, 56, RULE_plotstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(421);
+			setState(441);
 			match(PLOT);
-			setState(422);
+			setState(442);
 			expression(0);
-			setState(423);
+			setState(443);
 			match(COMMA);
-			setState(424);
+			setState(444);
 			expression(0);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class OngotostmtContext extends ParserRuleContext {
-		public TerminalNode ON() { return getToken(kbasParser.ON, 0); }
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
-		}
-		public TerminalNode GOTO() { return getToken(kbasParser.GOTO, 0); }
-		public List<LinenumberContext> linenumber() {
-			return getRuleContexts(LinenumberContext.class);
-		}
-		public LinenumberContext linenumber(int i) {
-			return getRuleContext(LinenumberContext.class,i);
-		}
-		public List<TerminalNode> COMMA() { return getTokens(kbasParser.COMMA); }
-		public TerminalNode COMMA(int i) {
-			return getToken(kbasParser.COMMA, i);
-		}
-		public OngotostmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_ongotostmt; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterOngotostmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitOngotostmt(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitOngotostmt(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final OngotostmtContext ongotostmt() throws RecognitionException {
-		OngotostmtContext _localctx = new OngotostmtContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_ongotostmt);
-		try {
-			int _alt;
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(426);
-			match(ON);
-			setState(427);
-			expression(0);
-			setState(428);
-			match(GOTO);
-			setState(429);
-			linenumber();
-			setState(434);
-			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					{
-					{
-					setState(430);
-					match(COMMA);
-					setState(431);
-					linenumber();
-					}
-					} 
-				}
-				setState(436);
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,26,_ctx);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class OngosubstmtContext extends ParserRuleContext {
-		public TerminalNode ON() { return getToken(kbasParser.ON, 0); }
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
-		}
-		public TerminalNode GOSUB() { return getToken(kbasParser.GOSUB, 0); }
-		public List<LinenumberContext> linenumber() {
-			return getRuleContexts(LinenumberContext.class);
-		}
-		public LinenumberContext linenumber(int i) {
-			return getRuleContext(LinenumberContext.class,i);
-		}
-		public List<TerminalNode> COMMA() { return getTokens(kbasParser.COMMA); }
-		public TerminalNode COMMA(int i) {
-			return getToken(kbasParser.COMMA, i);
-		}
-		public OngosubstmtContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_ongosubstmt; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterOngosubstmt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitOngosubstmt(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitOngosubstmt(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final OngosubstmtContext ongosubstmt() throws RecognitionException {
-		OngosubstmtContext _localctx = new OngosubstmtContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_ongosubstmt);
-		try {
-			int _alt;
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(437);
-			match(ON);
-			setState(438);
-			expression(0);
-			setState(439);
-			match(GOSUB);
-			setState(440);
-			linenumber();
-			setState(445);
-			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,27,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					{
-					{
-					setState(441);
-					match(COMMA);
-					setState(442);
-					linenumber();
-					}
-					} 
-				}
-				setState(447);
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,27,_ctx);
-			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -2768,28 +2799,28 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_vtabstmnt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterVtabstmnt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterVtabstmnt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitVtabstmnt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitVtabstmnt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitVtabstmnt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitVtabstmnt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VtabstmntContext vtabstmnt() throws RecognitionException {
 		VtabstmntContext _localctx = new VtabstmntContext(_ctx, getState());
-		enterRule(_localctx, 56, RULE_vtabstmnt);
+		enterRule(_localctx, 58, RULE_vtabstmnt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(448);
+			setState(446);
 			match(VTAB);
-			setState(449);
+			setState(447);
 			expression(0);
 			}
 		}
@@ -2815,28 +2846,28 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_htabstmnt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterHtabstmnt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterHtabstmnt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitHtabstmnt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitHtabstmnt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitHtabstmnt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitHtabstmnt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final HtabstmntContext htabstmnt() throws RecognitionException {
 		HtabstmntContext _localctx = new HtabstmntContext(_ctx, getState());
-		enterRule(_localctx, 58, RULE_htabstmnt);
+		enterRule(_localctx, 60, RULE_htabstmnt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(451);
+			setState(449);
 			match(HTAB);
-			setState(452);
+			setState(450);
 			expression(0);
 			}
 		}
@@ -2863,30 +2894,30 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_himemstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterHimemstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterHimemstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitHimemstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitHimemstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitHimemstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitHimemstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final HimemstmtContext himemstmt() throws RecognitionException {
 		HimemstmtContext _localctx = new HimemstmtContext(_ctx, getState());
-		enterRule(_localctx, 60, RULE_himemstmt);
+		enterRule(_localctx, 62, RULE_himemstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(454);
+			setState(452);
 			match(HIMEM);
-			setState(455);
+			setState(453);
 			match(COLON);
-			setState(456);
+			setState(454);
 			expression(0);
 			}
 		}
@@ -2913,30 +2944,30 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_lomemstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterLomemstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterLomemstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitLomemstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitLomemstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitLomemstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitLomemstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final LomemstmtContext lomemstmt() throws RecognitionException {
 		LomemstmtContext _localctx = new LomemstmtContext(_ctx, getState());
-		enterRule(_localctx, 62, RULE_lomemstmt);
+		enterRule(_localctx, 64, RULE_lomemstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(458);
+			setState(456);
 			match(LOMEM);
-			setState(459);
+			setState(457);
 			match(COLON);
-			setState(460);
+			setState(458);
 			expression(0);
 			}
 		}
@@ -2969,45 +3000,45 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_datastmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterDatastmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterDatastmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitDatastmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitDatastmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitDatastmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitDatastmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final DatastmtContext datastmt() throws RecognitionException {
 		DatastmtContext _localctx = new DatastmtContext(_ctx, getState());
-		enterRule(_localctx, 64, RULE_datastmt);
+		enterRule(_localctx, 66, RULE_datastmt);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(462);
+			setState(460);
 			match(DATA);
-			setState(463);
+			setState(461);
 			datum();
-			setState(470);
+			setState(468);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,29,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(464);
+					setState(462);
 					match(COMMA);
-					setState(466);
+					setState(464);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,28,_ctx) ) {
 					case 1:
 						{
-						setState(465);
+						setState(463);
 						datum();
 						}
 						break;
@@ -3015,7 +3046,7 @@ public class kbasParser extends Parser {
 					}
 					} 
 				}
-				setState(472);
+				setState(470);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,29,_ctx);
 			}
@@ -3045,24 +3076,24 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_datum; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterDatum(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterDatum(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitDatum(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitDatum(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitDatum(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitDatum(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final DatumContext datum() throws RecognitionException {
 		DatumContext _localctx = new DatumContext(_ctx, getState());
-		enterRule(_localctx, 66, RULE_datum);
+		enterRule(_localctx, 68, RULE_datum);
 		try {
-			setState(475);
+			setState(473);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case PLUS:
@@ -3071,14 +3102,14 @@ public class kbasParser extends Parser {
 			case FLOAT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(473);
+				setState(471);
 				number();
 				}
 				break;
 			case STRINGLITERAL:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(474);
+				setState(472);
 				stringer();
 				}
 				break;
@@ -3115,41 +3146,41 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_waitstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterWaitstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterWaitstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitWaitstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitWaitstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitWaitstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitWaitstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final WaitstmtContext waitstmt() throws RecognitionException {
 		WaitstmtContext _localctx = new WaitstmtContext(_ctx, getState());
-		enterRule(_localctx, 68, RULE_waitstmt);
+		enterRule(_localctx, 70, RULE_waitstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(477);
+			setState(475);
 			match(WAIT);
+			setState(476);
+			expression(0);
+			setState(477);
+			match(COMMA);
 			setState(478);
 			expression(0);
-			setState(479);
-			match(COMMA);
-			setState(480);
-			expression(0);
-			setState(483);
+			setState(481);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,31,_ctx) ) {
 			case 1:
 				{
-				setState(481);
+				setState(479);
 				match(COMMA);
-				setState(482);
+				setState(480);
 				expression(0);
 				}
 				break;
@@ -3183,42 +3214,42 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_xdrawstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterXdrawstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterXdrawstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitXdrawstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitXdrawstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitXdrawstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitXdrawstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final XdrawstmtContext xdrawstmt() throws RecognitionException {
 		XdrawstmtContext _localctx = new XdrawstmtContext(_ctx, getState());
-		enterRule(_localctx, 70, RULE_xdrawstmt);
+		enterRule(_localctx, 72, RULE_xdrawstmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(485);
+			setState(483);
 			match(XDRAW);
-			setState(486);
+			setState(484);
 			expression(0);
-			setState(492);
+			setState(490);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==AT) {
 				{
-				setState(487);
+				setState(485);
 				match(AT);
-				setState(488);
+				setState(486);
 				expression(0);
-				setState(489);
+				setState(487);
 				match(COMMA);
-				setState(490);
+				setState(488);
 				expression(0);
 				}
 			}
@@ -3252,42 +3283,42 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_drawstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterDrawstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterDrawstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitDrawstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitDrawstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitDrawstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitDrawstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final DrawstmtContext drawstmt() throws RecognitionException {
 		DrawstmtContext _localctx = new DrawstmtContext(_ctx, getState());
-		enterRule(_localctx, 72, RULE_drawstmt);
+		enterRule(_localctx, 74, RULE_drawstmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(494);
+			setState(492);
 			match(DRAW);
-			setState(495);
+			setState(493);
 			expression(0);
-			setState(501);
+			setState(499);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==AT) {
 				{
-				setState(496);
+				setState(494);
 				match(AT);
-				setState(497);
+				setState(495);
 				expression(0);
-				setState(498);
+				setState(496);
 				match(COMMA);
-				setState(499);
+				setState(497);
 				expression(0);
 				}
 			}
@@ -3326,49 +3357,49 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_defstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterDefstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterDefstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitDefstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitDefstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitDefstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitDefstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final DefstmtContext defstmt() throws RecognitionException {
 		DefstmtContext _localctx = new DefstmtContext(_ctx, getState());
-		enterRule(_localctx, 74, RULE_defstmt);
+		enterRule(_localctx, 76, RULE_defstmt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(503);
+			setState(501);
 			match(DEF);
-			setState(505);
+			setState(503);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==FN) {
 				{
-				setState(504);
+				setState(502);
 				match(FN);
 				}
 			}
 
+			setState(505);
+			var();
+			setState(506);
+			match(LPAREN);
 			setState(507);
 			var();
 			setState(508);
-			match(LPAREN);
-			setState(509);
-			var();
-			setState(510);
 			match(RPAREN);
-			setState(511);
+			setState(509);
 			match(EQ);
-			setState(512);
+			setState(510);
 			expression(0);
 			}
 		}
@@ -3396,32 +3427,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_tabstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterTabstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterTabstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitTabstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitTabstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitTabstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitTabstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final TabstmtContext tabstmt() throws RecognitionException {
 		TabstmtContext _localctx = new TabstmtContext(_ctx, getState());
-		enterRule(_localctx, 76, RULE_tabstmt);
+		enterRule(_localctx, 78, RULE_tabstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(514);
+			setState(512);
 			match(TAB);
-			setState(515);
+			setState(513);
 			match(LPAREN);
-			setState(516);
+			setState(514);
 			expression(0);
-			setState(517);
+			setState(515);
 			match(RPAREN);
 			}
 		}
@@ -3448,30 +3479,30 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_speedstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterSpeedstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterSpeedstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitSpeedstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitSpeedstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitSpeedstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitSpeedstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final SpeedstmtContext speedstmt() throws RecognitionException {
 		SpeedstmtContext _localctx = new SpeedstmtContext(_ctx, getState());
-		enterRule(_localctx, 78, RULE_speedstmt);
+		enterRule(_localctx, 80, RULE_speedstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(519);
+			setState(517);
 			match(SPEED);
-			setState(520);
+			setState(518);
 			match(EQ);
-			setState(521);
+			setState(519);
 			expression(0);
 			}
 		}
@@ -3498,30 +3529,30 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_rotstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterRotstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterRotstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitRotstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitRotstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitRotstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitRotstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final RotstmtContext rotstmt() throws RecognitionException {
 		RotstmtContext _localctx = new RotstmtContext(_ctx, getState());
-		enterRule(_localctx, 80, RULE_rotstmt);
+		enterRule(_localctx, 82, RULE_rotstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(523);
+			setState(521);
 			match(ROT);
-			setState(524);
+			setState(522);
 			match(EQ);
-			setState(525);
+			setState(523);
 			expression(0);
 			}
 		}
@@ -3548,30 +3579,30 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_scalestmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterScalestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterScalestmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitScalestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitScalestmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitScalestmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitScalestmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ScalestmtContext scalestmt() throws RecognitionException {
 		ScalestmtContext _localctx = new ScalestmtContext(_ctx, getState());
-		enterRule(_localctx, 82, RULE_scalestmt);
+		enterRule(_localctx, 84, RULE_scalestmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(527);
+			setState(525);
 			match(SCALE);
-			setState(528);
+			setState(526);
 			match(EQ);
-			setState(529);
+			setState(527);
 			expression(0);
 			}
 		}
@@ -3598,30 +3629,30 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_colorstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterColorstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterColorstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitColorstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitColorstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitColorstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitColorstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ColorstmtContext colorstmt() throws RecognitionException {
 		ColorstmtContext _localctx = new ColorstmtContext(_ctx, getState());
-		enterRule(_localctx, 84, RULE_colorstmt);
+		enterRule(_localctx, 86, RULE_colorstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(531);
+			setState(529);
 			match(COLOR);
-			setState(532);
+			setState(530);
 			match(EQ);
-			setState(533);
+			setState(531);
 			expression(0);
 			}
 		}
@@ -3648,30 +3679,30 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_hcolorstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterHcolorstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterHcolorstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitHcolorstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitHcolorstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitHcolorstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitHcolorstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final HcolorstmtContext hcolorstmt() throws RecognitionException {
 		HcolorstmtContext _localctx = new HcolorstmtContext(_ctx, getState());
-		enterRule(_localctx, 86, RULE_hcolorstmt);
+		enterRule(_localctx, 88, RULE_hcolorstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(535);
+			setState(533);
 			match(HCOLOR);
-			setState(536);
+			setState(534);
 			match(EQ);
-			setState(537);
+			setState(535);
 			expression(0);
 			}
 		}
@@ -3702,36 +3733,36 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_hlinstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterHlinstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterHlinstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitHlinstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitHlinstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitHlinstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitHlinstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final HlinstmtContext hlinstmt() throws RecognitionException {
 		HlinstmtContext _localctx = new HlinstmtContext(_ctx, getState());
-		enterRule(_localctx, 88, RULE_hlinstmt);
+		enterRule(_localctx, 90, RULE_hlinstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(539);
+			setState(537);
 			match(HLIN);
+			setState(538);
+			expression(0);
+			setState(539);
+			match(COMMA);
 			setState(540);
 			expression(0);
 			setState(541);
-			match(COMMA);
-			setState(542);
-			expression(0);
-			setState(543);
 			match(AT);
-			setState(544);
+			setState(542);
 			expression(0);
 			}
 		}
@@ -3762,36 +3793,36 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_vlinstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterVlinstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterVlinstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitVlinstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitVlinstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitVlinstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitVlinstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VlinstmtContext vlinstmt() throws RecognitionException {
 		VlinstmtContext _localctx = new VlinstmtContext(_ctx, getState());
-		enterRule(_localctx, 90, RULE_vlinstmt);
+		enterRule(_localctx, 92, RULE_vlinstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(546);
+			setState(544);
 			match(VLIN);
+			setState(545);
+			expression(0);
+			setState(546);
+			match(COMMA);
 			setState(547);
 			expression(0);
 			setState(548);
-			match(COMMA);
-			setState(549);
-			expression(0);
-			setState(550);
 			match(AT);
-			setState(551);
+			setState(549);
 			expression(0);
 			}
 		}
@@ -3818,30 +3849,30 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_onerrstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterOnerrstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterOnerrstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitOnerrstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitOnerrstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitOnerrstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitOnerrstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final OnerrstmtContext onerrstmt() throws RecognitionException {
 		OnerrstmtContext _localctx = new OnerrstmtContext(_ctx, getState());
-		enterRule(_localctx, 92, RULE_onerrstmt);
+		enterRule(_localctx, 94, RULE_onerrstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(553);
+			setState(551);
 			match(ONERR);
-			setState(554);
+			setState(552);
 			match(GOTO);
-			setState(555);
+			setState(553);
 			linenumber();
 			}
 		}
@@ -3865,28 +3896,28 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_prstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterPrstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPrstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitPrstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPrstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitPrstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPrstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PrstmtContext prstmt() throws RecognitionException {
 		PrstmtContext _localctx = new PrstmtContext(_ctx, getState());
-		enterRule(_localctx, 94, RULE_prstmt);
+		enterRule(_localctx, 96, RULE_prstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(557);
+			setState(555);
 			match(PRNUMBER);
-			setState(558);
+			setState(556);
 			match(NUMBER);
 			}
 		}
@@ -3910,28 +3941,28 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_instmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterInstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterInstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitInstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitInstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitInstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitInstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final InstmtContext instmt() throws RecognitionException {
 		InstmtContext _localctx = new InstmtContext(_ctx, getState());
-		enterRule(_localctx, 96, RULE_instmt);
+		enterRule(_localctx, 98, RULE_instmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(560);
+			setState(558);
 			match(INNUMBER);
-			setState(561);
+			setState(559);
 			match(NUMBER);
 			}
 		}
@@ -3957,28 +3988,28 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_storestmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterStorestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterStorestmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitStorestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitStorestmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitStorestmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitStorestmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final StorestmtContext storestmt() throws RecognitionException {
 		StorestmtContext _localctx = new StorestmtContext(_ctx, getState());
-		enterRule(_localctx, 98, RULE_storestmt);
+		enterRule(_localctx, 100, RULE_storestmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(563);
+			setState(561);
 			match(STORE);
-			setState(564);
+			setState(562);
 			vardecl();
 			}
 		}
@@ -4004,28 +4035,28 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_recallstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterRecallstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterRecallstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitRecallstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitRecallstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitRecallstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitRecallstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final RecallstmtContext recallstmt() throws RecognitionException {
 		RecallstmtContext _localctx = new RecallstmtContext(_ctx, getState());
-		enterRule(_localctx, 100, RULE_recallstmt);
+		enterRule(_localctx, 102, RULE_recallstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(566);
+			setState(564);
 			match(RECALL);
-			setState(567);
+			setState(565);
 			vardecl();
 			}
 		}
@@ -4051,33 +4082,33 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_liststmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterListstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterListstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitListstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitListstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitListstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitListstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ListstmtContext liststmt() throws RecognitionException {
 		ListstmtContext _localctx = new ListstmtContext(_ctx, getState());
-		enterRule(_localctx, 102, RULE_liststmt);
+		enterRule(_localctx, 104, RULE_liststmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(569);
+			setState(567);
 			match(LIST);
-			setState(571);
+			setState(569);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,35,_ctx) ) {
 			case 1:
 				{
-				setState(570);
+				setState(568);
 				expression(0);
 				}
 				break;
@@ -4110,37 +4141,37 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_popstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterPopstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPopstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitPopstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPopstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitPopstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPopstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PopstmtContext popstmt() throws RecognitionException {
 		PopstmtContext _localctx = new PopstmtContext(_ctx, getState());
-		enterRule(_localctx, 104, RULE_popstmt);
+		enterRule(_localctx, 106, RULE_popstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(573);
+			setState(571);
 			match(POP);
-			setState(578);
+			setState(576);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,36,_ctx) ) {
 			case 1:
 				{
-				setState(574);
+				setState(572);
 				expression(0);
-				setState(575);
+				setState(573);
 				match(COMMA);
-				setState(576);
+				setState(574);
 				expression(0);
 				}
 				break;
@@ -4169,28 +4200,28 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_amptstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterAmptstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterAmptstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitAmptstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitAmptstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitAmptstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitAmptstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final AmptstmtContext amptstmt() throws RecognitionException {
 		AmptstmtContext _localctx = new AmptstmtContext(_ctx, getState());
-		enterRule(_localctx, 106, RULE_amptstmt);
+		enterRule(_localctx, 108, RULE_amptstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(580);
+			setState(578);
 			match(AMPERSAND);
-			setState(581);
+			setState(579);
 			expression(0);
 			}
 		}
@@ -4216,28 +4247,28 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_includestmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterIncludestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterIncludestmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitIncludestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitIncludestmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitIncludestmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitIncludestmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final IncludestmtContext includestmt() throws RecognitionException {
 		IncludestmtContext _localctx = new IncludestmtContext(_ctx, getState());
-		enterRule(_localctx, 108, RULE_includestmt);
+		enterRule(_localctx, 110, RULE_includestmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(583);
+			setState(581);
 			match(INCLUDE);
-			setState(584);
+			setState(582);
 			expression(0);
 			}
 		}
@@ -4260,26 +4291,26 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_endstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterEndstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterEndstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitEndstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitEndstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitEndstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitEndstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final EndstmtContext endstmt() throws RecognitionException {
 		EndstmtContext _localctx = new EndstmtContext(_ctx, getState());
-		enterRule(_localctx, 110, RULE_endstmt);
+		enterRule(_localctx, 112, RULE_endstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(586);
+			setState(584);
 			match(END);
 			}
 		}
@@ -4302,26 +4333,26 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_returnstmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterReturnstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterReturnstmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitReturnstmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitReturnstmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitReturnstmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitReturnstmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ReturnstmtContext returnstmt() throws RecognitionException {
 		ReturnstmtContext _localctx = new ReturnstmtContext(_ctx, getState());
-		enterRule(_localctx, 112, RULE_returnstmt);
+		enterRule(_localctx, 114, RULE_returnstmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(588);
+			setState(586);
 			match(RETURN);
 			}
 		}
@@ -4344,26 +4375,26 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_restorestmt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterRestorestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterRestorestmt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitRestorestmt(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitRestorestmt(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitRestorestmt(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitRestorestmt(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final RestorestmtContext restorestmt() throws RecognitionException {
 		RestorestmtContext _localctx = new RestorestmtContext(_ctx, getState());
-		enterRule(_localctx, 114, RULE_restorestmt);
+		enterRule(_localctx, 116, RULE_restorestmt);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(590);
+			setState(588);
 			match(RESTORE);
 			}
 		}
@@ -4387,32 +4418,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_number; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterNumber(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterNumber(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitNumber(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitNumber(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitNumber(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitNumber(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final NumberContext number() throws RecognitionException {
 		NumberContext _localctx = new NumberContext(_ctx, getState());
-		enterRule(_localctx, 116, RULE_number);
+		enterRule(_localctx, 118, RULE_number);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(593);
+			setState(591);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==PLUS || _la==MINUS) {
 				{
-				setState(592);
+				setState(590);
 				_la = _input.LA(1);
 				if ( !(_la==PLUS || _la==MINUS) ) {
 				_errHandler.recoverInline(this);
@@ -4425,7 +4456,7 @@ public class kbasParser extends Parser {
 				}
 			}
 
-			setState(595);
+			setState(593);
 			_la = _input.LA(1);
 			if ( !(_la==NUMBER || _la==FLOAT) ) {
 			_errHandler.recoverInline(this);
@@ -4456,26 +4487,26 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_stringer; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterStringer(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterStringer(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitStringer(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitStringer(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitStringer(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitStringer(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final StringerContext stringer() throws RecognitionException {
 		StringerContext _localctx = new StringerContext(_ctx, getState());
-		enterRule(_localctx, 118, RULE_stringer);
+		enterRule(_localctx, 120, RULE_stringer);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(597);
+			setState(595);
 			match(STRINGLITERAL);
 			}
 		}
@@ -4590,30 +4621,30 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_func; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterFunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterFunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitFunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitFunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitFunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitFunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final FuncContext func() throws RecognitionException {
 		FuncContext _localctx = new FuncContext(_ctx, getState());
-		enterRule(_localctx, 120, RULE_func);
+		enterRule(_localctx, 122, RULE_func);
 		try {
-			setState(630);
+			setState(628);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case STRINGLITERAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(599);
+				setState(597);
 				stringer();
 				}
 				break;
@@ -4623,210 +4654,210 @@ public class kbasParser extends Parser {
 			case FLOAT:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(600);
+				setState(598);
 				number();
 				}
 				break;
 			case TAB:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(601);
+				setState(599);
 				tabfunc();
 				}
 				break;
 			case LETTERS:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(602);
+				setState(600);
 				vardecl();
 				}
 				break;
 			case CHR:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(603);
+				setState(601);
 				chrfunc();
 				}
 				break;
 			case SQR:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(604);
+				setState(602);
 				sqrfunc();
 				}
 				break;
 			case LEN:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(605);
+				setState(603);
 				lenfunc();
 				}
 				break;
 			case STR:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(606);
+				setState(604);
 				strfunc();
 				}
 				break;
 			case ASC:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(607);
+				setState(605);
 				ascfunc();
 				}
 				break;
 			case SCRN:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(608);
+				setState(606);
 				scrnfunc();
 				}
 				break;
 			case MID:
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(609);
+				setState(607);
 				midfunc();
 				}
 				break;
 			case PDL:
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(610);
+				setState(608);
 				pdlfunc();
 				}
 				break;
 			case PEEK:
 				enterOuterAlt(_localctx, 13);
 				{
-				setState(611);
+				setState(609);
 				peekfunc();
 				}
 				break;
 			case INTF:
 				enterOuterAlt(_localctx, 14);
 				{
-				setState(612);
+				setState(610);
 				intfunc();
 				}
 				break;
 			case SPC:
 				enterOuterAlt(_localctx, 15);
 				{
-				setState(613);
+				setState(611);
 				spcfunc();
 				}
 				break;
 			case FRE:
 				enterOuterAlt(_localctx, 16);
 				{
-				setState(614);
+				setState(612);
 				frefunc();
 				}
 				break;
 			case POS:
 				enterOuterAlt(_localctx, 17);
 				{
-				setState(615);
+				setState(613);
 				posfunc();
 				}
 				break;
 			case USR:
 				enterOuterAlt(_localctx, 18);
 				{
-				setState(616);
+				setState(614);
 				usrfunc();
 				}
 				break;
 			case LEFT:
 				enterOuterAlt(_localctx, 19);
 				{
-				setState(617);
+				setState(615);
 				leftfunc();
 				}
 				break;
 			case VAL:
 				enterOuterAlt(_localctx, 20);
 				{
-				setState(618);
+				setState(616);
 				valfunc();
 				}
 				break;
 			case RIGHT:
 				enterOuterAlt(_localctx, 21);
 				{
-				setState(619);
+				setState(617);
 				rightfunc();
 				}
 				break;
 			case FN:
 				enterOuterAlt(_localctx, 22);
 				{
-				setState(620);
+				setState(618);
 				fnfunc();
 				}
 				break;
 			case SIN:
 				enterOuterAlt(_localctx, 23);
 				{
-				setState(621);
+				setState(619);
 				sinfunc();
 				}
 				break;
 			case COS:
 				enterOuterAlt(_localctx, 24);
 				{
-				setState(622);
+				setState(620);
 				cosfunc();
 				}
 				break;
 			case TAN:
 				enterOuterAlt(_localctx, 25);
 				{
-				setState(623);
+				setState(621);
 				tanfunc();
 				}
 				break;
 			case ATN:
 				enterOuterAlt(_localctx, 26);
 				{
-				setState(624);
+				setState(622);
 				atnfunc();
 				}
 				break;
 			case RND:
 				enterOuterAlt(_localctx, 27);
 				{
-				setState(625);
+				setState(623);
 				rndfunc();
 				}
 				break;
 			case SGN:
 				enterOuterAlt(_localctx, 28);
 				{
-				setState(626);
+				setState(624);
 				sgnfunc();
 				}
 				break;
 			case EXP:
 				enterOuterAlt(_localctx, 29);
 				{
-				setState(627);
+				setState(625);
 				expfunc();
 				}
 				break;
 			case LOG:
 				enterOuterAlt(_localctx, 30);
 				{
-				setState(628);
+				setState(626);
 				logfunc();
 				}
 				break;
 			case ABS:
 				enterOuterAlt(_localctx, 31);
 				{
-				setState(629);
+				setState(627);
 				absfunc();
 				}
 				break;
@@ -4866,15 +4897,15 @@ public class kbasParser extends Parser {
 		public SignExpContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterSignExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterSignExp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitSignExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitSignExp(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitSignExp(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitSignExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4889,15 +4920,15 @@ public class kbasParser extends Parser {
 		public ExponentExpContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterExponentExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterExponentExp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitExponentExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitExponentExp(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitExponentExp(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitExponentExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4914,15 +4945,15 @@ public class kbasParser extends Parser {
 		public MulExpContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterMulExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterMulExp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitMulExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitMulExp(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitMulExp(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitMulExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4939,15 +4970,15 @@ public class kbasParser extends Parser {
 		public AddExpContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterAddExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterAddExp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitAddExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitAddExp(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitAddExp(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitAddExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4968,15 +4999,15 @@ public class kbasParser extends Parser {
 		public RelExpContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterRelExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterRelExp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitRelExp(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitRelExp(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitRelExp(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitRelExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -4989,15 +5020,15 @@ public class kbasParser extends Parser {
 		public ParenExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterParenExpr(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterParenExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitParenExpr(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitParenExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitParenExpr(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitParenExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5008,15 +5039,15 @@ public class kbasParser extends Parser {
 		public FuncExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterFuncExpr(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterFuncExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitFuncExpr(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitFuncExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitFuncExpr(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitFuncExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5030,14 +5061,14 @@ public class kbasParser extends Parser {
 		int _parentState = getState();
 		ExpressionContext _localctx = new ExpressionContext(_ctx, _parentState);
 		ExpressionContext _prevctx = _localctx;
-		int _startState = 122;
-		enterRecursionRule(_localctx, 122, RULE_expression, _p);
+		int _startState = 124;
+		enterRecursionRule(_localctx, 124, RULE_expression, _p);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(645);
+			setState(643);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,41,_ctx) ) {
 			case 1:
@@ -5046,7 +5077,7 @@ public class kbasParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(633);
+				setState(631);
 				func();
 				}
 				break;
@@ -5055,22 +5086,22 @@ public class kbasParser extends Parser {
 				_localctx = new SignExpContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(635);
+				setState(633);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==NOT) {
 					{
-					setState(634);
+					setState(632);
 					match(NOT);
 					}
 				}
 
-				setState(638);
+				setState(636);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,40,_ctx) ) {
 				case 1:
 					{
-					setState(637);
+					setState(635);
 					_la = _input.LA(1);
 					if ( !(_la==PLUS || _la==MINUS) ) {
 					_errHandler.recoverInline(this);
@@ -5083,7 +5114,7 @@ public class kbasParser extends Parser {
 					}
 					break;
 				}
-				setState(640);
+				setState(638);
 				func();
 				}
 				break;
@@ -5093,18 +5124,18 @@ public class kbasParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				{
-				setState(641);
+				setState(639);
 				match(LPAREN);
-				setState(642);
+				setState(640);
 				expression(0);
-				setState(643);
+				setState(641);
 				match(RPAREN);
 				}
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(661);
+			setState(659);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,43,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -5112,18 +5143,18 @@ public class kbasParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(659);
+					setState(657);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,42,_ctx) ) {
 					case 1:
 						{
 						_localctx = new ExponentExpContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(647);
+						setState(645);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(648);
+						setState(646);
 						match(EXPONENT);
-						setState(649);
+						setState(647);
 						expression(5);
 						}
 						break;
@@ -5131,9 +5162,9 @@ public class kbasParser extends Parser {
 						{
 						_localctx = new MulExpContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(650);
+						setState(648);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(651);
+						setState(649);
 						((MulExpContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==TIMES || _la==DIV) ) {
@@ -5144,7 +5175,7 @@ public class kbasParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(652);
+						setState(650);
 						expression(5);
 						}
 						break;
@@ -5152,9 +5183,9 @@ public class kbasParser extends Parser {
 						{
 						_localctx = new AddExpContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(653);
+						setState(651);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(654);
+						setState(652);
 						((AddExpContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !(_la==PLUS || _la==MINUS) ) {
@@ -5165,7 +5196,7 @@ public class kbasParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(655);
+						setState(653);
 						expression(4);
 						}
 						break;
@@ -5173,10 +5204,10 @@ public class kbasParser extends Parser {
 						{
 						_localctx = new RelExpContext(new ExpressionContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
-						setState(656);
+						setState(654);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
 						{
-						setState(657);
+						setState(655);
 						((RelExpContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NEQ) | (1L << GTE) | (1L << LTE) | (1L << GT) | (1L << LT) | (1L << EQ))) != 0)) ) {
@@ -5188,14 +5219,14 @@ public class kbasParser extends Parser {
 							consume();
 						}
 						}
-						setState(658);
+						setState(656);
 						expression(3);
 						}
 						break;
 					}
 					} 
 				}
-				setState(663);
+				setState(661);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,43,_ctx);
 			}
@@ -5225,33 +5256,33 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_var; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterVar(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterVar(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitVar(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitVar(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitVar(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitVar(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VarContext var() throws RecognitionException {
 		VarContext _localctx = new VarContext(_ctx, getState());
-		enterRule(_localctx, 124, RULE_var);
+		enterRule(_localctx, 126, RULE_var);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(664);
+			setState(662);
 			varname();
-			setState(666);
+			setState(664);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,44,_ctx) ) {
 			case 1:
 				{
-				setState(665);
+				setState(663);
 				varsuffix();
 				}
 				break;
@@ -5284,37 +5315,37 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_varname; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterVarname(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterVarname(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitVarname(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitVarname(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitVarname(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitVarname(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VarnameContext varname() throws RecognitionException {
 		VarnameContext _localctx = new VarnameContext(_ctx, getState());
-		enterRule(_localctx, 126, RULE_varname);
+		enterRule(_localctx, 128, RULE_varname);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(668);
+			setState(666);
 			match(LETTERS);
-			setState(672);
+			setState(670);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,45,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(669);
+					setState(667);
 					_la = _input.LA(1);
 					if ( !(_la==LETTERS || _la==NUMBER) ) {
 					_errHandler.recoverInline(this);
@@ -5327,7 +5358,7 @@ public class kbasParser extends Parser {
 					}
 					} 
 				}
-				setState(674);
+				setState(672);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,45,_ctx);
 			}
@@ -5353,27 +5384,27 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_varsuffix; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterVarsuffix(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterVarsuffix(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitVarsuffix(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitVarsuffix(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitVarsuffix(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitVarsuffix(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VarsuffixContext varsuffix() throws RecognitionException {
 		VarsuffixContext _localctx = new VarsuffixContext(_ctx, getState());
-		enterRule(_localctx, 128, RULE_varsuffix);
+		enterRule(_localctx, 130, RULE_varsuffix);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(675);
+			setState(673);
 			_la = _input.LA(1);
 			if ( !(_la==DOLLAR || _la==PERCENT) ) {
 			_errHandler.recoverInline(this);
@@ -5413,43 +5444,43 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_varlist; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterVarlist(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterVarlist(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitVarlist(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitVarlist(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitVarlist(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitVarlist(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final VarlistContext varlist() throws RecognitionException {
 		VarlistContext _localctx = new VarlistContext(_ctx, getState());
-		enterRule(_localctx, 130, RULE_varlist);
+		enterRule(_localctx, 132, RULE_varlist);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(677);
+			setState(675);
 			vardecl();
-			setState(682);
+			setState(680);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,46,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(678);
+					setState(676);
 					match(COMMA);
-					setState(679);
+					setState(677);
 					vardecl();
 					}
 					} 
 				}
-				setState(684);
+				setState(682);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,46,_ctx);
 			}
@@ -5483,43 +5514,43 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_exprlist; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterExprlist(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterExprlist(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitExprlist(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitExprlist(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitExprlist(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitExprlist(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ExprlistContext exprlist() throws RecognitionException {
 		ExprlistContext _localctx = new ExprlistContext(_ctx, getState());
-		enterRule(_localctx, 132, RULE_exprlist);
+		enterRule(_localctx, 134, RULE_exprlist);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(685);
+			setState(683);
 			expression(0);
-			setState(690);
+			setState(688);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,47,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(686);
+					setState(684);
 					match(COMMA);
-					setState(687);
+					setState(685);
 					expression(0);
 					}
 					} 
 				}
-				setState(692);
+				setState(690);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,47,_ctx);
 			}
@@ -5549,32 +5580,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_sqrfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterSqrfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterSqrfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitSqrfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitSqrfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitSqrfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitSqrfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final SqrfuncContext sqrfunc() throws RecognitionException {
 		SqrfuncContext _localctx = new SqrfuncContext(_ctx, getState());
-		enterRule(_localctx, 134, RULE_sqrfunc);
+		enterRule(_localctx, 136, RULE_sqrfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(693);
+			setState(691);
 			match(SQR);
-			setState(694);
+			setState(692);
 			match(LPAREN);
-			setState(695);
+			setState(693);
 			expression(0);
-			setState(696);
+			setState(694);
 			match(RPAREN);
 			}
 		}
@@ -5602,32 +5633,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_chrfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterChrfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterChrfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitChrfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitChrfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitChrfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitChrfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ChrfuncContext chrfunc() throws RecognitionException {
 		ChrfuncContext _localctx = new ChrfuncContext(_ctx, getState());
-		enterRule(_localctx, 136, RULE_chrfunc);
+		enterRule(_localctx, 138, RULE_chrfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(698);
+			setState(696);
 			match(CHR);
-			setState(699);
+			setState(697);
 			match(LPAREN);
-			setState(700);
+			setState(698);
 			expression(0);
-			setState(701);
+			setState(699);
 			match(RPAREN);
 			}
 		}
@@ -5655,32 +5686,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_lenfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterLenfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterLenfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitLenfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitLenfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitLenfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitLenfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final LenfuncContext lenfunc() throws RecognitionException {
 		LenfuncContext _localctx = new LenfuncContext(_ctx, getState());
-		enterRule(_localctx, 138, RULE_lenfunc);
+		enterRule(_localctx, 140, RULE_lenfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(703);
+			setState(701);
 			match(LEN);
-			setState(704);
+			setState(702);
 			match(LPAREN);
-			setState(705);
+			setState(703);
 			expression(0);
-			setState(706);
+			setState(704);
 			match(RPAREN);
 			}
 		}
@@ -5708,32 +5739,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_ascfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterAscfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterAscfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitAscfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitAscfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitAscfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitAscfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final AscfuncContext ascfunc() throws RecognitionException {
 		AscfuncContext _localctx = new AscfuncContext(_ctx, getState());
-		enterRule(_localctx, 140, RULE_ascfunc);
+		enterRule(_localctx, 142, RULE_ascfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(708);
+			setState(706);
 			match(ASC);
-			setState(709);
+			setState(707);
 			match(LPAREN);
-			setState(710);
+			setState(708);
 			expression(0);
-			setState(711);
+			setState(709);
 			match(RPAREN);
 			}
 		}
@@ -5768,29 +5799,33 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_midfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterMidfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterMidfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitMidfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitMidfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitMidfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitMidfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final MidfuncContext midfunc() throws RecognitionException {
 		MidfuncContext _localctx = new MidfuncContext(_ctx, getState());
-		enterRule(_localctx, 142, RULE_midfunc);
+		enterRule(_localctx, 144, RULE_midfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(713);
+			setState(711);
 			match(MID);
-			setState(714);
+			setState(712);
 			match(LPAREN);
+			setState(713);
+			expression(0);
+			setState(714);
+			match(COMMA);
 			setState(715);
 			expression(0);
 			setState(716);
@@ -5798,10 +5833,6 @@ public class kbasParser extends Parser {
 			setState(717);
 			expression(0);
 			setState(718);
-			match(COMMA);
-			setState(719);
-			expression(0);
-			setState(720);
 			match(RPAREN);
 			}
 		}
@@ -5829,32 +5860,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_pdlfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterPdlfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPdlfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitPdlfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPdlfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitPdlfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPdlfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PdlfuncContext pdlfunc() throws RecognitionException {
 		PdlfuncContext _localctx = new PdlfuncContext(_ctx, getState());
-		enterRule(_localctx, 144, RULE_pdlfunc);
+		enterRule(_localctx, 146, RULE_pdlfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(722);
+			setState(720);
 			match(PDL);
-			setState(723);
+			setState(721);
 			match(LPAREN);
-			setState(724);
+			setState(722);
 			expression(0);
-			setState(725);
+			setState(723);
 			match(RPAREN);
 			}
 		}
@@ -5882,32 +5913,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_peekfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterPeekfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPeekfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitPeekfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPeekfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitPeekfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPeekfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PeekfuncContext peekfunc() throws RecognitionException {
 		PeekfuncContext _localctx = new PeekfuncContext(_ctx, getState());
-		enterRule(_localctx, 146, RULE_peekfunc);
+		enterRule(_localctx, 148, RULE_peekfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(727);
+			setState(725);
 			match(PEEK);
-			setState(728);
+			setState(726);
 			match(LPAREN);
-			setState(729);
+			setState(727);
 			expression(0);
-			setState(730);
+			setState(728);
 			match(RPAREN);
 			}
 		}
@@ -5935,32 +5966,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_intfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterIntfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterIntfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitIntfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitIntfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitIntfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitIntfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final IntfuncContext intfunc() throws RecognitionException {
 		IntfuncContext _localctx = new IntfuncContext(_ctx, getState());
-		enterRule(_localctx, 148, RULE_intfunc);
+		enterRule(_localctx, 150, RULE_intfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(732);
+			setState(730);
 			match(INTF);
-			setState(733);
+			setState(731);
 			match(LPAREN);
-			setState(734);
+			setState(732);
 			expression(0);
-			setState(735);
+			setState(733);
 			match(RPAREN);
 			}
 		}
@@ -5988,32 +6019,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_spcfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterSpcfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterSpcfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitSpcfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitSpcfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitSpcfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitSpcfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final SpcfuncContext spcfunc() throws RecognitionException {
 		SpcfuncContext _localctx = new SpcfuncContext(_ctx, getState());
-		enterRule(_localctx, 150, RULE_spcfunc);
+		enterRule(_localctx, 152, RULE_spcfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(737);
+			setState(735);
 			match(SPC);
-			setState(738);
+			setState(736);
 			match(LPAREN);
-			setState(739);
+			setState(737);
 			expression(0);
-			setState(740);
+			setState(738);
 			match(RPAREN);
 			}
 		}
@@ -6041,32 +6072,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_frefunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterFrefunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterFrefunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitFrefunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitFrefunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitFrefunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitFrefunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final FrefuncContext frefunc() throws RecognitionException {
 		FrefuncContext _localctx = new FrefuncContext(_ctx, getState());
-		enterRule(_localctx, 152, RULE_frefunc);
+		enterRule(_localctx, 154, RULE_frefunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(742);
+			setState(740);
 			match(FRE);
-			setState(743);
+			setState(741);
 			match(LPAREN);
-			setState(744);
+			setState(742);
 			expression(0);
-			setState(745);
+			setState(743);
 			match(RPAREN);
 			}
 		}
@@ -6094,32 +6125,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_posfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterPosfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterPosfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitPosfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitPosfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitPosfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitPosfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final PosfuncContext posfunc() throws RecognitionException {
 		PosfuncContext _localctx = new PosfuncContext(_ctx, getState());
-		enterRule(_localctx, 154, RULE_posfunc);
+		enterRule(_localctx, 156, RULE_posfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(747);
+			setState(745);
 			match(POS);
-			setState(748);
+			setState(746);
 			match(LPAREN);
-			setState(749);
+			setState(747);
 			expression(0);
-			setState(750);
+			setState(748);
 			match(RPAREN);
 			}
 		}
@@ -6147,32 +6178,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_usrfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterUsrfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterUsrfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitUsrfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitUsrfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitUsrfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitUsrfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final UsrfuncContext usrfunc() throws RecognitionException {
 		UsrfuncContext _localctx = new UsrfuncContext(_ctx, getState());
-		enterRule(_localctx, 156, RULE_usrfunc);
+		enterRule(_localctx, 158, RULE_usrfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(752);
+			setState(750);
 			match(USR);
-			setState(753);
+			setState(751);
 			match(LPAREN);
-			setState(754);
+			setState(752);
 			expression(0);
-			setState(755);
+			setState(753);
 			match(RPAREN);
 			}
 		}
@@ -6204,36 +6235,36 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_leftfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterLeftfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterLeftfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitLeftfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitLeftfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitLeftfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitLeftfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final LeftfuncContext leftfunc() throws RecognitionException {
 		LeftfuncContext _localctx = new LeftfuncContext(_ctx, getState());
-		enterRule(_localctx, 158, RULE_leftfunc);
+		enterRule(_localctx, 160, RULE_leftfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(757);
+			setState(755);
 			match(LEFT);
-			setState(758);
+			setState(756);
 			match(LPAREN);
+			setState(757);
+			expression(0);
+			setState(758);
+			match(COMMA);
 			setState(759);
 			expression(0);
 			setState(760);
-			match(COMMA);
-			setState(761);
-			expression(0);
-			setState(762);
 			match(RPAREN);
 			}
 		}
@@ -6265,36 +6296,36 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_rightfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterRightfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterRightfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitRightfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitRightfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitRightfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitRightfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final RightfuncContext rightfunc() throws RecognitionException {
 		RightfuncContext _localctx = new RightfuncContext(_ctx, getState());
-		enterRule(_localctx, 160, RULE_rightfunc);
+		enterRule(_localctx, 162, RULE_rightfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(764);
+			setState(762);
 			match(RIGHT);
-			setState(765);
+			setState(763);
 			match(LPAREN);
+			setState(764);
+			expression(0);
+			setState(765);
+			match(COMMA);
 			setState(766);
 			expression(0);
 			setState(767);
-			match(COMMA);
-			setState(768);
-			expression(0);
-			setState(769);
 			match(RPAREN);
 			}
 		}
@@ -6322,32 +6353,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_strfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterStrfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterStrfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitStrfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitStrfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitStrfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitStrfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final StrfuncContext strfunc() throws RecognitionException {
 		StrfuncContext _localctx = new StrfuncContext(_ctx, getState());
-		enterRule(_localctx, 162, RULE_strfunc);
+		enterRule(_localctx, 164, RULE_strfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(771);
+			setState(769);
 			match(STR);
-			setState(772);
+			setState(770);
 			match(LPAREN);
-			setState(773);
+			setState(771);
 			expression(0);
-			setState(774);
+			setState(772);
 			match(RPAREN);
 			}
 		}
@@ -6378,34 +6409,34 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_fnfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterFnfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterFnfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitFnfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitFnfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitFnfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitFnfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final FnfuncContext fnfunc() throws RecognitionException {
 		FnfuncContext _localctx = new FnfuncContext(_ctx, getState());
-		enterRule(_localctx, 164, RULE_fnfunc);
+		enterRule(_localctx, 166, RULE_fnfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(776);
+			setState(774);
 			match(FN);
-			setState(777);
+			setState(775);
 			var();
-			setState(778);
+			setState(776);
 			match(LPAREN);
-			setState(779);
+			setState(777);
 			expression(0);
-			setState(780);
+			setState(778);
 			match(RPAREN);
 			}
 		}
@@ -6433,32 +6464,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_valfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterValfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterValfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitValfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitValfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitValfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitValfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ValfuncContext valfunc() throws RecognitionException {
 		ValfuncContext _localctx = new ValfuncContext(_ctx, getState());
-		enterRule(_localctx, 166, RULE_valfunc);
+		enterRule(_localctx, 168, RULE_valfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(782);
+			setState(780);
 			match(VAL);
-			setState(783);
+			setState(781);
 			match(LPAREN);
-			setState(784);
+			setState(782);
 			expression(0);
-			setState(785);
+			setState(783);
 			match(RPAREN);
 			}
 		}
@@ -6490,36 +6521,36 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_scrnfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterScrnfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterScrnfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitScrnfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitScrnfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitScrnfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitScrnfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ScrnfuncContext scrnfunc() throws RecognitionException {
 		ScrnfuncContext _localctx = new ScrnfuncContext(_ctx, getState());
-		enterRule(_localctx, 168, RULE_scrnfunc);
+		enterRule(_localctx, 170, RULE_scrnfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(787);
+			setState(785);
 			match(SCRN);
-			setState(788);
+			setState(786);
 			match(LPAREN);
+			setState(787);
+			expression(0);
+			setState(788);
+			match(COMMA);
 			setState(789);
 			expression(0);
 			setState(790);
-			match(COMMA);
-			setState(791);
-			expression(0);
-			setState(792);
 			match(RPAREN);
 			}
 		}
@@ -6547,32 +6578,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_sinfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterSinfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterSinfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitSinfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitSinfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitSinfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitSinfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final SinfuncContext sinfunc() throws RecognitionException {
 		SinfuncContext _localctx = new SinfuncContext(_ctx, getState());
-		enterRule(_localctx, 170, RULE_sinfunc);
+		enterRule(_localctx, 172, RULE_sinfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(794);
+			setState(792);
 			match(SIN);
-			setState(795);
+			setState(793);
 			match(LPAREN);
-			setState(796);
+			setState(794);
 			expression(0);
-			setState(797);
+			setState(795);
 			match(RPAREN);
 			}
 		}
@@ -6600,32 +6631,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_cosfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterCosfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterCosfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitCosfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitCosfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitCosfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitCosfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final CosfuncContext cosfunc() throws RecognitionException {
 		CosfuncContext _localctx = new CosfuncContext(_ctx, getState());
-		enterRule(_localctx, 172, RULE_cosfunc);
+		enterRule(_localctx, 174, RULE_cosfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(799);
+			setState(797);
 			match(COS);
-			setState(800);
+			setState(798);
 			match(LPAREN);
-			setState(801);
+			setState(799);
 			expression(0);
-			setState(802);
+			setState(800);
 			match(RPAREN);
 			}
 		}
@@ -6653,32 +6684,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_tanfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterTanfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterTanfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitTanfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitTanfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitTanfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitTanfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final TanfuncContext tanfunc() throws RecognitionException {
 		TanfuncContext _localctx = new TanfuncContext(_ctx, getState());
-		enterRule(_localctx, 174, RULE_tanfunc);
+		enterRule(_localctx, 176, RULE_tanfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(804);
+			setState(802);
 			match(TAN);
-			setState(805);
+			setState(803);
 			match(LPAREN);
-			setState(806);
+			setState(804);
 			expression(0);
-			setState(807);
+			setState(805);
 			match(RPAREN);
 			}
 		}
@@ -6706,32 +6737,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_atnfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterAtnfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterAtnfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitAtnfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitAtnfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitAtnfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitAtnfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final AtnfuncContext atnfunc() throws RecognitionException {
 		AtnfuncContext _localctx = new AtnfuncContext(_ctx, getState());
-		enterRule(_localctx, 176, RULE_atnfunc);
+		enterRule(_localctx, 178, RULE_atnfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(809);
+			setState(807);
 			match(ATN);
-			setState(810);
+			setState(808);
 			match(LPAREN);
-			setState(811);
+			setState(809);
 			expression(0);
-			setState(812);
+			setState(810);
 			match(RPAREN);
 			}
 		}
@@ -6759,32 +6790,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_rndfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterRndfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterRndfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitRndfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitRndfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitRndfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitRndfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final RndfuncContext rndfunc() throws RecognitionException {
 		RndfuncContext _localctx = new RndfuncContext(_ctx, getState());
-		enterRule(_localctx, 178, RULE_rndfunc);
+		enterRule(_localctx, 180, RULE_rndfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(814);
+			setState(812);
 			match(RND);
-			setState(815);
+			setState(813);
 			match(LPAREN);
-			setState(816);
+			setState(814);
 			expression(0);
-			setState(817);
+			setState(815);
 			match(RPAREN);
 			}
 		}
@@ -6812,32 +6843,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_sgnfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterSgnfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterSgnfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitSgnfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitSgnfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitSgnfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitSgnfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final SgnfuncContext sgnfunc() throws RecognitionException {
 		SgnfuncContext _localctx = new SgnfuncContext(_ctx, getState());
-		enterRule(_localctx, 180, RULE_sgnfunc);
+		enterRule(_localctx, 182, RULE_sgnfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(819);
+			setState(817);
 			match(SGN);
-			setState(820);
+			setState(818);
 			match(LPAREN);
-			setState(821);
+			setState(819);
 			expression(0);
-			setState(822);
+			setState(820);
 			match(RPAREN);
 			}
 		}
@@ -6865,32 +6896,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_expfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterExpfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterExpfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitExpfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitExpfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitExpfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitExpfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final ExpfuncContext expfunc() throws RecognitionException {
 		ExpfuncContext _localctx = new ExpfuncContext(_ctx, getState());
-		enterRule(_localctx, 182, RULE_expfunc);
+		enterRule(_localctx, 184, RULE_expfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(824);
+			setState(822);
 			match(EXP);
-			setState(825);
+			setState(823);
 			match(LPAREN);
-			setState(826);
+			setState(824);
 			expression(0);
-			setState(827);
+			setState(825);
 			match(RPAREN);
 			}
 		}
@@ -6918,32 +6949,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_logfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterLogfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterLogfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitLogfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitLogfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitLogfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitLogfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final LogfuncContext logfunc() throws RecognitionException {
 		LogfuncContext _localctx = new LogfuncContext(_ctx, getState());
-		enterRule(_localctx, 184, RULE_logfunc);
+		enterRule(_localctx, 186, RULE_logfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(829);
+			setState(827);
 			match(LOG);
-			setState(830);
+			setState(828);
 			match(LPAREN);
-			setState(831);
+			setState(829);
 			expression(0);
-			setState(832);
+			setState(830);
 			match(RPAREN);
 			}
 		}
@@ -6971,32 +7002,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_absfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterAbsfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterAbsfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitAbsfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitAbsfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitAbsfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitAbsfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final AbsfuncContext absfunc() throws RecognitionException {
 		AbsfuncContext _localctx = new AbsfuncContext(_ctx, getState());
-		enterRule(_localctx, 186, RULE_absfunc);
+		enterRule(_localctx, 188, RULE_absfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(834);
+			setState(832);
 			match(ABS);
-			setState(835);
+			setState(833);
 			match(LPAREN);
-			setState(836);
+			setState(834);
 			expression(0);
-			setState(837);
+			setState(835);
 			match(RPAREN);
 			}
 		}
@@ -7024,32 +7055,32 @@ public class kbasParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_tabfunc; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).enterTabfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).enterTabfunc(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof kbasListener ) ((kbasListener)listener).exitTabfunc(this);
+			if ( listener instanceof kbasListener) ((kbasListener)listener).exitTabfunc(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof kbasVisitor ) return ((kbasVisitor<? extends T>)visitor).visitTabfunc(this);
+			if ( visitor instanceof kbasVisitor) return ((kbasVisitor<? extends T>)visitor).visitTabfunc(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
 	public final TabfuncContext tabfunc() throws RecognitionException {
 		TabfuncContext _localctx = new TabfuncContext(_ctx, getState());
-		enterRule(_localctx, 188, RULE_tabfunc);
+		enterRule(_localctx, 190, RULE_tabfunc);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(839);
+			setState(837);
 			match(TAB);
-			setState(840);
+			setState(838);
 			match(LPAREN);
-			setState(841);
+			setState(839);
 			expression(0);
-			setState(842);
+			setState(840);
 			match(RPAREN);
 			}
 		}
@@ -7066,7 +7097,7 @@ public class kbasParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 61:
+		case 62:
 			return expression_sempred((ExpressionContext)_localctx, predIndex);
 		}
 		return true;
@@ -7086,9 +7117,9 @@ public class kbasParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3~\u034f\4\2\t\2\4"+
-		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\u0081\u034d\4\2\t"+
+		"\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
+		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
 		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \4!"+
 		"\t!\4\"\t\"\4#\t#\4$\t$\4%\t%\4&\t&\4\'\t\'\4(\t(\4)\t)\4*\t*\4+\t+\4"+
@@ -7097,296 +7128,295 @@ public class kbasParser extends Parser {
 		"\4>\t>\4?\t?\4@\t@\4A\tA\4B\tB\4C\tC\4D\tD\4E\tE\4F\tF\4G\tG\4H\tH\4I"+
 		"\tI\4J\tJ\4K\tK\4L\tL\4M\tM\4N\tN\4O\tO\4P\tP\4Q\tQ\4R\tR\4S\tS\4T\tT"+
 		"\4U\tU\4V\tV\4W\tW\4X\tX\4Y\tY\4Z\tZ\4[\t[\4\\\t\\\4]\t]\4^\t^\4_\t_\4"+
-		"`\t`\3\2\6\2\u00c2\n\2\r\2\16\2\u00c3\3\2\3\2\3\3\3\3\5\3\u00ca\n\3\3"+
-		"\3\3\3\3\3\5\3\u00cf\n\3\7\3\u00d1\n\3\f\3\16\3\u00d4\13\3\3\3\5\3\u00d7"+
-		"\n\3\3\4\3\4\3\5\3\5\3\6\5\6\u00de\n\6\3\6\3\6\5\6\u00e2\n\6\3\7\3\7\3"+
+		"`\t`\4a\ta\3\2\6\2\u00c4\n\2\r\2\16\2\u00c5\3\2\3\2\3\3\3\3\5\3\u00cc"+
+		"\n\3\3\3\3\3\3\3\5\3\u00d1\n\3\7\3\u00d3\n\3\f\3\16\3\u00d6\13\3\3\3\5"+
+		"\3\u00d9\n\3\3\4\3\4\3\5\3\5\3\6\5\6\u00e0\n\6\3\6\3\6\5\6\u00e4\n\6\3"+
 		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7"+
 		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
-		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7\u0115\n\7\3\b\3\b\3"+
-		"\b\3\b\3\b\7\b\u011c\n\b\f\b\16\b\u011f\13\b\3\t\3\t\5\t\u0123\n\t\3\n"+
-		"\3\n\3\n\5\n\u0128\n\n\7\n\u012a\n\n\f\n\16\n\u012d\13\n\3\13\3\13\3\13"+
-		"\3\f\5\f\u0133\n\f\3\f\3\f\3\r\3\r\3\r\3\r\3\16\3\16\3\16\5\16\u013e\n"+
-		"\16\3\16\3\16\5\16\u0142\n\16\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17"+
-		"\5\17\u014c\n\17\3\17\3\17\3\17\5\17\u0151\n\17\5\17\u0153\n\17\3\20\3"+
-		"\20\3\20\3\20\3\20\3\20\3\20\3\20\5\20\u015d\n\20\3\21\3\21\3\21\3\21"+
-		"\7\21\u0163\n\21\f\21\16\21\u0166\13\21\5\21\u0168\n\21\3\22\3\22\3\22"+
-		"\3\22\5\22\u016e\n\22\3\22\3\22\3\23\3\23\3\23\3\24\3\24\3\24\3\25\3\25"+
-		"\3\25\3\26\3\26\3\26\3\27\3\27\3\27\3\27\3\27\3\30\3\30\3\30\3\31\3\31"+
-		"\3\31\3\31\3\31\5\31\u018b\n\31\3\31\3\31\3\31\3\31\3\31\7\31\u0192\n"+
-		"\31\f\31\16\31\u0195\13\31\3\32\3\32\3\32\3\32\3\32\5\32\u019c\n\32\3"+
-		"\32\3\32\3\32\3\32\3\32\7\32\u01a3\n\32\f\32\16\32\u01a6\13\32\3\33\3"+
-		"\33\3\33\3\33\3\33\3\34\3\34\3\34\3\34\3\34\3\34\7\34\u01b3\n\34\f\34"+
-		"\16\34\u01b6\13\34\3\35\3\35\3\35\3\35\3\35\3\35\7\35\u01be\n\35\f\35"+
-		"\16\35\u01c1\13\35\3\36\3\36\3\36\3\37\3\37\3\37\3 \3 \3 \3 \3!\3!\3!"+
-		"\3!\3\"\3\"\3\"\3\"\5\"\u01d5\n\"\7\"\u01d7\n\"\f\"\16\"\u01da\13\"\3"+
-		"#\3#\5#\u01de\n#\3$\3$\3$\3$\3$\3$\5$\u01e6\n$\3%\3%\3%\3%\3%\3%\3%\5"+
-		"%\u01ef\n%\3&\3&\3&\3&\3&\3&\3&\5&\u01f8\n&\3\'\3\'\5\'\u01fc\n\'\3\'"+
-		"\3\'\3\'\3\'\3\'\3\'\3\'\3(\3(\3(\3(\3(\3)\3)\3)\3)\3*\3*\3*\3*\3+\3+"+
-		"\3+\3+\3,\3,\3,\3,\3-\3-\3-\3-\3.\3.\3.\3.\3.\3.\3.\3/\3/\3/\3/\3/\3/"+
-		"\3/\3\60\3\60\3\60\3\60\3\61\3\61\3\61\3\62\3\62\3\62\3\63\3\63\3\63\3"+
-		"\64\3\64\3\64\3\65\3\65\5\65\u023e\n\65\3\66\3\66\3\66\3\66\3\66\5\66"+
-		"\u0245\n\66\3\67\3\67\3\67\38\38\38\39\39\3:\3:\3;\3;\3<\5<\u0254\n<\3"+
-		"<\3<\3=\3=\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3"+
-		">\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\3>\5>\u0279\n>\3?\3?\3?\5?\u027e\n?\3"+
-		"?\5?\u0281\n?\3?\3?\3?\3?\3?\5?\u0288\n?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3"+
-		"?\3?\3?\7?\u0296\n?\f?\16?\u0299\13?\3@\3@\5@\u029d\n@\3A\3A\7A\u02a1"+
-		"\nA\fA\16A\u02a4\13A\3B\3B\3C\3C\3C\7C\u02ab\nC\fC\16C\u02ae\13C\3D\3"+
-		"D\3D\7D\u02b3\nD\fD\16D\u02b6\13D\3E\3E\3E\3E\3E\3F\3F\3F\3F\3F\3G\3G"+
-		"\3G\3G\3G\3H\3H\3H\3H\3H\3I\3I\3I\3I\3I\3I\3I\3I\3I\3J\3J\3J\3J\3J\3K"+
-		"\3K\3K\3K\3K\3L\3L\3L\3L\3L\3M\3M\3M\3M\3M\3N\3N\3N\3N\3N\3O\3O\3O\3O"+
-		"\3O\3P\3P\3P\3P\3P\3Q\3Q\3Q\3Q\3Q\3Q\3Q\3R\3R\3R\3R\3R\3R\3R\3S\3S\3S"+
-		"\3S\3S\3T\3T\3T\3T\3T\3T\3U\3U\3U\3U\3U\3V\3V\3V\3V\3V\3V\3V\3W\3W\3W"+
-		"\3W\3W\3X\3X\3X\3X\3X\3Y\3Y\3Y\3Y\3Y\3Z\3Z\3Z\3Z\3Z\3[\3[\3[\3[\3[\3\\"+
-		"\3\\\3\\\3\\\3\\\3]\3]\3]\3]\3]\3^\3^\3^\3^\3^\3_\3_\3_\3_\3_\3`\3`\3"+
-		"`\3`\3`\3`\2\3|a\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62"+
-		"\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082\u0084\u0086\u0088"+
-		"\u008a\u008c\u008e\u0090\u0092\u0094\u0096\u0098\u009a\u009c\u009e\u00a0"+
-		"\u00a2\u00a4\u00a6\u00a8\u00aa\u00ac\u00ae\u00b0\u00b2\u00b4\u00b6\u00b8"+
-		"\u00ba\u00bc\u00be\2\f\4\2\f\fyy\r\2\30\30!!,.88??BDJKaappstww\4\2\6\6"+
-		"uu\4\2\37\37((\3\2\24\25\3\2|}\3\2\26\27\3\2\31\36\3\2{|\3\2\3\4\2\u036f"+
-		"\2\u00c1\3\2\2\2\4\u00c9\3\2\2\2\6\u00d8\3\2\2\2\b\u00da\3\2\2\2\n\u00e1"+
-		"\3\2\2\2\f\u0114\3\2\2\2\16\u0116\3\2\2\2\20\u0120\3\2\2\2\22\u0124\3"+
-		"\2\2\2\24\u012e\3\2\2\2\26\u0132\3\2\2\2\30\u0136\3\2\2\2\32\u013a\3\2"+
-		"\2\2\34\u0143\3\2\2\2\36\u0154\3\2\2\2 \u015e\3\2\2\2\"\u0169\3\2\2\2"+
-		"$\u0171\3\2\2\2&\u0174\3\2\2\2(\u0177\3\2\2\2*\u017a\3\2\2\2,\u017d\3"+
-		"\2\2\2.\u0182\3\2\2\2\60\u0185\3\2\2\2\62\u0196\3\2\2\2\64\u01a7\3\2\2"+
-		"\2\66\u01ac\3\2\2\28\u01b7\3\2\2\2:\u01c2\3\2\2\2<\u01c5\3\2\2\2>\u01c8"+
-		"\3\2\2\2@\u01cc\3\2\2\2B\u01d0\3\2\2\2D\u01dd\3\2\2\2F\u01df\3\2\2\2H"+
-		"\u01e7\3\2\2\2J\u01f0\3\2\2\2L\u01f9\3\2\2\2N\u0204\3\2\2\2P\u0209\3\2"+
-		"\2\2R\u020d\3\2\2\2T\u0211\3\2\2\2V\u0215\3\2\2\2X\u0219\3\2\2\2Z\u021d"+
-		"\3\2\2\2\\\u0224\3\2\2\2^\u022b\3\2\2\2`\u022f\3\2\2\2b\u0232\3\2\2\2"+
-		"d\u0235\3\2\2\2f\u0238\3\2\2\2h\u023b\3\2\2\2j\u023f\3\2\2\2l\u0246\3"+
-		"\2\2\2n\u0249\3\2\2\2p\u024c\3\2\2\2r\u024e\3\2\2\2t\u0250\3\2\2\2v\u0253"+
-		"\3\2\2\2x\u0257\3\2\2\2z\u0278\3\2\2\2|\u0287\3\2\2\2~\u029a\3\2\2\2\u0080"+
-		"\u029e\3\2\2\2\u0082\u02a5\3\2\2\2\u0084\u02a7\3\2\2\2\u0086\u02af\3\2"+
-		"\2\2\u0088\u02b7\3\2\2\2\u008a\u02bc\3\2\2\2\u008c\u02c1\3\2\2\2\u008e"+
-		"\u02c6\3\2\2\2\u0090\u02cb\3\2\2\2\u0092\u02d4\3\2\2\2\u0094\u02d9\3\2"+
-		"\2\2\u0096\u02de\3\2\2\2\u0098\u02e3\3\2\2\2\u009a\u02e8\3\2\2\2\u009c"+
-		"\u02ed\3\2\2\2\u009e\u02f2\3\2\2\2\u00a0\u02f7\3\2\2\2\u00a2\u02fe\3\2"+
-		"\2\2\u00a4\u0305\3\2\2\2\u00a6\u030a\3\2\2\2\u00a8\u0310\3\2\2\2\u00aa"+
-		"\u0315\3\2\2\2\u00ac\u031c\3\2\2\2\u00ae\u0321\3\2\2\2\u00b0\u0326\3\2"+
-		"\2\2\u00b2\u032b\3\2\2\2\u00b4\u0330\3\2\2\2\u00b6\u0335\3\2\2\2\u00b8"+
-		"\u033a\3\2\2\2\u00ba\u033f\3\2\2\2\u00bc\u0344\3\2\2\2\u00be\u0349\3\2"+
-		"\2\2\u00c0\u00c2\5\4\3\2\u00c1\u00c0\3\2\2\2\u00c2\u00c3\3\2\2\2\u00c3"+
-		"\u00c1\3\2\2\2\u00c3\u00c4\3\2\2\2\u00c4\u00c5\3\2\2\2\u00c5\u00c6\7\2"+
-		"\2\3\u00c6\3\3\2\2\2\u00c7\u00ca\5\b\5\2\u00c8\u00ca\7x\2\2\u00c9\u00c7"+
-		"\3\2\2\2\u00c9\u00c8\3\2\2\2\u00c9\u00ca\3\2\2\2\u00ca\u00d6\3\2\2\2\u00cb"+
-		"\u00d2\5\n\6\2\u00cc\u00ce\7\37\2\2\u00cd\u00cf\5\n\6\2\u00ce\u00cd\3"+
-		"\2\2\2\u00ce\u00cf\3\2\2\2\u00cf\u00d1\3\2\2\2\u00d0\u00cc\3\2\2\2\u00d1"+
-		"\u00d4\3\2\2\2\u00d2\u00d0\3\2\2\2\u00d2\u00d3\3\2\2\2\u00d3\u00d7\3\2"+
-		"\2\2\u00d4\u00d2\3\2\2\2\u00d5\u00d7\t\2\2\2\u00d6\u00cb\3\2\2\2\u00d6"+
-		"\u00d5\3\2\2\2\u00d7\5\3\2\2\2\u00d8\u00d9\7o\2\2\u00d9\7\3\2\2\2\u00da"+
-		"\u00db\7|\2\2\u00db\t\3\2\2\2\u00dc\u00de\5\6\4\2\u00dd\u00dc\3\2\2\2"+
-		"\u00dd\u00de\3\2\2\2\u00de\u00df\3\2\2\2\u00df\u00e2\5\f\7\2\u00e0\u00e2"+
-		"\t\2\2\2\u00e1\u00dd\3\2\2\2\u00e1\u00e0\3\2\2\2\u00e2\13\3\2\2\2\u00e3"+
-		"\u0115\t\3\2\2\u00e4\u0115\5p9\2\u00e5\u0115\5r:\2\u00e6\u0115\5t;\2\u00e7"+
-		"\u0115\5l\67\2\u00e8\u0115\5j\66\2\u00e9\u0115\5h\65\2\u00ea\u0115\5d"+
-		"\63\2\u00eb\u0115\5\24\13\2\u00ec\u0115\5f\64\2\u00ed\u0115\5 \21\2\u00ee"+
-		"\u0115\5b\62\2\u00ef\u0115\5`\61\2\u00f0\u0115\5^\60\2\u00f1\u0115\5Z"+
-		".\2\u00f2\u0115\5\\/\2\u00f3\u0115\5V,\2\u00f4\u0115\5P)\2\u00f5\u0115"+
-		"\5T+\2\u00f6\u0115\5R*\2\u00f7\u0115\5X-\2\u00f8\u0115\5> \2\u00f9\u0115"+
-		"\5@!\2\u00fa\u0115\5\20\t\2\u00fb\u0115\5,\27\2\u00fc\u0115\5\64\33\2"+
-		"\u00fd\u0115\5\66\34\2\u00fe\u0115\58\35\2\u00ff\u0115\5\32\16\2\u0100"+
-		"\u0115\5\34\17\2\u0101\u0115\5\36\20\2\u0102\u0115\5\"\22\2\u0103\u0115"+
-		"\5N(\2\u0104\u0115\5&\24\2\u0105\u0115\5(\25\2\u0106\u0115\5*\26\2\u0107"+
-		"\u0115\5.\30\2\u0108\u0115\5$\23\2\u0109\u0115\5\60\31\2\u010a\u0115\5"+
-		"\62\32\2\u010b\u0115\5:\36\2\u010c\u0115\5<\37\2\u010d\u0115\5F$\2\u010e"+
-		"\u0115\5B\"\2\u010f\u0115\5H%\2\u0110\u0115\5J&\2\u0111\u0115\5L\'\2\u0112"+
-		"\u0115\5\26\f\2\u0113\u0115\5n8\2\u0114\u00e3\3\2\2\2\u0114\u00e4\3\2"+
-		"\2\2\u0114\u00e5\3\2\2\2\u0114\u00e6\3\2\2\2\u0114\u00e7\3\2\2\2\u0114"+
-		"\u00e8\3\2\2\2\u0114\u00e9\3\2\2\2\u0114\u00ea\3\2\2\2\u0114\u00eb\3\2"+
-		"\2\2\u0114\u00ec\3\2\2\2\u0114\u00ed\3\2\2\2\u0114\u00ee\3\2\2\2\u0114"+
-		"\u00ef\3\2\2\2\u0114\u00f0\3\2\2\2\u0114\u00f1\3\2\2\2\u0114\u00f2\3\2"+
-		"\2\2\u0114\u00f3\3\2\2\2\u0114\u00f4\3\2\2\2\u0114\u00f5\3\2\2\2\u0114"+
-		"\u00f6\3\2\2\2\u0114\u00f7\3\2\2\2\u0114\u00f8\3\2\2\2\u0114\u00f9\3\2"+
-		"\2\2\u0114\u00fa\3\2\2\2\u0114\u00fb\3\2\2\2\u0114\u00fc\3\2\2\2\u0114"+
-		"\u00fd\3\2\2\2\u0114\u00fe\3\2\2\2\u0114\u00ff\3\2\2\2\u0114\u0100\3\2"+
-		"\2\2\u0114\u0101\3\2\2\2\u0114\u0102\3\2\2\2\u0114\u0103\3\2\2\2\u0114"+
-		"\u0104\3\2\2\2\u0114\u0105\3\2\2\2\u0114\u0106\3\2\2\2\u0114\u0107\3\2"+
-		"\2\2\u0114\u0108\3\2\2\2\u0114\u0109\3\2\2\2\u0114\u010a\3\2\2\2\u0114"+
-		"\u010b\3\2\2\2\u0114\u010c\3\2\2\2\u0114\u010d\3\2\2\2\u0114\u010e\3\2"+
-		"\2\2\u0114\u010f\3\2\2\2\u0114\u0110\3\2\2\2\u0114\u0111\3\2\2\2\u0114"+
-		"\u0112\3\2\2\2\u0114\u0113\3\2\2\2\u0115\r\3\2\2\2\u0116\u011d\5~@\2\u0117"+
-		"\u0118\7\22\2\2\u0118\u0119\5\u0086D\2\u0119\u011a\7\23\2\2\u011a\u011c"+
-		"\3\2\2\2\u011b\u0117\3\2\2\2\u011c\u011f\3\2\2\2\u011d\u011b\3\2\2\2\u011d"+
-		"\u011e\3\2\2\2\u011e\17\3\2\2\2\u011f\u011d\3\2\2\2\u0120\u0122\t\4\2"+
-		"\2\u0121\u0123\5\22\n\2\u0122\u0121\3\2\2\2\u0122\u0123\3\2\2\2\u0123"+
-		"\21\3\2\2\2\u0124\u012b\5|?\2\u0125\u0127\t\5\2\2\u0126\u0128\5|?\2\u0127"+
-		"\u0126\3\2\2\2\u0127\u0128\3\2\2\2\u0128\u012a\3\2\2\2\u0129\u0125\3\2"+
-		"\2\2\u012a\u012d\3\2\2\2\u012b\u0129\3\2\2\2\u012b\u012c\3\2\2\2\u012c"+
-		"\23\3\2\2\2\u012d\u012b\3\2\2\2\u012e\u012f\7m\2\2\u012f\u0130\5\u0086"+
-		"D\2\u0130\25\3\2\2\2\u0131\u0133\7#\2\2\u0132\u0131\3\2\2\2\u0132\u0133"+
-		"\3\2\2\2\u0133\u0134\3\2\2\2\u0134\u0135\5\30\r\2\u0135\27\3\2\2\2\u0136"+
-		"\u0137\5\16\b\2\u0137\u0138\7\36\2\2\u0138\u0139\5\u0086D\2\u0139\31\3"+
-		"\2\2\2\u013a\u013b\7\t\2\2\u013b\u013d\5|?\2\u013c\u013e\7\13\2\2\u013d"+
-		"\u013c\3\2\2\2\u013d\u013e\3\2\2\2\u013e\u0141\3\2\2\2\u013f\u0142\5\f"+
-		"\7\2\u0140\u0142\5\b\5\2\u0141\u013f\3\2\2\2\u0141\u0140\3\2\2\2\u0142"+
-		"\33\3\2\2\2\u0143\u0144\7$\2\2\u0144\u0145\5\16\b\2\u0145\u0146\7\36\2"+
-		"\2\u0146\u0147\5|?\2\u0147\u0148\7%\2\2\u0148\u014b\5|?\2\u0149\u014a"+
-		"\7&\2\2\u014a\u014c\5|?\2\u014b\u0149\3\2\2\2\u014b\u014c\3\2\2\2\u014c"+
-		"\u0152\3\2\2\2\u014d\u014e\5\f\7\2\u014e\u0150\7\n\2\2\u014f\u0151\5\16"+
-		"\b\2\u0150\u014f\3\2\2\2\u0150\u0151\3\2\2\2\u0151\u0153\3\2\2\2\u0152"+
-		"\u014d\3\2\2\2\u0152\u0153\3\2\2\2\u0153\35\3\2\2\2\u0154\u0155\7$\2\2"+
-		"\u0155\u0156\5\16\b\2\u0156\u0157\7\36\2\2\u0157\u0158\5|?\2\u0158\u0159"+
-		"\7%\2\2\u0159\u015c\5|?\2\u015a\u015b\7&\2\2\u015b\u015d\5|?\2\u015c\u015a"+
-		"\3\2\2\2\u015c\u015d\3\2\2\2\u015d\37\3\2\2\2\u015e\u0167\7\n\2\2\u015f"+
-		"\u0164\5\16\b\2\u0160\u0161\7\37\2\2\u0161\u0163\5\16\b\2\u0162\u0160"+
-		"\3\2\2\2\u0163\u0166\3\2\2\2\u0164\u0162\3\2\2\2\u0164\u0165\3\2\2\2\u0165"+
-		"\u0168\3\2\2\2\u0166\u0164\3\2\2\2\u0167\u015f\3\2\2\2\u0167\u0168\3\2"+
-		"\2\2\u0168!\3\2\2\2\u0169\u016d\7\'\2\2\u016a\u016b\5x=\2\u016b\u016c"+
-		"\t\5\2\2\u016c\u016e\3\2\2\2\u016d\u016a\3\2\2\2\u016d\u016e\3\2\2\2\u016e"+
-		"\u016f\3\2\2\2\u016f\u0170\5\u0084C\2\u0170#\3\2\2\2\u0171\u0172\7P\2"+
-		"\2\u0172\u0173\5\u0084C\2\u0173%\3\2\2\2\u0174\u0175\7)\2\2\u0175\u0176"+
-		"\5\u0084C\2\u0176\'\3\2\2\2\u0177\u0178\7\7\2\2\u0178\u0179\5\b\5\2\u0179"+
-		")\3\2\2\2\u017a\u017b\7\b\2\2\u017b\u017c\5|?\2\u017c+\3\2\2\2\u017d\u017e"+
-		"\7=\2\2\u017e\u017f\5|?\2\u017f\u0180\7\37\2\2\u0180\u0181\5|?\2\u0181"+
-		"-\3\2\2\2\u0182\u0183\7\60\2\2\u0183\u0184\5\u0086D\2\u0184/\3\2\2\2\u0185"+
-		"\u018a\7\62\2\2\u0186\u0187\5|?\2\u0187\u0188\7\37\2\2\u0188\u0189\5|"+
-		"?\2\u0189\u018b\3\2\2\2\u018a\u0186\3\2\2\2\u018a\u018b\3\2\2\2\u018b"+
-		"\u0193\3\2\2\2\u018c\u018d\7%\2\2\u018d\u018e\5|?\2\u018e\u018f\7\37\2"+
-		"\2\u018f\u0190\5|?\2\u0190\u0192\3\2\2\2\u0191\u018c\3\2\2\2\u0192\u0195"+
-		"\3\2\2\2\u0193\u0191\3\2\2\2\u0193\u0194\3\2\2\2\u0194\61\3\2\2\2\u0195"+
-		"\u0193\3\2\2\2\u0196\u019b\7\63\2\2\u0197\u0198\5|?\2\u0198\u0199\7\37"+
-		"\2\2\u0199\u019a\5|?\2\u019a\u019c\3\2\2\2\u019b\u0197\3\2\2\2\u019b\u019c"+
-		"\3\2\2\2\u019c\u01a4\3\2\2\2\u019d\u019e\7%\2\2\u019e\u019f\5|?\2\u019f"+
-		"\u01a0\7\37\2\2\u01a0\u01a1\5|?\2\u01a1\u01a3\3\2\2\2\u01a2\u019d\3\2"+
-		"\2\2\u01a3\u01a6\3\2\2\2\u01a4\u01a2\3\2\2\2\u01a4\u01a5\3\2\2\2\u01a5"+
-		"\63\3\2\2\2\u01a6\u01a4\3\2\2\2\u01a7\u01a8\7;\2\2\u01a8\u01a9\5|?\2\u01a9"+
-		"\u01aa\7\37\2\2\u01aa\u01ab\5|?\2\u01ab\65\3\2\2\2\u01ac\u01ad\79\2\2"+
-		"\u01ad\u01ae\5|?\2\u01ae\u01af\7\7\2\2\u01af\u01b4\5\b\5\2\u01b0\u01b1"+
-		"\7\37\2\2\u01b1\u01b3\5\b\5\2\u01b2\u01b0\3\2\2\2\u01b3\u01b6\3\2\2\2"+
-		"\u01b4\u01b2\3\2\2\2\u01b4\u01b5\3\2\2\2\u01b5\67\3\2\2\2\u01b6\u01b4"+
-		"\3\2\2\2\u01b7\u01b8\79\2\2\u01b8\u01b9\5|?\2\u01b9\u01ba\7\b\2\2\u01ba"+
-		"\u01bf\5\b\5\2\u01bb\u01bc\7\37\2\2\u01bc\u01be\5\b\5\2\u01bd\u01bb\3"+
-		"\2\2\2\u01be\u01c1\3\2\2\2\u01bf\u01bd\3\2\2\2\u01bf\u01c0\3\2\2\2\u01c0"+
-		"9\3\2\2\2\u01c1\u01bf\3\2\2\2\u01c2\u01c3\7\66\2\2\u01c3\u01c4\5|?\2\u01c4"+
-		";\3\2\2\2\u01c5\u01c6\7\67\2\2\u01c6\u01c7\5|?\2\u01c7=\3\2\2\2\u01c8"+
-		"\u01c9\7@\2\2\u01c9\u01ca\7+\2\2\u01ca\u01cb\5|?\2\u01cb?\3\2\2\2\u01cc"+
-		"\u01cd\7A\2\2\u01cd\u01ce\7+\2\2\u01ce\u01cf\5|?\2\u01cfA\3\2\2\2\u01d0"+
-		"\u01d1\7N\2\2\u01d1\u01d8\5D#\2\u01d2\u01d4\7\37\2\2\u01d3\u01d5\5D#\2"+
-		"\u01d4\u01d3\3\2\2\2\u01d4\u01d5\3\2\2\2\u01d5\u01d7\3\2\2\2\u01d6\u01d2"+
-		"\3\2\2\2\u01d7\u01da\3\2\2\2\u01d8\u01d6\3\2\2\2\u01d8\u01d9\3\2\2\2\u01d9"+
-		"C\3\2\2\2\u01da\u01d8\3\2\2\2\u01db\u01de\5v<\2\u01dc\u01de\5x=\2\u01dd"+
-		"\u01db\3\2\2\2\u01dd\u01dc\3\2\2\2\u01deE\3\2\2\2\u01df\u01e0\7O\2\2\u01e0"+
-		"\u01e1\5|?\2\u01e1\u01e2\7\37\2\2\u01e2\u01e5\5|?\2\u01e3\u01e4\7\37\2"+
-		"\2\u01e4\u01e6\5|?\2\u01e5\u01e3\3\2\2\2\u01e5\u01e6\3\2\2\2\u01e6G\3"+
-		"\2\2\2\u01e7\u01e8\7Q\2\2\u01e8\u01ee\5|?\2\u01e9\u01ea\7S\2\2\u01ea\u01eb"+
-		"\5|?\2\u01eb\u01ec\7\37\2\2\u01ec\u01ed\5|?\2\u01ed\u01ef\3\2\2\2\u01ee"+
-		"\u01e9\3\2\2\2\u01ee\u01ef\3\2\2\2\u01efI\3\2\2\2\u01f0\u01f1\7R\2\2\u01f1"+
-		"\u01f7\5|?\2\u01f2\u01f3\7S\2\2\u01f3\u01f4\5|?\2\u01f4\u01f5\7\37\2\2"+
-		"\u01f5\u01f6\5|?\2\u01f6\u01f8\3\2\2\2\u01f7\u01f2\3\2\2\2\u01f7\u01f8"+
-		"\3\2\2\2\u01f8K\3\2\2\2\u01f9\u01fb\7T\2\2\u01fa\u01fc\7U\2\2\u01fb\u01fa"+
-		"\3\2\2\2\u01fb\u01fc\3\2\2\2\u01fc\u01fd\3\2\2\2\u01fd\u01fe\5~@\2\u01fe"+
-		"\u01ff\7\22\2\2\u01ff\u0200\5~@\2\u0200\u0201\7\23\2\2\u0201\u0202\7\36"+
-		"\2\2\u0202\u0203\5|?\2\u0203M\3\2\2\2\u0204\u0205\7W\2\2\u0205\u0206\7"+
-		"\22\2\2\u0206\u0207\5|?\2\u0207\u0208\7\23\2\2\u0208O\3\2\2\2\u0209\u020a"+
-		"\7X\2\2\u020a\u020b\7\36\2\2\u020b\u020c\5|?\2\u020cQ\3\2\2\2\u020d\u020e"+
-		"\7Y\2\2\u020e\u020f\7\36\2\2\u020f\u0210\5|?\2\u0210S\3\2\2\2\u0211\u0212"+
-		"\7Z\2\2\u0212\u0213\7\36\2\2\u0213\u0214\5|?\2\u0214U\3\2\2\2\u0215\u0216"+
-		"\7[\2\2\u0216\u0217\7\36\2\2\u0217\u0218\5|?\2\u0218W\3\2\2\2\u0219\u021a"+
-		"\7\\\2\2\u021a\u021b\7\36\2\2\u021b\u021c\5|?\2\u021cY\3\2\2\2\u021d\u021e"+
-		"\7]\2\2\u021e\u021f\5|?\2\u021f\u0220\7\37\2\2\u0220\u0221\5|?\2\u0221"+
-		"\u0222\7S\2\2\u0222\u0223\5|?\2\u0223[\3\2\2\2\u0224\u0225\7^\2\2\u0225"+
-		"\u0226\5|?\2\u0226\u0227\7\37\2\2\u0227\u0228\5|?\2\u0228\u0229\7S\2\2"+
-		"\u0229\u022a\5|?\2\u022a]\3\2\2\2\u022b\u022c\7E\2\2\u022c\u022d\7\7\2"+
-		"\2\u022d\u022e\5\b\5\2\u022e_\3\2\2\2\u022f\u0230\7\64\2\2\u0230\u0231"+
-		"\7|\2\2\u0231a\3\2\2\2\u0232\u0233\7\65\2\2\u0233\u0234\7|\2\2\u0234c"+
-		"\3\2\2\2\u0235\u0236\7k\2\2\u0236\u0237\5\16\b\2\u0237e\3\2\2\2\u0238"+
-		"\u0239\7l\2\2\u0239\u023a\5\16\b\2\u023ag\3\2\2\2\u023b\u023d\7 \2\2\u023c"+
-		"\u023e\5|?\2\u023d\u023c\3\2\2\2\u023d\u023e\3\2\2\2\u023ei\3\2\2\2\u023f"+
-		"\u0244\7`\2\2\u0240\u0241\5|?\2\u0241\u0242\7\37\2\2\u0242\u0243\5|?\2"+
-		"\u0243\u0245\3\2\2\2\u0244\u0240\3\2\2\2\u0244\u0245\3\2\2\2\u0245k\3"+
-		"\2\2\2\u0246\u0247\7o\2\2\u0247\u0248\5|?\2\u0248m\3\2\2\2\u0249\u024a"+
-		"\7v\2\2\u024a\u024b\5|?\2\u024bo\3\2\2\2\u024c\u024d\7\"\2\2\u024dq\3"+
-		"\2\2\2\u024e\u024f\7\5\2\2\u024fs\3\2\2\2\u0250\u0251\7r\2\2\u0251u\3"+
-		"\2\2\2\u0252\u0254\t\6\2\2\u0253\u0252\3\2\2\2\u0253\u0254\3\2\2\2\u0254"+
-		"\u0255\3\2\2\2\u0255\u0256\t\7\2\2\u0256w\3\2\2\2\u0257\u0258\7z\2\2\u0258"+
-		"y\3\2\2\2\u0259\u0279\5x=\2\u025a\u0279\5v<\2\u025b\u0279\5\u00be`\2\u025c"+
-		"\u0279\5\16\b\2\u025d\u0279\5\u008aF\2\u025e\u0279\5\u0088E\2\u025f\u0279"+
-		"\5\u008cG\2\u0260\u0279\5\u00a4S\2\u0261\u0279\5\u008eH\2\u0262\u0279"+
-		"\5\u00aaV\2\u0263\u0279\5\u0090I\2\u0264\u0279\5\u0092J\2\u0265\u0279"+
-		"\5\u0094K\2\u0266\u0279\5\u0096L\2\u0267\u0279\5\u0098M\2\u0268\u0279"+
-		"\5\u009aN\2\u0269\u0279\5\u009cO\2\u026a\u0279\5\u009eP\2\u026b\u0279"+
-		"\5\u00a0Q\2\u026c\u0279\5\u00a8U\2\u026d\u0279\5\u00a2R\2\u026e\u0279"+
-		"\5\u00a6T\2\u026f\u0279\5\u00acW\2\u0270\u0279\5\u00aeX\2\u0271\u0279"+
-		"\5\u00b0Y\2\u0272\u0279\5\u00b2Z\2\u0273\u0279\5\u00b4[\2\u0274\u0279"+
-		"\5\u00b6\\\2\u0275\u0279\5\u00b8]\2\u0276\u0279\5\u00ba^\2\u0277\u0279"+
-		"\5\u00bc_\2\u0278\u0259\3\2\2\2\u0278\u025a\3\2\2\2\u0278\u025b\3\2\2"+
-		"\2\u0278\u025c\3\2\2\2\u0278\u025d\3\2\2\2\u0278\u025e\3\2\2\2\u0278\u025f"+
-		"\3\2\2\2\u0278\u0260\3\2\2\2\u0278\u0261\3\2\2\2\u0278\u0262\3\2\2\2\u0278"+
-		"\u0263\3\2\2\2\u0278\u0264\3\2\2\2\u0278\u0265\3\2\2\2\u0278\u0266\3\2"+
-		"\2\2\u0278\u0267\3\2\2\2\u0278\u0268\3\2\2\2\u0278\u0269\3\2\2\2\u0278"+
-		"\u026a\3\2\2\2\u0278\u026b\3\2\2\2\u0278\u026c\3\2\2\2\u0278\u026d\3\2"+
-		"\2\2\u0278\u026e\3\2\2\2\u0278\u026f\3\2\2\2\u0278\u0270\3\2\2\2\u0278"+
-		"\u0271\3\2\2\2\u0278\u0272\3\2\2\2\u0278\u0273\3\2\2\2\u0278\u0274\3\2"+
-		"\2\2\u0278\u0275\3\2\2\2\u0278\u0276\3\2\2\2\u0278\u0277\3\2\2\2\u0279"+
-		"{\3\2\2\2\u027a\u027b\b?\1\2\u027b\u0288\5z>\2\u027c\u027e\7q\2\2\u027d"+
-		"\u027c\3\2\2\2\u027d\u027e\3\2\2\2\u027e\u0280\3\2\2\2\u027f\u0281\t\6"+
-		"\2\2\u0280\u027f\3\2\2\2\u0280\u0281\3\2\2\2\u0281\u0282\3\2\2\2\u0282"+
-		"\u0288\5z>\2\u0283\u0284\7\22\2\2\u0284\u0285\5|?\2\u0285\u0286\7\23\2"+
-		"\2\u0286\u0288\3\2\2\2\u0287\u027a\3\2\2\2\u0287\u027d\3\2\2\2\u0287\u0283"+
-		"\3\2\2\2\u0288\u0297\3\2\2\2\u0289\u028a\f\7\2\2\u028a\u028b\7n\2\2\u028b"+
-		"\u0296\5|?\7\u028c\u028d\f\6\2\2\u028d\u028e\t\b\2\2\u028e\u0296\5|?\7"+
-		"\u028f\u0290\f\5\2\2\u0290\u0291\t\6\2\2\u0291\u0296\5|?\6\u0292\u0293"+
-		"\f\4\2\2\u0293\u0294\t\t\2\2\u0294\u0296\5|?\5\u0295\u0289\3\2\2\2\u0295"+
-		"\u028c\3\2\2\2\u0295\u028f\3\2\2\2\u0295\u0292\3\2\2\2\u0296\u0299\3\2"+
-		"\2\2\u0297\u0295\3\2\2\2\u0297\u0298\3\2\2\2\u0298}\3\2\2\2\u0299\u0297"+
-		"\3\2\2\2\u029a\u029c\5\u0080A\2\u029b\u029d\5\u0082B\2\u029c\u029b\3\2"+
-		"\2\2\u029c\u029d\3\2\2\2\u029d\177\3\2\2\2\u029e\u02a2\7{\2\2\u029f\u02a1"+
-		"\t\n\2\2\u02a0\u029f\3\2\2\2\u02a1\u02a4\3\2\2\2\u02a2\u02a0\3\2\2\2\u02a2"+
-		"\u02a3\3\2\2\2\u02a3\u0081\3\2\2\2\u02a4\u02a2\3\2\2\2\u02a5\u02a6\t\13"+
-		"\2\2\u02a6\u0083\3\2\2\2\u02a7\u02ac\5\16\b\2\u02a8\u02a9\7\37\2\2\u02a9"+
-		"\u02ab\5\16\b\2\u02aa\u02a8\3\2\2\2\u02ab\u02ae\3\2\2\2\u02ac\u02aa\3"+
-		"\2\2\2\u02ac\u02ad\3\2\2\2\u02ad\u0085\3\2\2\2\u02ae\u02ac\3\2\2\2\u02af"+
-		"\u02b4\5|?\2\u02b0\u02b1\7\37\2\2\u02b1\u02b3\5|?\2\u02b2\u02b0\3\2\2"+
-		"\2\u02b3\u02b6\3\2\2\2\u02b4\u02b2\3\2\2\2\u02b4\u02b5\3\2\2\2\u02b5\u0087"+
-		"\3\2\2\2\u02b6\u02b4\3\2\2\2\u02b7\u02b8\7*\2\2\u02b8\u02b9\7\22\2\2\u02b9"+
-		"\u02ba\5|?\2\u02ba\u02bb\7\23\2\2\u02bb\u0089\3\2\2\2\u02bc\u02bd\7\r"+
-		"\2\2\u02bd\u02be\7\22\2\2\u02be\u02bf\5|?\2\u02bf\u02c0\7\23\2\2\u02c0"+
-		"\u008b\3\2\2\2\u02c1\u02c2\7/\2\2\u02c2\u02c3\7\22\2\2\u02c3\u02c4\5|"+
-		"?\2\u02c4\u02c5\7\23\2\2\u02c5\u008d\3\2\2\2\u02c6\u02c7\7\61\2\2\u02c7"+
-		"\u02c8\7\22\2\2\u02c8\u02c9\5|?\2\u02c9\u02ca\7\23\2\2\u02ca\u008f\3\2"+
-		"\2\2\u02cb\u02cc\7\16\2\2\u02cc\u02cd\7\22\2\2\u02cd\u02ce\5|?\2\u02ce"+
-		"\u02cf\7\37\2\2\u02cf\u02d0\5|?\2\u02d0\u02d1\7\37\2\2\u02d1\u02d2\5|"+
-		"?\2\u02d2\u02d3\7\23\2\2\u02d3\u0091\3\2\2\2\u02d4\u02d5\7:\2\2\u02d5"+
-		"\u02d6\7\22\2\2\u02d6\u02d7\5|?\2\u02d7\u02d8\7\23\2\2\u02d8\u0093\3\2"+
-		"\2\2\u02d9\u02da\7<\2\2\u02da\u02db\7\22\2\2\u02db\u02dc\5|?\2\u02dc\u02dd"+
-		"\7\23\2\2\u02dd\u0095\3\2\2\2\u02de\u02df\7>\2\2\u02df\u02e0\7\22\2\2"+
-		"\u02e0\u02e1\5|?\2\u02e1\u02e2\7\23\2\2\u02e2\u0097\3\2\2\2\u02e3\u02e4"+
-		"\7F\2\2\u02e4\u02e5\7\22\2\2\u02e5\u02e6\5|?\2\u02e6\u02e7\7\23\2\2\u02e7"+
-		"\u0099\3\2\2\2\u02e8\u02e9\7G\2\2\u02e9\u02ea\7\22\2\2\u02ea\u02eb\5|"+
-		"?\2\u02eb\u02ec\7\23\2\2\u02ec\u009b\3\2\2\2\u02ed\u02ee\7H\2\2\u02ee"+
-		"\u02ef\7\22\2\2\u02ef\u02f0\5|?\2\u02f0\u02f1\7\23\2\2\u02f1\u009d\3\2"+
-		"\2\2\u02f2\u02f3\7I\2\2\u02f3\u02f4\7\22\2\2\u02f4\u02f5\5|?\2\u02f5\u02f6"+
-		"\7\23\2\2\u02f6\u009f\3\2\2\2\u02f7\u02f8\7\17\2\2\u02f8\u02f9\7\22\2"+
-		"\2\u02f9\u02fa\5|?\2\u02fa\u02fb\7\37\2\2\u02fb\u02fc\5|?\2\u02fc\u02fd"+
-		"\7\23\2\2\u02fd\u00a1\3\2\2\2\u02fe\u02ff\7\20\2\2\u02ff\u0300\7\22\2"+
-		"\2\u0300\u0301\5|?\2\u0301\u0302\7\37\2\2\u0302\u0303\5|?\2\u0303\u0304"+
-		"\7\23\2\2\u0304\u00a3\3\2\2\2\u0305\u0306\7\21\2\2\u0306\u0307\7\22\2"+
-		"\2\u0307\u0308\5|?\2\u0308\u0309\7\23\2\2\u0309\u00a5\3\2\2\2\u030a\u030b"+
-		"\7U\2\2\u030b\u030c\5~@\2\u030c\u030d\7\22\2\2\u030d\u030e\5|?\2\u030e"+
-		"\u030f\7\23\2\2\u030f\u00a7\3\2\2\2\u0310\u0311\7V\2\2\u0311\u0312\7\22"+
-		"\2\2\u0312\u0313\5|?\2\u0313\u0314\7\23\2\2\u0314\u00a9\3\2\2\2\u0315"+
-		"\u0316\7_\2\2\u0316\u0317\7\22\2\2\u0317\u0318\5|?\2\u0318\u0319\7\37"+
-		"\2\2\u0319\u031a\5|?\2\u031a\u031b\7\23\2\2\u031b\u00ab\3\2\2\2\u031c"+
-		"\u031d\7b\2\2\u031d\u031e\7\22\2\2\u031e\u031f\5|?\2\u031f\u0320\7\23"+
-		"\2\2\u0320\u00ad\3\2\2\2\u0321\u0322\7c\2\2\u0322\u0323\7\22\2\2\u0323"+
-		"\u0324\5|?\2\u0324\u0325\7\23\2\2\u0325\u00af\3\2\2\2\u0326\u0327\7d\2"+
-		"\2\u0327\u0328\7\22\2\2\u0328\u0329\5|?\2\u0329\u032a\7\23\2\2\u032a\u00b1"+
-		"\3\2\2\2\u032b\u032c\7e\2\2\u032c\u032d\7\22\2\2\u032d\u032e\5|?\2\u032e"+
-		"\u032f\7\23\2\2\u032f\u00b3\3\2\2\2\u0330\u0331\7f\2\2\u0331\u0332\7\22"+
-		"\2\2\u0332\u0333\5|?\2\u0333\u0334\7\23\2\2\u0334\u00b5\3\2\2\2\u0335"+
-		"\u0336\7g\2\2\u0336\u0337\7\22\2\2\u0337\u0338\5|?\2\u0338\u0339\7\23"+
-		"\2\2\u0339\u00b7\3\2\2\2\u033a\u033b\7h\2\2\u033b\u033c\7\22\2\2\u033c"+
-		"\u033d\5|?\2\u033d\u033e\7\23\2\2\u033e\u00b9\3\2\2\2\u033f\u0340\7i\2"+
-		"\2\u0340\u0341\7\22\2\2\u0341\u0342\5|?\2\u0342\u0343\7\23\2\2\u0343\u00bb"+
-		"\3\2\2\2\u0344\u0345\7j\2\2\u0345\u0346\7\22\2\2\u0346\u0347\5|?\2\u0347"+
-		"\u0348\7\23\2\2\u0348\u00bd\3\2\2\2\u0349\u034a\7W\2\2\u034a\u034b\7\22"+
-		"\2\2\u034b\u034c\5|?\2\u034c\u034d\7\23\2\2\u034d\u00bf\3\2\2\2\62\u00c3"+
-		"\u00c9\u00ce\u00d2\u00d6\u00dd\u00e1\u0114\u011d\u0122\u0127\u012b\u0132"+
-		"\u013d\u0141\u014b\u0150\u0152\u015c\u0164\u0167\u016d\u018a\u0193\u019b"+
-		"\u01a4\u01b4\u01bf\u01d4\u01d8\u01dd\u01e5\u01ee\u01f7\u01fb\u023d\u0244"+
-		"\u0253\u0278\u027d\u0280\u0287\u0295\u0297\u029c\u02a2\u02ac\u02b4";
+		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7\u0118\n"+
+		"\7\3\b\3\b\3\b\3\b\3\b\7\b\u011f\n\b\f\b\16\b\u0122\13\b\3\t\3\t\5\t\u0126"+
+		"\n\t\3\n\3\n\3\n\5\n\u012b\n\n\7\n\u012d\n\n\f\n\16\n\u0130\13\n\3\13"+
+		"\3\13\3\13\3\f\5\f\u0136\n\f\3\f\3\f\3\r\3\r\3\r\3\r\3\16\3\16\3\16\5"+
+		"\16\u0141\n\16\3\16\3\16\5\16\u0145\n\16\3\17\3\17\3\17\3\17\3\17\3\17"+
+		"\3\17\3\17\5\17\u014f\n\17\3\17\3\17\3\17\5\17\u0154\n\17\5\17\u0156\n"+
+		"\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\5\20\u0160\n\20\3\21\3\21"+
+		"\3\21\3\21\7\21\u0166\n\21\f\21\16\21\u0169\13\21\5\21\u016b\n\21\3\22"+
+		"\3\22\3\22\3\22\5\22\u0171\n\22\3\22\3\22\3\23\3\23\3\23\3\24\3\24\3\24"+
+		"\3\25\3\25\3\25\3\26\3\26\3\26\3\27\3\27\3\27\3\30\3\30\3\30\3\31\3\31"+
+		"\3\31\3\31\7\31\u018b\n\31\f\31\16\31\u018e\13\31\5\31\u0190\n\31\3\32"+
+		"\3\32\3\32\3\32\3\32\3\33\3\33\3\33\3\34\3\34\3\34\3\34\3\34\5\34\u019f"+
+		"\n\34\3\34\3\34\3\34\3\34\3\34\7\34\u01a6\n\34\f\34\16\34\u01a9\13\34"+
+		"\3\35\3\35\3\35\3\35\3\35\5\35\u01b0\n\35\3\35\3\35\3\35\3\35\3\35\7\35"+
+		"\u01b7\n\35\f\35\16\35\u01ba\13\35\3\36\3\36\3\36\3\36\3\36\3\37\3\37"+
+		"\3\37\3 \3 \3 \3!\3!\3!\3!\3\"\3\"\3\"\3\"\3#\3#\3#\3#\5#\u01d3\n#\7#"+
+		"\u01d5\n#\f#\16#\u01d8\13#\3$\3$\5$\u01dc\n$\3%\3%\3%\3%\3%\3%\5%\u01e4"+
+		"\n%\3&\3&\3&\3&\3&\3&\3&\5&\u01ed\n&\3\'\3\'\3\'\3\'\3\'\3\'\3\'\5\'\u01f6"+
+		"\n\'\3(\3(\5(\u01fa\n(\3(\3(\3(\3(\3(\3(\3(\3)\3)\3)\3)\3)\3*\3*\3*\3"+
+		"*\3+\3+\3+\3+\3,\3,\3,\3,\3-\3-\3-\3-\3.\3.\3.\3.\3/\3/\3/\3/\3/\3/\3"+
+		"/\3\60\3\60\3\60\3\60\3\60\3\60\3\60\3\61\3\61\3\61\3\61\3\62\3\62\3\62"+
+		"\3\63\3\63\3\63\3\64\3\64\3\64\3\65\3\65\3\65\3\66\3\66\5\66\u023c\n\66"+
+		"\3\67\3\67\3\67\3\67\3\67\5\67\u0243\n\67\38\38\38\39\39\39\3:\3:\3;\3"+
+		";\3<\3<\3=\5=\u0252\n=\3=\3=\3>\3>\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3"+
+		"?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\3?\5?\u0277\n"+
+		"?\3@\3@\3@\5@\u027c\n@\3@\5@\u027f\n@\3@\3@\3@\3@\3@\5@\u0286\n@\3@\3"+
+		"@\3@\3@\3@\3@\3@\3@\3@\3@\3@\3@\7@\u0294\n@\f@\16@\u0297\13@\3A\3A\5A"+
+		"\u029b\nA\3B\3B\7B\u029f\nB\fB\16B\u02a2\13B\3C\3C\3D\3D\3D\7D\u02a9\n"+
+		"D\fD\16D\u02ac\13D\3E\3E\3E\7E\u02b1\nE\fE\16E\u02b4\13E\3F\3F\3F\3F\3"+
+		"F\3G\3G\3G\3G\3G\3H\3H\3H\3H\3H\3I\3I\3I\3I\3I\3J\3J\3J\3J\3J\3J\3J\3"+
+		"J\3J\3K\3K\3K\3K\3K\3L\3L\3L\3L\3L\3M\3M\3M\3M\3M\3N\3N\3N\3N\3N\3O\3"+
+		"O\3O\3O\3O\3P\3P\3P\3P\3P\3Q\3Q\3Q\3Q\3Q\3R\3R\3R\3R\3R\3R\3R\3S\3S\3"+
+		"S\3S\3S\3S\3S\3T\3T\3T\3T\3T\3U\3U\3U\3U\3U\3U\3V\3V\3V\3V\3V\3W\3W\3"+
+		"W\3W\3W\3W\3W\3X\3X\3X\3X\3X\3Y\3Y\3Y\3Y\3Y\3Z\3Z\3Z\3Z\3Z\3[\3[\3[\3"+
+		"[\3[\3\\\3\\\3\\\3\\\3\\\3]\3]\3]\3]\3]\3^\3^\3^\3^\3^\3_\3_\3_\3_\3_"+
+		"\3`\3`\3`\3`\3`\3a\3a\3a\3a\3a\3a\2\3~b\2\4\6\b\n\f\16\20\22\24\26\30"+
+		"\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080"+
+		"\u0082\u0084\u0086\u0088\u008a\u008c\u008e\u0090\u0092\u0094\u0096\u0098"+
+		"\u009a\u009c\u009e\u00a0\u00a2\u00a4\u00a6\u00a8\u00aa\u00ac\u00ae\u00b0"+
+		"\u00b2\u00b4\u00b6\u00b8\u00ba\u00bc\u00be\u00c0\2\f\4\2\17\17||\r\2\33"+
+		"\33$$/\61;;BBEGMNddssvwzz\4\2\6\6xx\4\2\"\"++\3\2\27\30\3\2\177\u0080"+
+		"\3\2\31\32\3\2\34!\3\2~\177\3\2\3\4\2\u036d\2\u00c3\3\2\2\2\4\u00cb\3"+
+		"\2\2\2\6\u00da\3\2\2\2\b\u00dc\3\2\2\2\n\u00e3\3\2\2\2\f\u0117\3\2\2\2"+
+		"\16\u0119\3\2\2\2\20\u0123\3\2\2\2\22\u0127\3\2\2\2\24\u0131\3\2\2\2\26"+
+		"\u0135\3\2\2\2\30\u0139\3\2\2\2\32\u013d\3\2\2\2\34\u0146\3\2\2\2\36\u0157"+
+		"\3\2\2\2 \u0161\3\2\2\2\"\u016c\3\2\2\2$\u0174\3\2\2\2&\u0177\3\2\2\2"+
+		"(\u017a\3\2\2\2*\u017d\3\2\2\2,\u0180\3\2\2\2.\u0183\3\2\2\2\60\u0186"+
+		"\3\2\2\2\62\u0191\3\2\2\2\64\u0196\3\2\2\2\66\u0199\3\2\2\28\u01aa\3\2"+
+		"\2\2:\u01bb\3\2\2\2<\u01c0\3\2\2\2>\u01c3\3\2\2\2@\u01c6\3\2\2\2B\u01ca"+
+		"\3\2\2\2D\u01ce\3\2\2\2F\u01db\3\2\2\2H\u01dd\3\2\2\2J\u01e5\3\2\2\2L"+
+		"\u01ee\3\2\2\2N\u01f7\3\2\2\2P\u0202\3\2\2\2R\u0207\3\2\2\2T\u020b\3\2"+
+		"\2\2V\u020f\3\2\2\2X\u0213\3\2\2\2Z\u0217\3\2\2\2\\\u021b\3\2\2\2^\u0222"+
+		"\3\2\2\2`\u0229\3\2\2\2b\u022d\3\2\2\2d\u0230\3\2\2\2f\u0233\3\2\2\2h"+
+		"\u0236\3\2\2\2j\u0239\3\2\2\2l\u023d\3\2\2\2n\u0244\3\2\2\2p\u0247\3\2"+
+		"\2\2r\u024a\3\2\2\2t\u024c\3\2\2\2v\u024e\3\2\2\2x\u0251\3\2\2\2z\u0255"+
+		"\3\2\2\2|\u0276\3\2\2\2~\u0285\3\2\2\2\u0080\u0298\3\2\2\2\u0082\u029c"+
+		"\3\2\2\2\u0084\u02a3\3\2\2\2\u0086\u02a5\3\2\2\2\u0088\u02ad\3\2\2\2\u008a"+
+		"\u02b5\3\2\2\2\u008c\u02ba\3\2\2\2\u008e\u02bf\3\2\2\2\u0090\u02c4\3\2"+
+		"\2\2\u0092\u02c9\3\2\2\2\u0094\u02d2\3\2\2\2\u0096\u02d7\3\2\2\2\u0098"+
+		"\u02dc\3\2\2\2\u009a\u02e1\3\2\2\2\u009c\u02e6\3\2\2\2\u009e\u02eb\3\2"+
+		"\2\2\u00a0\u02f0\3\2\2\2\u00a2\u02f5\3\2\2\2\u00a4\u02fc\3\2\2\2\u00a6"+
+		"\u0303\3\2\2\2\u00a8\u0308\3\2\2\2\u00aa\u030e\3\2\2\2\u00ac\u0313\3\2"+
+		"\2\2\u00ae\u031a\3\2\2\2\u00b0\u031f\3\2\2\2\u00b2\u0324\3\2\2\2\u00b4"+
+		"\u0329\3\2\2\2\u00b6\u032e\3\2\2\2\u00b8\u0333\3\2\2\2\u00ba\u0338\3\2"+
+		"\2\2\u00bc\u033d\3\2\2\2\u00be\u0342\3\2\2\2\u00c0\u0347\3\2\2\2\u00c2"+
+		"\u00c4\5\4\3\2\u00c3\u00c2\3\2\2\2\u00c4\u00c5\3\2\2\2\u00c5\u00c3\3\2"+
+		"\2\2\u00c5\u00c6\3\2\2\2\u00c6\u00c7\3\2\2\2\u00c7\u00c8\7\2\2\3\u00c8"+
+		"\3\3\2\2\2\u00c9\u00cc\5\b\5\2\u00ca\u00cc\7{\2\2\u00cb\u00c9\3\2\2\2"+
+		"\u00cb\u00ca\3\2\2\2\u00cb\u00cc\3\2\2\2\u00cc\u00d8\3\2\2\2\u00cd\u00d4"+
+		"\5\n\6\2\u00ce\u00d0\7\"\2\2\u00cf\u00d1\5\n\6\2\u00d0\u00cf\3\2\2\2\u00d0"+
+		"\u00d1\3\2\2\2\u00d1\u00d3\3\2\2\2\u00d2\u00ce\3\2\2\2\u00d3\u00d6\3\2"+
+		"\2\2\u00d4\u00d2\3\2\2\2\u00d4\u00d5\3\2\2\2\u00d5\u00d9\3\2\2\2\u00d6"+
+		"\u00d4\3\2\2\2\u00d7\u00d9\t\2\2\2\u00d8\u00cd\3\2\2\2\u00d8\u00d7\3\2"+
+		"\2\2\u00d9\5\3\2\2\2\u00da\u00db\7r\2\2\u00db\7\3\2\2\2\u00dc\u00dd\7"+
+		"\177\2\2\u00dd\t\3\2\2\2\u00de\u00e0\5\6\4\2\u00df\u00de\3\2\2\2\u00df"+
+		"\u00e0\3\2\2\2\u00e0\u00e1\3\2\2\2\u00e1\u00e4\5\f\7\2\u00e2\u00e4\t\2"+
+		"\2\2\u00e3\u00df\3\2\2\2\u00e3\u00e2\3\2\2\2\u00e4\13\3\2\2\2\u00e5\u0118"+
+		"\t\3\2\2\u00e6\u0118\5r:\2\u00e7\u0118\5t;\2\u00e8\u0118\5v<\2\u00e9\u0118"+
+		"\5n8\2\u00ea\u0118\5l\67\2\u00eb\u0118\5j\66\2\u00ec\u0118\5f\64\2\u00ed"+
+		"\u0118\5\24\13\2\u00ee\u0118\5h\65\2\u00ef\u0118\5 \21\2\u00f0\u0118\5"+
+		"d\63\2\u00f1\u0118\5b\62\2\u00f2\u0118\5`\61\2\u00f3\u0118\5\\/\2\u00f4"+
+		"\u0118\5^\60\2\u00f5\u0118\5X-\2\u00f6\u0118\5R*\2\u00f7\u0118\5V,\2\u00f8"+
+		"\u0118\5T+\2\u00f9\u0118\5Z.\2\u00fa\u0118\5@!\2\u00fb\u0118\5B\"\2\u00fc"+
+		"\u0118\5\20\t\2\u00fd\u0118\5\62\32\2\u00fe\u0118\5:\36\2\u00ff\u0118"+
+		"\5\32\16\2\u0100\u0118\5\34\17\2\u0101\u0118\5\36\20\2\u0102\u0118\5\""+
+		"\22\2\u0103\u0118\5P)\2\u0104\u0118\5&\24\2\u0105\u0118\5(\25\2\u0106"+
+		"\u0118\5*\26\2\u0107\u0118\5,\27\2\u0108\u0118\5\60\31\2\u0109\u0118\5"+
+		".\30\2\u010a\u0118\5\64\33\2\u010b\u0118\5$\23\2\u010c\u0118\5\66\34\2"+
+		"\u010d\u0118\58\35\2\u010e\u0118\5<\37\2\u010f\u0118\5> \2\u0110\u0118"+
+		"\5H%\2\u0111\u0118\5D#\2\u0112\u0118\5J&\2\u0113\u0118\5L\'\2\u0114\u0118"+
+		"\5N(\2\u0115\u0118\5\26\f\2\u0116\u0118\5p9\2\u0117\u00e5\3\2\2\2\u0117"+
+		"\u00e6\3\2\2\2\u0117\u00e7\3\2\2\2\u0117\u00e8\3\2\2\2\u0117\u00e9\3\2"+
+		"\2\2\u0117\u00ea\3\2\2\2\u0117\u00eb\3\2\2\2\u0117\u00ec\3\2\2\2\u0117"+
+		"\u00ed\3\2\2\2\u0117\u00ee\3\2\2\2\u0117\u00ef\3\2\2\2\u0117\u00f0\3\2"+
+		"\2\2\u0117\u00f1\3\2\2\2\u0117\u00f2\3\2\2\2\u0117\u00f3\3\2\2\2\u0117"+
+		"\u00f4\3\2\2\2\u0117\u00f5\3\2\2\2\u0117\u00f6\3\2\2\2\u0117\u00f7\3\2"+
+		"\2\2\u0117\u00f8\3\2\2\2\u0117\u00f9\3\2\2\2\u0117\u00fa\3\2\2\2\u0117"+
+		"\u00fb\3\2\2\2\u0117\u00fc\3\2\2\2\u0117\u00fd\3\2\2\2\u0117\u00fe\3\2"+
+		"\2\2\u0117\u00ff\3\2\2\2\u0117\u0100\3\2\2\2\u0117\u0101\3\2\2\2\u0117"+
+		"\u0102\3\2\2\2\u0117\u0103\3\2\2\2\u0117\u0104\3\2\2\2\u0117\u0105\3\2"+
+		"\2\2\u0117\u0106\3\2\2\2\u0117\u0107\3\2\2\2\u0117\u0108\3\2\2\2\u0117"+
+		"\u0109\3\2\2\2\u0117\u010a\3\2\2\2\u0117\u010b\3\2\2\2\u0117\u010c\3\2"+
+		"\2\2\u0117\u010d\3\2\2\2\u0117\u010e\3\2\2\2\u0117\u010f\3\2\2\2\u0117"+
+		"\u0110\3\2\2\2\u0117\u0111\3\2\2\2\u0117\u0112\3\2\2\2\u0117\u0113\3\2"+
+		"\2\2\u0117\u0114\3\2\2\2\u0117\u0115\3\2\2\2\u0117\u0116\3\2\2\2\u0118"+
+		"\r\3\2\2\2\u0119\u0120\5\u0080A\2\u011a\u011b\7\25\2\2\u011b\u011c\5\u0088"+
+		"E\2\u011c\u011d\7\26\2\2\u011d\u011f\3\2\2\2\u011e\u011a\3\2\2\2\u011f"+
+		"\u0122\3\2\2\2\u0120\u011e\3\2\2\2\u0120\u0121\3\2\2\2\u0121\17\3\2\2"+
+		"\2\u0122\u0120\3\2\2\2\u0123\u0125\t\4\2\2\u0124\u0126\5\22\n\2\u0125"+
+		"\u0124\3\2\2\2\u0125\u0126\3\2\2\2\u0126\21\3\2\2\2\u0127\u012e\5~@\2"+
+		"\u0128\u012a\t\5\2\2\u0129\u012b\5~@\2\u012a\u0129\3\2\2\2\u012a\u012b"+
+		"\3\2\2\2\u012b\u012d\3\2\2\2\u012c\u0128\3\2\2\2\u012d\u0130\3\2\2\2\u012e"+
+		"\u012c\3\2\2\2\u012e\u012f\3\2\2\2\u012f\23\3\2\2\2\u0130\u012e\3\2\2"+
+		"\2\u0131\u0132\7p\2\2\u0132\u0133\5\u0088E\2\u0133\25\3\2\2\2\u0134\u0136"+
+		"\7&\2\2\u0135\u0134\3\2\2\2\u0135\u0136\3\2\2\2\u0136\u0137\3\2\2\2\u0137"+
+		"\u0138\5\30\r\2\u0138\27\3\2\2\2\u0139\u013a\5\16\b\2\u013a\u013b\7!\2"+
+		"\2\u013b\u013c\5\u0088E\2\u013c\31\3\2\2\2\u013d\u013e\7\f\2\2\u013e\u0140"+
+		"\5~@\2\u013f\u0141\7\16\2\2\u0140\u013f\3\2\2\2\u0140\u0141\3\2\2\2\u0141"+
+		"\u0144\3\2\2\2\u0142\u0145\5\f\7\2\u0143\u0145\5\b\5\2\u0144\u0142\3\2"+
+		"\2\2\u0144\u0143\3\2\2\2\u0145\33\3\2\2\2\u0146\u0147\7\'\2\2\u0147\u0148"+
+		"\5\16\b\2\u0148\u0149\7!\2\2\u0149\u014a\5~@\2\u014a\u014b\7(\2\2\u014b"+
+		"\u014e\5~@\2\u014c\u014d\7)\2\2\u014d\u014f\5~@\2\u014e\u014c\3\2\2\2"+
+		"\u014e\u014f\3\2\2\2\u014f\u0155\3\2\2\2\u0150\u0151\5\f\7\2\u0151\u0153"+
+		"\7\r\2\2\u0152\u0154\5\16\b\2\u0153\u0152\3\2\2\2\u0153\u0154\3\2\2\2"+
+		"\u0154\u0156\3\2\2\2\u0155\u0150\3\2\2\2\u0155\u0156\3\2\2\2\u0156\35"+
+		"\3\2\2\2\u0157\u0158\7\'\2\2\u0158\u0159\5\16\b\2\u0159\u015a\7!\2\2\u015a"+
+		"\u015b\5~@\2\u015b\u015c\7(\2\2\u015c\u015f\5~@\2\u015d\u015e\7)\2\2\u015e"+
+		"\u0160\5~@\2\u015f\u015d\3\2\2\2\u015f\u0160\3\2\2\2\u0160\37\3\2\2\2"+
+		"\u0161\u016a\7\r\2\2\u0162\u0167\5\16\b\2\u0163\u0164\7\"\2\2\u0164\u0166"+
+		"\5\16\b\2\u0165\u0163\3\2\2\2\u0166\u0169\3\2\2\2\u0167\u0165\3\2\2\2"+
+		"\u0167\u0168\3\2\2\2\u0168\u016b\3\2\2\2\u0169\u0167\3\2\2\2\u016a\u0162"+
+		"\3\2\2\2\u016a\u016b\3\2\2\2\u016b!\3\2\2\2\u016c\u0170\7*\2\2\u016d\u016e"+
+		"\5z>\2\u016e\u016f\t\5\2\2\u016f\u0171\3\2\2\2\u0170\u016d\3\2\2\2\u0170"+
+		"\u0171\3\2\2\2\u0171\u0172\3\2\2\2\u0172\u0173\5\u0086D\2\u0173#\3\2\2"+
+		"\2\u0174\u0175\7S\2\2\u0175\u0176\5\u0086D\2\u0176%\3\2\2\2\u0177\u0178"+
+		"\7,\2\2\u0178\u0179\5\u0086D\2\u0179\'\3\2\2\2\u017a\u017b\7\7\2\2\u017b"+
+		"\u017c\5\b\5\2\u017c)\3\2\2\2\u017d\u017e\7\b\2\2\u017e\u017f\5~@\2\u017f"+
+		"+\3\2\2\2\u0180\u0181\7\t\2\2\u0181\u0182\5~@\2\u0182-\3\2\2\2\u0183\u0184"+
+		"\7\13\2\2\u0184\u0185\5\16\b\2\u0185/\3\2\2\2\u0186\u018f\7\n\2\2\u0187"+
+		"\u018c\5\16\b\2\u0188\u0189\7\"\2\2\u0189\u018b\5\16\b\2\u018a\u0188\3"+
+		"\2\2\2\u018b\u018e\3\2\2\2\u018c\u018a\3\2\2\2\u018c\u018d\3\2\2\2\u018d"+
+		"\u0190\3\2\2\2\u018e\u018c\3\2\2\2\u018f\u0187\3\2\2\2\u018f\u0190\3\2"+
+		"\2\2\u0190\61\3\2\2\2\u0191\u0192\7@\2\2\u0192\u0193\5~@\2\u0193\u0194"+
+		"\7\"\2\2\u0194\u0195\5~@\2\u0195\63\3\2\2\2\u0196\u0197\7\63\2\2\u0197"+
+		"\u0198\5\u0088E\2\u0198\65\3\2\2\2\u0199\u019e\7\65\2\2\u019a\u019b\5"+
+		"~@\2\u019b\u019c\7\"\2\2\u019c\u019d\5~@\2\u019d\u019f\3\2\2\2\u019e\u019a"+
+		"\3\2\2\2\u019e\u019f\3\2\2\2\u019f\u01a7\3\2\2\2\u01a0\u01a1\7(\2\2\u01a1"+
+		"\u01a2\5~@\2\u01a2\u01a3\7\"\2\2\u01a3\u01a4\5~@\2\u01a4\u01a6\3\2\2\2"+
+		"\u01a5\u01a0\3\2\2\2\u01a6\u01a9\3\2\2\2\u01a7\u01a5\3\2\2\2\u01a7\u01a8"+
+		"\3\2\2\2\u01a8\67\3\2\2\2\u01a9\u01a7\3\2\2\2\u01aa\u01af\7\66\2\2\u01ab"+
+		"\u01ac\5~@\2\u01ac\u01ad\7\"\2\2\u01ad\u01ae\5~@\2\u01ae\u01b0\3\2\2\2"+
+		"\u01af\u01ab\3\2\2\2\u01af\u01b0\3\2\2\2\u01b0\u01b8\3\2\2\2\u01b1\u01b2"+
+		"\7(\2\2\u01b2\u01b3\5~@\2\u01b3\u01b4\7\"\2\2\u01b4\u01b5\5~@\2\u01b5"+
+		"\u01b7\3\2\2\2\u01b6\u01b1\3\2\2\2\u01b7\u01ba\3\2\2\2\u01b8\u01b6\3\2"+
+		"\2\2\u01b8\u01b9\3\2\2\2\u01b99\3\2\2\2\u01ba\u01b8\3\2\2\2\u01bb\u01bc"+
+		"\7>\2\2\u01bc\u01bd\5~@\2\u01bd\u01be\7\"\2\2\u01be\u01bf\5~@\2\u01bf"+
+		";\3\2\2\2\u01c0\u01c1\79\2\2\u01c1\u01c2\5~@\2\u01c2=\3\2\2\2\u01c3\u01c4"+
+		"\7:\2\2\u01c4\u01c5\5~@\2\u01c5?\3\2\2\2\u01c6\u01c7\7C\2\2\u01c7\u01c8"+
+		"\7.\2\2\u01c8\u01c9\5~@\2\u01c9A\3\2\2\2\u01ca\u01cb\7D\2\2\u01cb\u01cc"+
+		"\7.\2\2\u01cc\u01cd\5~@\2\u01cdC\3\2\2\2\u01ce\u01cf\7Q\2\2\u01cf\u01d6"+
+		"\5F$\2\u01d0\u01d2\7\"\2\2\u01d1\u01d3\5F$\2\u01d2\u01d1\3\2\2\2\u01d2"+
+		"\u01d3\3\2\2\2\u01d3\u01d5\3\2\2\2\u01d4\u01d0\3\2\2\2\u01d5\u01d8\3\2"+
+		"\2\2\u01d6\u01d4\3\2\2\2\u01d6\u01d7\3\2\2\2\u01d7E\3\2\2\2\u01d8\u01d6"+
+		"\3\2\2\2\u01d9\u01dc\5x=\2\u01da\u01dc\5z>\2\u01db\u01d9\3\2\2\2\u01db"+
+		"\u01da\3\2\2\2\u01dcG\3\2\2\2\u01dd\u01de\7R\2\2\u01de\u01df\5~@\2\u01df"+
+		"\u01e0\7\"\2\2\u01e0\u01e3\5~@\2\u01e1\u01e2\7\"\2\2\u01e2\u01e4\5~@\2"+
+		"\u01e3\u01e1\3\2\2\2\u01e3\u01e4\3\2\2\2\u01e4I\3\2\2\2\u01e5\u01e6\7"+
+		"T\2\2\u01e6\u01ec\5~@\2\u01e7\u01e8\7V\2\2\u01e8\u01e9\5~@\2\u01e9\u01ea"+
+		"\7\"\2\2\u01ea\u01eb\5~@\2\u01eb\u01ed\3\2\2\2\u01ec\u01e7\3\2\2\2\u01ec"+
+		"\u01ed\3\2\2\2\u01edK\3\2\2\2\u01ee\u01ef\7U\2\2\u01ef\u01f5\5~@\2\u01f0"+
+		"\u01f1\7V\2\2\u01f1\u01f2\5~@\2\u01f2\u01f3\7\"\2\2\u01f3\u01f4\5~@\2"+
+		"\u01f4\u01f6\3\2\2\2\u01f5\u01f0\3\2\2\2\u01f5\u01f6\3\2\2\2\u01f6M\3"+
+		"\2\2\2\u01f7\u01f9\7W\2\2\u01f8\u01fa\7X\2\2\u01f9\u01f8\3\2\2\2\u01f9"+
+		"\u01fa\3\2\2\2\u01fa\u01fb\3\2\2\2\u01fb\u01fc\5\u0080A\2\u01fc\u01fd"+
+		"\7\25\2\2\u01fd\u01fe\5\u0080A\2\u01fe\u01ff\7\26\2\2\u01ff\u0200\7!\2"+
+		"\2\u0200\u0201\5~@\2\u0201O\3\2\2\2\u0202\u0203\7Z\2\2\u0203\u0204\7\25"+
+		"\2\2\u0204\u0205\5~@\2\u0205\u0206\7\26\2\2\u0206Q\3\2\2\2\u0207\u0208"+
+		"\7[\2\2\u0208\u0209\7!\2\2\u0209\u020a\5~@\2\u020aS\3\2\2\2\u020b\u020c"+
+		"\7\\\2\2\u020c\u020d\7!\2\2\u020d\u020e\5~@\2\u020eU\3\2\2\2\u020f\u0210"+
+		"\7]\2\2\u0210\u0211\7!\2\2\u0211\u0212\5~@\2\u0212W\3\2\2\2\u0213\u0214"+
+		"\7^\2\2\u0214\u0215\7!\2\2\u0215\u0216\5~@\2\u0216Y\3\2\2\2\u0217\u0218"+
+		"\7_\2\2\u0218\u0219\7!\2\2\u0219\u021a\5~@\2\u021a[\3\2\2\2\u021b\u021c"+
+		"\7`\2\2\u021c\u021d\5~@\2\u021d\u021e\7\"\2\2\u021e\u021f\5~@\2\u021f"+
+		"\u0220\7V\2\2\u0220\u0221\5~@\2\u0221]\3\2\2\2\u0222\u0223\7a\2\2\u0223"+
+		"\u0224\5~@\2\u0224\u0225\7\"\2\2\u0225\u0226\5~@\2\u0226\u0227\7V\2\2"+
+		"\u0227\u0228\5~@\2\u0228_\3\2\2\2\u0229\u022a\7H\2\2\u022a\u022b\7\7\2"+
+		"\2\u022b\u022c\5\b\5\2\u022ca\3\2\2\2\u022d\u022e\7\67\2\2\u022e\u022f"+
+		"\7\177\2\2\u022fc\3\2\2\2\u0230\u0231\78\2\2\u0231\u0232\7\177\2\2\u0232"+
+		"e\3\2\2\2\u0233\u0234\7n\2\2\u0234\u0235\5\16\b\2\u0235g\3\2\2\2\u0236"+
+		"\u0237\7o\2\2\u0237\u0238\5\16\b\2\u0238i\3\2\2\2\u0239\u023b\7#\2\2\u023a"+
+		"\u023c\5~@\2\u023b\u023a\3\2\2\2\u023b\u023c\3\2\2\2\u023ck\3\2\2\2\u023d"+
+		"\u0242\7c\2\2\u023e\u023f\5~@\2\u023f\u0240\7\"\2\2\u0240\u0241\5~@\2"+
+		"\u0241\u0243\3\2\2\2\u0242\u023e\3\2\2\2\u0242\u0243\3\2\2\2\u0243m\3"+
+		"\2\2\2\u0244\u0245\7r\2\2\u0245\u0246\5~@\2\u0246o\3\2\2\2\u0247\u0248"+
+		"\7y\2\2\u0248\u0249\5~@\2\u0249q\3\2\2\2\u024a\u024b\7%\2\2\u024bs\3\2"+
+		"\2\2\u024c\u024d\7\5\2\2\u024du\3\2\2\2\u024e\u024f\7u\2\2\u024fw\3\2"+
+		"\2\2\u0250\u0252\t\6\2\2\u0251\u0250\3\2\2\2\u0251\u0252\3\2\2\2\u0252"+
+		"\u0253\3\2\2\2\u0253\u0254\t\7\2\2\u0254y\3\2\2\2\u0255\u0256\7}\2\2\u0256"+
+		"{\3\2\2\2\u0257\u0277\5z>\2\u0258\u0277\5x=\2\u0259\u0277\5\u00c0a\2\u025a"+
+		"\u0277\5\16\b\2\u025b\u0277\5\u008cG\2\u025c\u0277\5\u008aF\2\u025d\u0277"+
+		"\5\u008eH\2\u025e\u0277\5\u00a6T\2\u025f\u0277\5\u0090I\2\u0260\u0277"+
+		"\5\u00acW\2\u0261\u0277\5\u0092J\2\u0262\u0277\5\u0094K\2\u0263\u0277"+
+		"\5\u0096L\2\u0264\u0277\5\u0098M\2\u0265\u0277\5\u009aN\2\u0266\u0277"+
+		"\5\u009cO\2\u0267\u0277\5\u009eP\2\u0268\u0277\5\u00a0Q\2\u0269\u0277"+
+		"\5\u00a2R\2\u026a\u0277\5\u00aaV\2\u026b\u0277\5\u00a4S\2\u026c\u0277"+
+		"\5\u00a8U\2\u026d\u0277\5\u00aeX\2\u026e\u0277\5\u00b0Y\2\u026f\u0277"+
+		"\5\u00b2Z\2\u0270\u0277\5\u00b4[\2\u0271\u0277\5\u00b6\\\2\u0272\u0277"+
+		"\5\u00b8]\2\u0273\u0277\5\u00ba^\2\u0274\u0277\5\u00bc_\2\u0275\u0277"+
+		"\5\u00be`\2\u0276\u0257\3\2\2\2\u0276\u0258\3\2\2\2\u0276\u0259\3\2\2"+
+		"\2\u0276\u025a\3\2\2\2\u0276\u025b\3\2\2\2\u0276\u025c\3\2\2\2\u0276\u025d"+
+		"\3\2\2\2\u0276\u025e\3\2\2\2\u0276\u025f\3\2\2\2\u0276\u0260\3\2\2\2\u0276"+
+		"\u0261\3\2\2\2\u0276\u0262\3\2\2\2\u0276\u0263\3\2\2\2\u0276\u0264\3\2"+
+		"\2\2\u0276\u0265\3\2\2\2\u0276\u0266\3\2\2\2\u0276\u0267\3\2\2\2\u0276"+
+		"\u0268\3\2\2\2\u0276\u0269\3\2\2\2\u0276\u026a\3\2\2\2\u0276\u026b\3\2"+
+		"\2\2\u0276\u026c\3\2\2\2\u0276\u026d\3\2\2\2\u0276\u026e\3\2\2\2\u0276"+
+		"\u026f\3\2\2\2\u0276\u0270\3\2\2\2\u0276\u0271\3\2\2\2\u0276\u0272\3\2"+
+		"\2\2\u0276\u0273\3\2\2\2\u0276\u0274\3\2\2\2\u0276\u0275\3\2\2\2\u0277"+
+		"}\3\2\2\2\u0278\u0279\b@\1\2\u0279\u0286\5|?\2\u027a\u027c\7t\2\2\u027b"+
+		"\u027a\3\2\2\2\u027b\u027c\3\2\2\2\u027c\u027e\3\2\2\2\u027d\u027f\t\6"+
+		"\2\2\u027e\u027d\3\2\2\2\u027e\u027f\3\2\2\2\u027f\u0280\3\2\2\2\u0280"+
+		"\u0286\5|?\2\u0281\u0282\7\25\2\2\u0282\u0283\5~@\2\u0283\u0284\7\26\2"+
+		"\2\u0284\u0286\3\2\2\2\u0285\u0278\3\2\2\2\u0285\u027b\3\2\2\2\u0285\u0281"+
+		"\3\2\2\2\u0286\u0295\3\2\2\2\u0287\u0288\f\7\2\2\u0288\u0289\7q\2\2\u0289"+
+		"\u0294\5~@\7\u028a\u028b\f\6\2\2\u028b\u028c\t\b\2\2\u028c\u0294\5~@\7"+
+		"\u028d\u028e\f\5\2\2\u028e\u028f\t\6\2\2\u028f\u0294\5~@\6\u0290\u0291"+
+		"\f\4\2\2\u0291\u0292\t\t\2\2\u0292\u0294\5~@\5\u0293\u0287\3\2\2\2\u0293"+
+		"\u028a\3\2\2\2\u0293\u028d\3\2\2\2\u0293\u0290\3\2\2\2\u0294\u0297\3\2"+
+		"\2\2\u0295\u0293\3\2\2\2\u0295\u0296\3\2\2\2\u0296\177\3\2\2\2\u0297\u0295"+
+		"\3\2\2\2\u0298\u029a\5\u0082B\2\u0299\u029b\5\u0084C\2\u029a\u0299\3\2"+
+		"\2\2\u029a\u029b\3\2\2\2\u029b\u0081\3\2\2\2\u029c\u02a0\7~\2\2\u029d"+
+		"\u029f\t\n\2\2\u029e\u029d\3\2\2\2\u029f\u02a2\3\2\2\2\u02a0\u029e\3\2"+
+		"\2\2\u02a0\u02a1\3\2\2\2\u02a1\u0083\3\2\2\2\u02a2\u02a0\3\2\2\2\u02a3"+
+		"\u02a4\t\13\2\2\u02a4\u0085\3\2\2\2\u02a5\u02aa\5\16\b\2\u02a6\u02a7\7"+
+		"\"\2\2\u02a7\u02a9\5\16\b\2\u02a8\u02a6\3\2\2\2\u02a9\u02ac\3\2\2\2\u02aa"+
+		"\u02a8\3\2\2\2\u02aa\u02ab\3\2\2\2\u02ab\u0087\3\2\2\2\u02ac\u02aa\3\2"+
+		"\2\2\u02ad\u02b2\5~@\2\u02ae\u02af\7\"\2\2\u02af\u02b1\5~@\2\u02b0\u02ae"+
+		"\3\2\2\2\u02b1\u02b4\3\2\2\2\u02b2\u02b0\3\2\2\2\u02b2\u02b3\3\2\2\2\u02b3"+
+		"\u0089\3\2\2\2\u02b4\u02b2\3\2\2\2\u02b5\u02b6\7-\2\2\u02b6\u02b7\7\25"+
+		"\2\2\u02b7\u02b8\5~@\2\u02b8\u02b9\7\26\2\2\u02b9\u008b\3\2\2\2\u02ba"+
+		"\u02bb\7\20\2\2\u02bb\u02bc\7\25\2\2\u02bc\u02bd\5~@\2\u02bd\u02be\7\26"+
+		"\2\2\u02be\u008d\3\2\2\2\u02bf\u02c0\7\62\2\2\u02c0\u02c1\7\25\2\2\u02c1"+
+		"\u02c2\5~@\2\u02c2\u02c3\7\26\2\2\u02c3\u008f\3\2\2\2\u02c4\u02c5\7\64"+
+		"\2\2\u02c5\u02c6\7\25\2\2\u02c6\u02c7\5~@\2\u02c7\u02c8\7\26\2\2\u02c8"+
+		"\u0091\3\2\2\2\u02c9\u02ca\7\21\2\2\u02ca\u02cb\7\25\2\2\u02cb\u02cc\5"+
+		"~@\2\u02cc\u02cd\7\"\2\2\u02cd\u02ce\5~@\2\u02ce\u02cf\7\"\2\2\u02cf\u02d0"+
+		"\5~@\2\u02d0\u02d1\7\26\2\2\u02d1\u0093\3\2\2\2\u02d2\u02d3\7=\2\2\u02d3"+
+		"\u02d4\7\25\2\2\u02d4\u02d5\5~@\2\u02d5\u02d6\7\26\2\2\u02d6\u0095\3\2"+
+		"\2\2\u02d7\u02d8\7?\2\2\u02d8\u02d9\7\25\2\2\u02d9\u02da\5~@\2\u02da\u02db"+
+		"\7\26\2\2\u02db\u0097\3\2\2\2\u02dc\u02dd\7A\2\2\u02dd\u02de\7\25\2\2"+
+		"\u02de\u02df\5~@\2\u02df\u02e0\7\26\2\2\u02e0\u0099\3\2\2\2\u02e1\u02e2"+
+		"\7I\2\2\u02e2\u02e3\7\25\2\2\u02e3\u02e4\5~@\2\u02e4\u02e5\7\26\2\2\u02e5"+
+		"\u009b\3\2\2\2\u02e6\u02e7\7J\2\2\u02e7\u02e8\7\25\2\2\u02e8\u02e9\5~"+
+		"@\2\u02e9\u02ea\7\26\2\2\u02ea\u009d\3\2\2\2\u02eb\u02ec\7K\2\2\u02ec"+
+		"\u02ed\7\25\2\2\u02ed\u02ee\5~@\2\u02ee\u02ef\7\26\2\2\u02ef\u009f\3\2"+
+		"\2\2\u02f0\u02f1\7L\2\2\u02f1\u02f2\7\25\2\2\u02f2\u02f3\5~@\2\u02f3\u02f4"+
+		"\7\26\2\2\u02f4\u00a1\3\2\2\2\u02f5\u02f6\7\22\2\2\u02f6\u02f7\7\25\2"+
+		"\2\u02f7\u02f8\5~@\2\u02f8\u02f9\7\"\2\2\u02f9\u02fa\5~@\2\u02fa\u02fb"+
+		"\7\26\2\2\u02fb\u00a3\3\2\2\2\u02fc\u02fd\7\23\2\2\u02fd\u02fe\7\25\2"+
+		"\2\u02fe\u02ff\5~@\2\u02ff\u0300\7\"\2\2\u0300\u0301\5~@\2\u0301\u0302"+
+		"\7\26\2\2\u0302\u00a5\3\2\2\2\u0303\u0304\7\24\2\2\u0304\u0305\7\25\2"+
+		"\2\u0305\u0306\5~@\2\u0306\u0307\7\26\2\2\u0307\u00a7\3\2\2\2\u0308\u0309"+
+		"\7X\2\2\u0309\u030a\5\u0080A\2\u030a\u030b\7\25\2\2\u030b\u030c\5~@\2"+
+		"\u030c\u030d\7\26\2\2\u030d\u00a9\3\2\2\2\u030e\u030f\7Y\2\2\u030f\u0310"+
+		"\7\25\2\2\u0310\u0311\5~@\2\u0311\u0312\7\26\2\2\u0312\u00ab\3\2\2\2\u0313"+
+		"\u0314\7b\2\2\u0314\u0315\7\25\2\2\u0315\u0316\5~@\2\u0316\u0317\7\"\2"+
+		"\2\u0317\u0318\5~@\2\u0318\u0319\7\26\2\2\u0319\u00ad\3\2\2\2\u031a\u031b"+
+		"\7e\2\2\u031b\u031c\7\25\2\2\u031c\u031d\5~@\2\u031d\u031e\7\26\2\2\u031e"+
+		"\u00af\3\2\2\2\u031f\u0320\7f\2\2\u0320\u0321\7\25\2\2\u0321\u0322\5~"+
+		"@\2\u0322\u0323\7\26\2\2\u0323\u00b1\3\2\2\2\u0324\u0325\7g\2\2\u0325"+
+		"\u0326\7\25\2\2\u0326\u0327\5~@\2\u0327\u0328\7\26\2\2\u0328\u00b3\3\2"+
+		"\2\2\u0329\u032a\7h\2\2\u032a\u032b\7\25\2\2\u032b\u032c\5~@\2\u032c\u032d"+
+		"\7\26\2\2\u032d\u00b5\3\2\2\2\u032e\u032f\7i\2\2\u032f\u0330\7\25\2\2"+
+		"\u0330\u0331\5~@\2\u0331\u0332\7\26\2\2\u0332\u00b7\3\2\2\2\u0333\u0334"+
+		"\7j\2\2\u0334\u0335\7\25\2\2\u0335\u0336\5~@\2\u0336\u0337\7\26\2\2\u0337"+
+		"\u00b9\3\2\2\2\u0338\u0339\7k\2\2\u0339\u033a\7\25\2\2\u033a\u033b\5~"+
+		"@\2\u033b\u033c\7\26\2\2\u033c\u00bb\3\2\2\2\u033d\u033e\7l\2\2\u033e"+
+		"\u033f\7\25\2\2\u033f\u0340\5~@\2\u0340\u0341\7\26\2\2\u0341\u00bd\3\2"+
+		"\2\2\u0342\u0343\7m\2\2\u0343\u0344\7\25\2\2\u0344\u0345\5~@\2\u0345\u0346"+
+		"\7\26\2\2\u0346\u00bf\3\2\2\2\u0347\u0348\7Z\2\2\u0348\u0349\7\25\2\2"+
+		"\u0349\u034a\5~@\2\u034a\u034b\7\26\2\2\u034b\u00c1\3\2\2\2\62\u00c5\u00cb"+
+		"\u00d0\u00d4\u00d8\u00df\u00e3\u0117\u0120\u0125\u012a\u012e\u0135\u0140"+
+		"\u0144\u014e\u0153\u0155\u015f\u0167\u016a\u0170\u018c\u018f\u019e\u01a7"+
+		"\u01af\u01b8\u01d2\u01d6\u01db\u01e3\u01ec\u01f5\u01f9\u023b\u0242\u0251"+
+		"\u0276\u027b\u027e\u0285\u0293\u0295\u029a\u02a0\u02aa\u02b2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
