@@ -58,6 +58,16 @@ public interface kbasListener extends ParseTreeListener {
 	 */
 	void exitAmprstmt(kbasParser.AmprstmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link kbasParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock(kbasParser.BlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link kbasParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock(kbasParser.BlockContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link kbasParser#statement}.
 	 * @param ctx the parse tree
 	 */
@@ -137,6 +147,16 @@ public interface kbasListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIfstmt(kbasParser.IfstmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link kbasParser#forstmt11}.
+	 * @param ctx the parse tree
+	 */
+	void enterForstmt11(kbasParser.Forstmt11Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link kbasParser#forstmt11}.
+	 * @param ctx the parse tree
+	 */
+	void exitForstmt11(kbasParser.Forstmt11Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link kbasParser#forstmt1}.
 	 * @param ctx the parse tree

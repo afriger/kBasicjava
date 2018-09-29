@@ -77,6 +77,18 @@ public class kbasBaseListener implements kbasListener
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBlock(kbasParser.BlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBlock(kbasParser.BlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterStatement(kbasParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -168,6 +180,18 @@ public class kbasBaseListener implements kbasListener
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitIfstmt(kbasParser.IfstmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterForstmt11(kbasParser.Forstmt11Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForstmt11(kbasParser.Forstmt11Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

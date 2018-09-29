@@ -62,7 +62,7 @@ public class kVisitor extends kbasBaseVisitor<Value>
             memory.assign(varname, new Value(i));
             try
             {
-                visit(ctx.statement());
+                visit(ctx.block());
             }
             catch (ContinueLoopException e)
             {
@@ -110,11 +110,11 @@ public class kVisitor extends kbasBaseVisitor<Value>
         if (condition.isTrue())
         {
             Value val = visit(ctx.statement());
-            return val;//visit(ctx.statement());// .block());
+            return val;
         }
         if (condition.isFalse())
         {
-            return null;
+            return condition;
         }
         return null;
     }
@@ -131,7 +131,7 @@ public class kVisitor extends kbasBaseVisitor<Value>
     public Value visitLine(kbasParser.LineContext ctx)
     {
         int line = ctx.getStart().getLine();
-        System.out.println("#Line: " + line);
+        //System.out.println("#Line: " + line);
         return super.visitLine(ctx);
     }
 

@@ -1,18 +1,21 @@
 grammar kbas;
 
-prog: line + EOF ;
+prog: line+ EOF ;
 
    // a line starts with an INT
 line
-  : ((linenumber | STATUS)? ((amprstmt (COMMA amprstmt?)*) | (COMMENT | REM)))
+  : (linenumber | STATUS)? ((amprstmt (COMMA amprstmt?)*) | (COMMENT | REM))
   ;
 amperoper: AMPERSAND;
 linenumber: NUMBER  ;
 
 amprstmt
-   : (amperoper? statement)
+   : (amperoper statement)
+   | (statement)
    | (COMMENT | REM)
    ;
+
+block: (line NEWLINE+)*  ;
 
 statement
    : (CLS | LOAD | SAVE | TRACE | NOTRACE | FLASH | INVERSE | GR | NORMAL | SHLOAD | CLEAR | RUN | STOP | TEXT | HOME | HGR | HGR2)
@@ -78,8 +81,9 @@ ifstmt: IF expression THEN? (statement | linenumber);
 
 
 // for stmt 1 puts the for-next on one line
-forstmt1: FOR vardecl EQ expression TO expression (STEP expression)? (statement NEXT vardecl?)?
-   ;
+forstmt11: FOR vardecl EQ expression TO expression (STEP expression)? ( NEWLINE+ block NEXT vardecl?)?   ;
+forstmt1   : FOR vardecl EQ expression TO expression (STEP expression)? NEWLINE+ block NEXT vardecl? ;
+
 
 // for stmt 2 puts the for, the statment, and the next on 3 lines.  It needs "nextstmt"
 forstmt2: FOR vardecl EQ expression TO expression (STEP expression)?
@@ -421,52 +425,19 @@ LTE : '<=' ;
 GT  : '>' ;
 LT  : '<' ;
 EQ  : '=' ;
-
-
-COMMA   : ','
-   ;
-
-
-LIST: 'LIST' | 'list'
-   ;
-
-
-RUN: 'RUN' | 'run'
-   ;
-
-
-END: 'END' | 'end'
-   ;
-
-
+COMMA   : ','  ;
+NEWLINE :'\r'? '\n' ;  // return newlines to parser (end-statement signal)
+LIST: 'LIST' | 'list';
+RUN: 'RUN' | 'run';
+END: 'END' | 'end';
 LET: 'LET' | 'let';
-
-FOR: 'FOR' | 'for'
-   ;
-
-
-TO: 'TO' | 'to'
-   ;
-
-
-STEP: 'STEP' | 'step'
-   ;
-
-
-INPUT: 'INPUT' | 'input'
-   ;
-
-
-SEMICOLON: ';'
-   ;
-
-
-DIM: 'DIM' | 'dim'
-   ;
-
-
-SQR: 'SQR' | 'sqr'
-   ;
+FOR: 'FOR' | 'for';
+TO: 'TO' | 'to'   ;
+STEP: 'STEP' | 'step';
+INPUT: 'INPUT' | 'input';
+SEMICOLON: ';' ;
+DIM: 'DIM' | 'dim';
+SQR: 'SQR' | 'sqr';
 
 
 COLON: ':'
