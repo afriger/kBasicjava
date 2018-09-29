@@ -1,4 +1,6 @@
-FOR i = 1 TO 5
+FOR i = 1 TO 5 STEP 2
+IF i>3 THEN PRINT i
 PRINT i
 NEXT i
+
 

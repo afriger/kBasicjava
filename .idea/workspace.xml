@@ -65,16 +65,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="bas" value="288" />
-          <entry key="g4" value="155" />
-          <entry key="java" value="701" />
+          <entry key="bas" value="340" />
+          <entry key="g4" value="159" />
+          <entry key="java" value="703" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ANTLR v4 grammar file" value="155" />
-          <entry key="JAVA" value="701" />
-          <entry key="PLAIN_TEXT" value="288" />
+          <entry key="ANTLR v4 grammar file" value="159" />
+          <entry key="JAVA" value="703" />
+          <entry key="PLAIN_TEXT" value="340" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -100,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kbas.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="773" column="18" lean-forward="true" selection-start-line="773" selection-start-column="18" selection-end-line="773" selection-end-column="18" />
+            <state relative-caret-position="297">
+              <caret line="91" column="37" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="37" />
               <folding>
                 <element signature="e#305#1155#1" />
               </folding>
@@ -109,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sasa/kVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+            <state relative-caret-position="68">
+              <caret line="133" column="10" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#714#715#0" expanded="true" />
@@ -125,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/test/1.bas">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="20">
+              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -145,8 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GTE</find>
-      <find>func</find>
       <find>EXPONENT</find>
       <find>TIMES</find>
       <find>RelationalExpressionContext</find>
@@ -175,6 +173,8 @@
       <find>statement</find>
       <find>vardecl</find>
       <find>FO</find>
+      <find>#Line</find>
+      <find>nextstmt</find>
     </findStrings>
     <dirStrings>
       <dir>C:\dev\__JavaProjects\kBasicjava\src\main\java</dir>
@@ -209,8 +209,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sasa/Interpreter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sasa/kbasParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sasa/kVisitor.java" />
-        <option value="$PROJECT_DIR$/src/main/test/1.bas" />
         <option value="$PROJECT_DIR$/src/main/kbas.g4" />
+        <option value="$PROJECT_DIR$/src/main/test/1.bas" />
       </list>
     </option>
   </component>
@@ -295,7 +295,7 @@
     <property name="$PROJECT_DIR$/src/main/kbas.g4::/language" value="Java" />
     <property name="$PROJECT_DIR$/src/main/kbas.g4::/output-dir" value="C:\dev\__JavaProjects\kbas\src" />
     <property name="$PROJECT_DIR$/src/main/kbas.g4::/package" value="com.sasa" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538242235484" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538242733870" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../kbas/src" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -371,7 +371,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49150142" visible="true" weight="0.21946308" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49150142" visible="true" weight="0.21946308" />
       <window_info id="Structure" order="1" sideWeight="0.5084986" side_tool="true" weight="0.44228187" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -380,7 +380,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.60339946" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.296034" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.64730877" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -625,27 +625,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/1.bas">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kbas.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="773" column="18" lean-forward="true" selection-start-line="773" selection-start-column="18" selection-end-line="773" selection-end-column="18" />
-          <folding>
-            <element signature="e#305#1155#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sasa/kVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+        <state relative-caret-position="68">
+          <caret line="133" column="10" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#714#715#0" expanded="true" />
@@ -653,6 +636,23 @@
             <element signature="e#706#707#0" expanded="true" />
             <element signature="e#751#752#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kbas.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="91" column="37" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="37" />
+          <folding>
+            <element signature="e#305#1155#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/1.bas">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
         </state>
       </provider>
     </entry>

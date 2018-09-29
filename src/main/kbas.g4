@@ -81,7 +81,7 @@ ifstmt: IF expression THEN? (statement | linenumber);
 
 
 // for stmt 1 puts the for-next on one line
-forstmt11: FOR vardecl EQ expression TO expression (STEP expression)? ( NEWLINE+ block NEXT vardecl?)?   ;
+forstmt11  : FOR vardecl EQ expression TO expression (STEP expression)? ( NEWLINE+ block NEXT vardecl?)?   ;
 forstmt1   : FOR vardecl EQ expression TO expression (STEP expression)? NEWLINE+ block NEXT vardecl? ;
 
 
