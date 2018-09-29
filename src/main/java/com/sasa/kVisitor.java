@@ -51,6 +51,32 @@ public class kVisitor extends kbasBaseVisitor<Value>
     }
 
     @Override
+    public Value visitForstmt1(kbasParser.Forstmt1Context ctx)
+    {
+        String varname = ctx.vardecl().get(0).var().getText();// varname().ID().getText();
+        Value start = visit(ctx.expression(0));
+        Value end = visit(ctx.expression(1));
+        Value step = ctx.expression(2) != null ? visit(ctx.expression(2)) : new Value(1);
+        for (long i = start.internalNumber(); i <= end.internalNumber(); i = i + step.internalNumber())
+        {
+            memory.assign(varname, new Value(i));
+            try
+            {
+                visit(ctx.statement());
+            }
+            catch (ContinueLoopException e)
+            {
+                continue;
+            }
+            catch (ExitLoopException e)
+            {
+                break;
+            }
+        }
+        return new Value(0);
+    }
+
+    @Override
     public Value visitProg(kbasParser.ProgContext ctx)
     {
         pctx = ctx;

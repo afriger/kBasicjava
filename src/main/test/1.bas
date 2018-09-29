@@ -1,8 +1,11 @@
 A = 77
 IF A<8   PRINT "A==7"
-GPS dd
+;GPS dd
 PRINT A + 3
-
-PS dd
-PRINT "print dd"
-RPS dd
+;FOR i = 1 TO 5 STEP 2
+IF i < 3   PRINT i
+;PRINT i
+;NEXT
+;PS dd
+;PRINT "print dd"
+;RPS dd
