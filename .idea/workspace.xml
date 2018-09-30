@@ -65,7 +65,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="bas" value="340" />
+          <entry key="bas" value="371" />
           <entry key="g4" value="159" />
           <entry key="java" value="703" />
         </counts>
@@ -74,7 +74,7 @@
         <counts>
           <entry key="ANTLR v4 grammar file" value="159" />
           <entry key="JAVA" value="703" />
-          <entry key="PLAIN_TEXT" value="340" />
+          <entry key="PLAIN_TEXT" value="371" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -128,8 +128,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/test/1.bas">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+            <state relative-caret-position="140">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -295,7 +295,7 @@
     <property name="$PROJECT_DIR$/src/main/kbas.g4::/language" value="Java" />
     <property name="$PROJECT_DIR$/src/main/kbas.g4::/output-dir" value="C:\dev\__JavaProjects\kbas\src" />
     <property name="$PROJECT_DIR$/src/main/kbas.g4::/package" value="com.sasa" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538242733870" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538306264267" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../kbas/src" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -651,8 +651,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/1.bas">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        <state relative-caret-position="140">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

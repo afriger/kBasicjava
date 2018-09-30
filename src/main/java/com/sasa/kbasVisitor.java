@@ -95,17 +95,17 @@ public interface kbasVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIfstmt(kbasParser.IfstmtContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link kbasParser#forstmt11}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitForstmt11(kbasParser.Forstmt11Context ctx);
-	/**
 	 * Visit a parse tree produced by {@link kbasParser#forstmt1}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitForstmt1(kbasParser.Forstmt1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link kbasParser#forstmt11}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitForstmt11(kbasParser.Forstmt11Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link kbasParser#forstmt2}.
 	 * @param ctx the parse tree

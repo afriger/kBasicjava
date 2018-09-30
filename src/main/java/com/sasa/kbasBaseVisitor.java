@@ -116,14 +116,14 @@ public class kbasBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements k
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitForstmt11(kbasParser.Forstmt11Context ctx) { return visitChildren(ctx); }
+	@Override public T visitForstmt1(kbasParser.Forstmt1Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitForstmt1(kbasParser.Forstmt1Context ctx) { return visitChildren(ctx); }
+	@Override public T visitForstmt11(kbasParser.Forstmt11Context ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
