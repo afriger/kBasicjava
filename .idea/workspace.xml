@@ -295,7 +295,7 @@
     <property name="$PROJECT_DIR$/src/main/kbas.g4::/language" value="Java" />
     <property name="$PROJECT_DIR$/src/main/kbas.g4::/output-dir" value="C:\dev\__JavaProjects\kbas\src" />
     <property name="$PROJECT_DIR$/src/main/kbas.g4::/package" value="com.sasa" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538376371200" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538376387848" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../kbas/src" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
