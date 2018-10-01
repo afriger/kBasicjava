@@ -38,7 +38,7 @@ public class kVisitor extends kbasBaseVisitor<Value>
     public Value visitGpsstmt(kbasParser.GpsstmtContext ctx)
     {
 
-        int count = ctx.expression().getChildCount();
+/*        int count = ctx.expression().getChildCount();
         String cc = ctx.expression().getText();
         int size = pctx.line().size();
         for (int k = 0; k < size; ++k)
@@ -46,7 +46,7 @@ public class kVisitor extends kbasBaseVisitor<Value>
             kbasParser.LineContext line = pctx.line(k);
             String str= line.amprstmt(0).getText();
             continue;
-        }
+        }*/
         return super.visitGpsstmt(ctx);
     }
 

@@ -1,7 +1,6 @@
 grammar kbas;
 
-prog: line+ EOF ;
-
+prog: block EOF;
    // a line starts with an INT
 line
   : (linenumber | STATUS)? ((amprstmt (COMMA amprstmt?)*) | (COMMENT | REM))
@@ -81,24 +80,15 @@ ifstmt: IF expression THEN? (statement | linenumber);
 
 
 // for stmt 1 puts the for-next on one line
-forstmt11  : FOR vardecl EQ expression TO expression (STEP expression)? ( NEWLINE+ block NEXT vardecl?)?   ;
-forstmt1   : FOR vardecl EQ expression TO expression (STEP expression)? NEWLINE+ block NEXT vardecl? ;
-
+forstmt1: FOR vardecl EQ expression TO expression (STEP expression)? ( NEWLINE+ block NEXT vardecl?)?   ;
 
 // for stmt 2 puts the for, the statment, and the next on 3 lines.  It needs "nextstmt"
-forstmt2: FOR vardecl EQ expression TO expression (STEP expression)?
-   ;
-
+forstmt2: FOR vardecl EQ expression TO expression (STEP expression)?;
 nextstmt: NEXT (vardecl (',' vardecl)*)? ;
 
-inputstmt: INPUT (stringer (COMMA | SEMICOLON))? varlist
-   ;
-
-readstmt: READ varlist
-   ;
-
-dimstmt: DIM varlist
-   ;
+inputstmt: INPUT (stringer (COMMA | SEMICOLON))? varlist;
+readstmt: READ varlist;
+dimstmt: DIM varlist;
 gotostmt: GOTO linenumber ;
 gosubstmt: GOSUB expression;
 gpsstmt: GPS expression;
@@ -688,88 +678,30 @@ EXP: 'EXP' | 'exp'
    ;
 
 
-LOG: 'LOG' | 'log'
-   ;
-
-
-ABS: 'ABS' | 'abs'
-   ;
-
-
-STORE: 'STORE' | 'store'
-   ;
-
-
-RECALL: 'RECALL' | 'recall'
-   ;
-
-
-GET: 'GET' | 'get'
-   ;
-
-
-EXPONENT: '^'
-   ;
-
-
-AMPERSAND: '&'
-   ;
-
-
-GR: 'GR' | 'gr'
-   ;
-
-
-NOT: 'NOT' | 'not'
-   ;
-
-
-RESTORE: 'RESTORE' | 'restore'
-   ;
-
-
-SAVE: 'SAVE' | 'save'
-   ;
-
-
-LOAD: 'LOAD' | 'load'
-   ;
-
-
-QUESTION: '?'
-   ;
-
-
-INCLUDE: 'INCLUDE' | 'include'
-   ;
-
-
-CLS: 'CLS' | 'cls'
-   ;
+LOG: 'LOG' | 'log';
+ABS: 'ABS' | 'abs';
+STORE: 'STORE' | 'store';
+RECALL: 'RECALL' | 'recall';
+GET: 'GET' | 'get' ;
+EXPONENT: '^';
+AMPERSAND: '&' ;
+GR: 'GR' | 'gr';
+NOT: 'NOT' | 'not'   ;
+RESTORE: 'RESTORE' | 'restore'   ;
+SAVE: 'SAVE' | 'save'   ;
+LOAD: 'LOAD' | 'load'   ;
+QUESTION: '?' ;
+INCLUDE: 'INCLUDE' | 'include';
+CLS: 'CLS' | 'cls';
 
 STATUS : 'S'; //view status of system while in CLS Debug
 COMMENT :
         REM ~[\r\n]*
         | SEMICOLON ~[\r\n]*
         ;
-
-
-
-STRINGLITERAL: '"' ~ ["\r\n]* '"'
-   ;
-
-
-LETTERS: ('a' .. 'z' | 'A' .. 'Z') +
-   ;
-
-
-NUMBER: ('0' .. '9') + (('e' | 'E') NUMBER)*
-   ;
-
-
-FLOAT: ('0' .. '9')* '.' ('0' .. '9') + (('e' | 'E') ('0' .. '9') +)*
-   ;
-
-
-WS: [ \r\n\t] + -> channel (HIDDEN)
-   ;
+STRINGLITERAL: '"' ~ ["\r\n]* '"';
+LETTERS: ('a' .. 'z' | 'A' .. 'Z') +;
+NUMBER: ('0' .. '9') + (('e' | 'E') NUMBER)*;
+FLOAT: ('0' .. '9')* '.' ('0' .. '9') + (('e' | 'E') ('0' .. '9') +)*   ;
+WS: [ \t]+ -> skip ; // toss out whitespace
+//WS: [ \r\n\t] + -> channel (HIDDEN) ;
